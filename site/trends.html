@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demand matrix · keyword × channel · MUKU 無垢</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bone:#F3F2EE;--bone-2:#EAE9E3;--bone-3:#E0DFD7;--ink:#17181A;--ink-2:#3A3C3E;--ink-soft:#6C6E70;--line:rgba(23,24,26,.12);--line-2:rgba(23,24,26,.06);--accent:#35513E;--accent-2:#6E8B73;--tk:#b8316a;--bad:#9a3b3b;--sans:'Onest',system-ui,-apple-system,sans-serif;--jpsans:'Noto Sans JP',var(--sans);--mincho:'Shippori Mincho',serif;--r:14px;--maxw:1220px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bone);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.55}
+body.lang-ja{font-family:var(--jpsans)}
+h1,h2,h3{font-weight:600;letter-spacing:-.02em;line-height:1.12}
+body.lang-ja h1,body.lang-ja h2,body.lang-ja h3{letter-spacing:0;line-height:1.3}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+.section{padding:38px 0;border-top:1px solid var(--line)}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px}
+body.lang-ja .eyebrow{letter-spacing:.05em}
+.muted{color:var(--ink-soft)}
+body.lang-en .l-ja{display:none}body.lang-ja .l-en{display:none}
+.nav{position:sticky;top:0;z-index:50;height:58px;display:flex;align-items:center;background:rgba(243,242,238,.85);backdrop-filter:saturate(160%) blur(16px);-webkit-backdrop-filter:saturate(160%) blur(16px);border-bottom:1px solid var(--line-2)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%;gap:16px}
+.nav .back{font-size:14px;font-weight:600;color:var(--ink-2)}.nav .back:hover{color:var(--accent)}
+.brand{font-weight:700;font-size:17px}.brand .k{font-family:var(--mincho);color:var(--accent);font-size:15px}
+.langtog{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:13px;font-weight:600}
+.langtog button{background:transparent;border:0;padding:6px 12px;cursor:pointer;color:var(--ink-soft);font-weight:600;font-family:inherit}
+body.lang-en .langtog .b-en,body.lang-ja .langtog .b-ja{background:var(--ink);color:var(--bone)}
+.chead{padding:42px 0 6px}
+.chead h1{font-size:clamp(30px,4.6vw,50px);margin:8px 0 8px}
+.chead .sub{font-size:17px;color:var(--ink-2);max-width:72ch}
+.legend{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;margin-top:20px}
+.legend h3{font-size:16px;margin-bottom:4px}
+.legend .lsub{font-size:13.5px;color:var(--ink-2);max-width:92ch;margin-bottom:16px}
+.lgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px 22px}
+.ldef{display:flex;gap:10px;font-size:13px;line-height:1.45;padding:7px 0;border-top:1px solid var(--line-2)}
+.ldef .dot{width:10px;height:10px;border-radius:3px;margin-top:5px;flex:0 0 auto;background:var(--accent-2)}
+.ldef.tk .dot{background:var(--tk)}
+.ldef b{color:var(--ink)}
+.lkey{font-size:12.5px;color:var(--ink-soft);margin-top:14px;line-height:1.6;border-top:1px solid var(--line-2);padding-top:12px}
+.lkey .pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 7px;border-radius:5px;background:#fbe4ee;color:var(--tk);margin:0 2px}
+.lkey .barx{display:inline-block;width:26px;height:4px;border-radius:2px;background:var(--accent-2);vertical-align:middle;opacity:.55;margin:0 3px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 4px}
+.chip{font-family:var(--jpsans);font-size:13.5px;border:1px solid var(--line);background:var(--bone-2);border-radius:999px;padding:8px 14px;cursor:pointer;transition:.18s;color:var(--ink-2);font-weight:500}
+.chip:hover{border-color:var(--accent-2)}
+.chip.on{background:var(--ink);color:var(--bone);border-color:var(--ink)}
+.chip .star{color:var(--accent-2)}.chip.on .star{color:#9DBBA1}
+.chip .g{color:var(--ink-soft);font-weight:400;font-size:11.5px}.chip.on .g{color:#cfd8d1}
+.mtxcap{font-size:12.5px;color:var(--ink-soft);margin:14px 0 0}
+.mtx{width:100%;border-collapse:collapse;margin-top:6px;font-size:12.5px;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.mtx th,.mtx td{padding:9px 9px;text-align:right;border-bottom:1px solid var(--line-2);white-space:nowrap}
+.mtx th{font-size:10px;letter-spacing:.02em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;background:var(--bone-2)}
+.mtx th:first-child,.mtx td:first-child{text-align:left}
+.mtx th.tk,.mtx td.tk b{color:var(--tk)}
+.mtx tr{cursor:pointer}
+.mtx tbody tr:hover{background:var(--bone-2)}
+.mtx tr.on{background:#E9F0EB}
+.mtx tr.on td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
+.kwc{font-family:var(--jpsans);font-weight:600}
+.kwc .gloss{display:block;font-family:var(--sans);color:var(--ink-soft);font-weight:400;font-size:11px;margin-top:1px}
+.cell{position:relative;min-width:64px}
+.cell .bar{position:absolute;left:0;bottom:-9px;height:3px;background:var(--accent-2);border-radius:2px;opacity:.5}
+.cell.tk .bar{background:var(--tk)}
+.cell.zero{color:var(--ink-soft)}
+.star{color:var(--accent-2)}
+.detail{margin-top:24px}
+.dhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:2px}
+.dhead .q{font-family:var(--jpsans);font-size:26px;font-weight:700}
+.dhead .gloss{font-size:18px;color:var(--ink-2);font-weight:600}
+.dhead .tag{font-size:12px;font-weight:600;color:var(--accent);background:#E6F0E9;border-radius:6px;padding:3px 9px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:15px;margin-top:16px}
+.card{border:1px solid var(--line);border-radius:var(--r);background:#fff;padding:16px 18px}
+.card.star{border-color:#e7b8cd;box-shadow:0 0 0 1px #f0d2df inset}
+.card .ch{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+.card .big{font-size:28px;font-weight:700;letter-spacing:-.02em;margin:4px 0 0}
+.card.star .big{color:var(--tk)}
+.card .def{font-size:12px;color:var(--ink-soft);margin-top:2px;line-height:1.4}
+.card .cc{font-size:13px;color:var(--ink-2);margin-top:9px;line-height:1.5}
+.card .cc b{color:var(--accent)}
+.spark{width:100%;height:46px;display:block;margin:6px 0 0}
+.sparkph{height:46px;display:flex;align-items:center;font-size:11.5px;color:var(--ink-soft);border-bottom:1px dashed var(--line);margin:6px 0 0}
+.voice{margin-top:16px;display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-left:3px solid var(--accent-2);border-radius:0 var(--r) var(--r) 0;padding:14px 18px}
+.voice .vl{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-2);white-space:nowrap;padding-top:2px}
+.voice .vt{font-size:14.5px;color:var(--ink-2);line-height:1.5}
+.voice .vt.l-ja{font-family:var(--jpsans)}
+.vw{float:right;font-weight:700;color:var(--accent);text-decoration:none;font-size:10px;letter-spacing:.03em}
+.vw:hover{text-decoration:underline}
+.postswrap{margin-top:16px}
+.postsh{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:9px}
+.posts{display:flex;gap:13px;flex-wrap:wrap}
+.post{display:block;width:150px;text-decoration:none;color:var(--ink-2)}
+.post img{width:150px;height:150px;object-fit:cover;border-radius:11px;border:1px solid var(--line);display:block;background:var(--bone-2)}
+.post:hover img{border-color:var(--accent-2)}
+.post .pl{display:block;font-size:11.5px;margin-top:6px;font-weight:500}
+.post .pl.tt{color:var(--tk)}
+.flag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:3px 6px;border-radius:6px;vertical-align:middle}
+.flag.real{background:#E6F0E9;color:var(--accent)}.flag.tk{background:#fbe4ee;color:var(--tk)}.flag.pend{background:#FBEEDD;color:#8a5a12}.flag.gate{background:#F1ECEC;color:#7a5a5a}
+.over{margin-top:16px;background:var(--accent);color:#fff;border-radius:var(--r);padding:18px 22px;font-size:clamp(15px,1.7vw,18px);font-weight:600;line-height:1.5}
+.over .ol{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;font-weight:700;margin-bottom:6px}
+.pending{margin-top:14px;border:1px dashed var(--line);border-radius:var(--r);padding:12px 16px;font-size:12.5px;color:var(--ink-soft);background:var(--bone-2)}
+.concl{margin-top:8px}
+.concl h2{font-size:clamp(22px,3vw,32px);margin-bottom:6px}
+.concl .csub{font-size:15px;color:var(--ink-2);max-width:80ch;margin-bottom:18px}
+.cpts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.cpt{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px 20px}
+.cpt .n{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.04em}
+.cpt h4{font-size:16px;margin:5px 0 6px}
+.cpt p{font-size:13.5px;color:var(--ink-2);line-height:1.55}
+.cpt b{color:var(--ink)}
+.play{margin-top:16px;background:var(--ink);color:var(--bone);border-radius:var(--r);padding:22px 24px}
+.play h4{font-size:15px;color:#fff;margin-bottom:12px;letter-spacing:.02em}
+.play .row{display:flex;gap:12px;padding:9px 0;border-top:1px solid rgba(255,255,255,.14);font-size:14px;line-height:1.5}
+.play .row:first-of-type{border-top:0}
+.play .rl{flex:0 0 96px;font-weight:700;color:#cdd8d0;text-transform:uppercase;font-size:11px;letter-spacing:.06em;padding-top:3px}
+.play .rt{color:#e9ece9}.play .rt b{color:#fff}
+footer{padding:36px 0 60px;border-top:1px solid var(--line);color:var(--ink-soft);font-size:13px}
+</style>
+</head>
+<body class="lang-en">
+<script>try{if(localStorage.getItem('muku-lang')==='ja'){document.body.className='lang-ja';document.documentElement.lang='ja'}}catch(e){}</script>
+
+<nav class="nav"><div class="wrap">
+  <a class="back" href="index.html#trends">&larr; <span class="l-en">Back to deck</span><span class="l-ja">デックへ戻る</span></a>
+  <a class="brand" href="index.html">MUKU <span class="k">無垢</span></a>
+  <div class="langtog"><button class="b-en" onclick="setLang('en')">EN</button><button class="b-ja" onclick="setLang('ja')">日本語</button></div>
+</div></nav>
+
+<div class="wrap chead">
+  <div class="eyebrow"><span class="l-en">Chapter 3 · Demand &amp; trends · live data</span><span class="l-ja">第3章 · 需要とトレンド · 実データ</span></div>
+  <h1><span class="l-en">Is the demand real, and where do we win?</span><span class="l-ja">需要は本物か、どこで勝つか？</span></h1>
+  <p class="sub"><span class="l-en">We took the 10 ways Japanese shoppers describe this product and measured each one across the channels below (search, short-form video, marketplaces, social). Every number is live data captured on 2026-06-18, geo=Japan. Read the legend first, then click any keyword.</span><span class="l-ja">日本の買い手がこの商品を表す10通りの言い方を、下のチャネル（検索・ショート動画・マーケット・SNS）で計測。数値はすべて2026-06-18取得のライブデータ、geo=日本。まず凡例を読み、キーワードをクリック。</span></p>
+</div>
+
+<section class="section"><div class="wrap">
+  <div class="legend">
+    <h3><span class="l-en">How to read this</span><span class="l-ja">読み方</span></h3>
+    <div class="lsub"><span class="l-en">Each <b>row</b> is a keyword (a way people search for the product). Each <b>column</b> is a channel where we measured demand in Japan. A bigger number is not always "better" - for marketplaces it means a bigger but more crowded market; for video and social it means more attention. Here is what each channel measures:</span><span class="l-ja">各<b>行</b>はキーワード（商品の探し方）、各<b>列</b>は日本で需要を測ったチャネル。数値が大きい＝必ずしも「良い」ではない：マーケットでは「大きいが競合も多い」、動画・SNSでは「注目が多い」。各チャネルの意味：</span></div>
+    <div class="lgrid">
+      <div class="ldef"><span class="dot"></span><span><b>Google Trends</b> <span class="l-en">- search interest on Google, a 0-100 index (relative popularity, not a raw count). Are people actively searching this?</span><span class="l-ja">- Google検索の関心、0-100指数（相対人気、生件数ではない）。実際に検索されているか？</span></span></div>
+      <div class="ldef tk"><span class="dot"></span><span><b>TikTok</b> <span class="l-en">(pink) - views of the top Japanese TikTok we visually confirmed shows a bath tray. Keyword search returns mostly off-topic clips, so only one row qualified. The short-form discovery engine.</span><span class="l-ja">（ピンク）- バスタブトレーが映ると目視確認できた日本語TikTokの再生数。検索は本題外が多く、該当は1行のみ。ショート動画の発見エンジン。</span></span></div>
+      <div class="ldef"><span class="dot"></span><span><b>Amazon JP</b> <span class="l-en">- how many products appear for this search. A read on market size and how crowded it is.</span><span class="l-ja">- この検索に出る商品数。市場規模と混雑度の指標。</span></span></div>
+      <div class="ldef"><span class="dot"></span><span><b>Rakuten</b> <span class="l-en">- live listings on Japan's other big marketplace. A supply cross-check.</span><span class="l-ja">- 日本のもう一つの大型マーケットの掲載数。供給のクロスチェック。</span></span></div>
+      <div class="ldef"><span class="dot"></span><span><b>Mercari</b> <span class="l-en">- already-sold listings (resale). The hardest proof that people actually buy it.</span><span class="l-ja">- 販売済み（転売）件数。実際に買われている最も確かな証拠。</span></span></div>
+      <div class="ldef"><span class="dot"></span><span><b>YouTube</b> <span class="l-en">- video results in Japan. Long-form review and how-to interest.</span><span class="l-ja">- 日本での動画結果数。長尺レビュー・ハウツーの関心。</span></span></div>
+      <div class="ldef"><span class="dot"></span><span><b>Instagram</b> <span class="l-en">- likes on the top hashtag post (we sample up to 30). An active hashtag is 1,000+ likes.</span><span class="l-ja">- ハッシュタグのトップ投稿いいね（最大30件標本）。活発＝1,000+いいね。</span></span></div>
+      <div class="ldef"><span class="dot"></span><span><b>X (Twitter)</b> <span class="l-en">- recent Japanese posts mentioning the term. A small one-page sample; real-time word-of-mouth, not a volume count.</span><span class="l-ja">- この語に言及する直近の日本語投稿。1ページの小標本。リアルタイム口コミでvol指標ではない。</span></span></div>
+    </div>
+    <div class="lkey"><span class="l-en">Colour / symbols: <span class="pill">pink</span> marks the TikTok column (our discovery channel). The small bars <span class="barx"></span> under the count columns (TikTok, Amazon, Rakuten, Mercari, YouTube, Instagram) show that keyword's size relative to the column (log scale); Trends and X are figures only. <b>~0</b> means near-zero. On X, <b>~20+</b> means the one-page sample was full and more exist. Marketplace counts are a supply &amp; competition proxy, not search volume.</span><span class="l-ja">色・記号：<span class="pill">ピンク</span>はTikTok列（発見チャネル）。小バー <span class="barx"></span> は件数列（TikTok・Amazon・楽天・メルカリ・YouTube・Instagram）の相対サイズ（対数）。Trends・Xは数値のみ。<b>~0</b>はほぼゼロ。Xの<b>~20+</b>は1ページ標本が満杯でさらに存在の意。件数は供給・競合の代理指標で検索数ではない。</span></div>
+  </div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="eyebrow"><span class="l-en">The matrix · click a keyword</span><span class="l-ja">マトリクス · キーワードをクリック</span></div>
+  <div class="chips" id="chips"></div>
+  <div class="mtxcap"><span class="l-en">Tip: the pink TikTok bars and the Mercari column (resale = real buying) tell the story fastest. Click a row to open its full read below.</span><span class="l-ja">ヒント：ピンクのTikTokバーとメルカリ列（転売＝実購入）が一番わかりやすい。行をクリックで下に詳細。</span></div>
+  <div style="overflow-x:auto"><table class="mtx" id="mtx"></table></div>
+  <div class="detail" id="detail"></div>
+</div></section>
+
+<section class="section"><div class="wrap concl">
+  <div class="eyebrow"><span class="l-en">What the matrix tells us · the launch read</span><span class="l-ja">マトリクスの示唆 · ローンチの読み</span></div>
+  <h2><span class="l-en">Five things we now know.</span><span class="l-ja">分かった5つのこと。</span></h2>
+  <p class="csub"><span class="l-en">Read across all 10 keywords and every channel, the picture is consistent - and it is honest about the limits.</span><span class="l-ja">10キーワード×全チャネルを横断すると像は一貫し、限界にも正直。</span></p>
+  <div class="cpts">
+    <div class="cpt"><div class="n">01 · DEMAND IS REAL BUT MODEST</div><h4><span class="l-en">A small, steady niche, not a trend</span><span class="l-ja">小さく堅実なニッチ、トレンドではない</span></h4><p><span class="l-en">People do buy this (35k Amazon listings, 100+ Mercari resales), but the organic buzz for the tray itself is quiet: Instagram tops out under ~400 likes, and we could verify only one on-topic bath-tray TikTok in all of Japan (~214k); the keyword search otherwise returns cleaning, music and kitchen clips. Search is niche-level. A small, price-sensitive category - we win by <b>execution</b>, not by riding a trend.</span><span class="l-ja">買われてはいる（Amazon3.5万件・メルカリ100+転売）が、トレー自体のオーガニックな盛り上がりは静か：Instagramはトップでも約400いいね止まり、本題のバスタブトレーTikTokは日本全体で1本（約21万）しか確認できず、検索結果は清掃・音楽・キッチン動画ばかり。検索はニッチ水準。小さく価格感応な市場 - 勝ち筋は<b>実行</b>であって需要に乗ることではない。</span></p></div>
+    <div class="cpt"><div class="n">02 · THE WEDGE</div><h4><span class="l-en">"Mold-free" is the way in</span><span class="l-ja">「カビない」が入口</span></h4><p><span class="l-en"><b>カビない (mold-free)</b>: near-zero Google search means few type the phrase, but it is NOT an empty market (~2,700 Amazon listings still compete). It is the #1 Amazon autocomplete and the tweets are explicit. The edge is <b>high purchase intent on a specific claim</b>, won on the title and SEO - not a traffic source.</span><span class="l-ja"><b>カビない</b>：Google検索ほぼゼロ＝語句を打つ人が少ないだけで空白市場ではない（Amazonは約2,700件が競合）。Amazon自動補完1位、ツイートも明確。強みは<b>具体的訴求での高い購買意図</b>、タイトルとSEOで獲る - 流入源ではない。</span></p></div>
+    <div class="cpt"><div class="n">03 · THE WHITE SPACE</div><h4><span class="l-en">Bamboo is empty on JP short-form</span><span class="l-ja">竹はJPショートで空白</span></h4><p><span class="l-en">Bamboo demand shows on Amazon (15k) and in one tweet, but there is <b>no on-topic Japanese TikTok</b> and almost no Instagram. Nobody owns the bamboo story on the channel that drives discovery - genuine white space, but on a weak organic signal, so we must create the content ourselves.</span><span class="l-ja">竹需要はAmazon（1.5万）と1件のツイートに出るが、<b>本題の日本語TikTokは皆無</b>でInstagramもほぼ無し。発見を生む場で竹の物語を誰も持っていない - 本物の白地だが弱いオーガニックの上、コンテンツは自前で作る必要。</span></p></div>
+    <div class="cpt"><div class="n">04 · PRICE PRESSURE</div><h4><span class="l-en">Cheap and DIY pull is loud</span><span class="l-ja">安価・DIYの引きが強い</span></h4><p><span class="l-en">The 100-yen / DIY angle gets a 1.6M-view TikTok (though that clip is a generic Daiso DIY table, not our tray); Mercari resale clusters low. We do <b>not</b> fight on price. We sit just under the premium-wood ceiling with a quality + mold-proof story the cheap tier cannot copy.</span><span class="l-ja">100均・DIYの切り口はTikTok160万再生（ただしその動画は汎用ダイソーDIY机でトレーではない）、メルカリ転売も低価格に集中。価格では戦わない。高級木材の天井直下に、安価帯が真似できない品質＋防カビで位置取り。</span></p></div>
+    <div class="cpt"><div class="n">05 · THE CROSS-SELL</div><h4><span class="l-en">Bath storage is a giant pool</span><span class="l-ja">お風呂収納は巨大母数</span></h4><p><span class="l-en"><b>お風呂ラック (bath rack)</b> dwarfs everything (170k Rakuten, 164k YouTube). A different product, but a huge adjacent audience to harvest with backend keywords and a future second SKU.</span><span class="l-ja"><b>お風呂ラック</b>が全てを圧倒（楽天17万・YouTube16万）。別商材だが、裏側キーワードと将来の第2SKUで取り込む巨大隣接層。</span></p></div>
+  </div>
+  <div class="play">
+    <h4><span class="l-en">So what we do with it</span><span class="l-ja">→ 具体的に何をするか</span></h4>
+    <div class="row"><div class="rl">Product</div><div class="rt"><span class="l-en">Warm <b>bamboo</b> + a real <b>mold-proof</b> design + a book/tablet holder. The wood look people aspire to, without the mold they fear.</span><span class="l-ja"><b>竹</b>の温かみ＋本物の<b>防カビ</b>設計＋本/タブレット保持。憧れの木の見た目を、恐れるカビなしで。</span></div></div>
+    <div class="row"><div class="rl">Listing</div><div class="rt"><span class="l-en">Title leads with <b>防カビ (mold-proof)</b>; gallery proves no-mold and the bamboo look; backend keywords harvest お風呂トレー (bath tray) / ラック (rack) / 伸縮 (expandable).</span><span class="l-ja">タイトルは<b>防カビ</b>主導、ギャラリーでカビなしと竹の美を証明、裏側キーワードでお風呂トレー/ラック/伸縮を回収。</span></div></div>
+    <div class="row"><div class="rl">Ads</div><div class="rt"><span class="l-en">Bid the <b>exact-intent</b> terms (カビない mold-free, 竹 bamboo, 伸縮 expandable), not the broad crowded head. Avoid the price-shoppers (100均 100-yen, スリーコインズ 3COINS).</span><span class="l-ja"><b>完全一致の意図</b>語（カビない・竹・伸縮）に入札、混雑した広い頭は避ける。価格層（100均・スリーコインズ）は回避。</span></div></div>
+    <div class="row"><div class="rl">Content</div><div class="rt"><span class="l-en">Seed our own <b>Japanese short-form</b> on bamboo + mold-proof to own the empty discovery space; partner with the bath/storage creators who already pull millions.</span><span class="l-ja">竹＋防カビの<b>日本語ショート</b>を自前で投下し空白の発見枠を獲得、既に数百万を稼ぐお風呂/収納クリエイターと連携。</span></div></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span class="l-en">Demand matrix · MUKU 無垢. Live data 2026-06-18. Sources: SerpApi (Trends, Amazon, YouTube), Apify (TikTok, Instagram), twitterapi.io (X), browser (Rakuten, Mercari). Counts are a supply/competition proxy, not search volume.</span><span class="l-ja">需要マトリクス · MUKU 無垢。実データ2026-06-18。出典：SerpApi（Trends・Amazon・YouTube）、Apify（TikTok・Instagram）、twitterapi.io（X）、ブラウザ（楽天・メルカリ）。件数は供給・競合の代理指標で検索数ではない。</span></div></footer>
+
+<script>
+var DATA = {"generated": "2026-06-18", "maxes": {"amazon": 41667, "rakuten": 169595, "youtube": 164228, "tiktok": 213500, "ig": 391, "mercari": 120}, "keywords": [{"q": "バスタブトレー", "label": "head term", "trends": {"series": [0, 0, 0, 66, 0, 0, 67, 64, 0, 94, 61, 63, 0, 0, 0, 59, 0, 0, 88, 0, 63, 58, 67, 72, 0, 0, 0, 100, 90, 0, 0, 66, 72, 0, 85, 83, 61, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 35, 29], "avg": 27.5, "latest": 29, "peak": 100, "n": 53}, "amazon": {"count": 35564}, "youtube": {"count": 2679, "n": 13}, "x": {"sample": 20, "more": true, "top": "ニトリで買ったバスタブ用トレー\n腹立つ https://t.co/OCU0nsc0i9"}, "rakuten": {"count": 3391}, "ig": {"posts": 30, "top_likes": 89, "top_caption": "◯風呂の時間、こいつでちょいと格があがるぞ◯  現代人は忙しい  仕事をして スマホを見て 家庭のことや恋人との時間をすごせば あっというまに一日が終わってる  充実、といえばそれ"}, "tiktok": {"videos": 6, "jp_videos": 3, "top_views": 213500, "top_text": "お風呂があまり好きじゃないので、ちょっとでもお風呂時間を好きになれるように🛁  おしゃれに洋画とか観たい気持ちもあるけど🎞️ 欲望に忠実なのでYouTubeやライブ映像を観てます🙂"}, "mercari": {"sold_recent": 120, "capped": true}, "media": {"tiktok": {"url": "https://www.tiktok.com/@__mefil/video/7399572204574297360", "views": 213500, "author": "__mefil", "img": "assets/posts/tt_0.jpg"}, "ig": {"url": "https://www.instagram.com/p/DXWpEcSERg7/", "likes": 89, "user": "unotarou", "img": "assets/posts/ig_0.jpg"}, "x_search": "https://x.com/search?q=%E3%83%90%E3%82%B9%E3%82%BF%E3%83%96%E3%83%88%E3%83%AC%E3%83%BC%20lang%3Aja&f=live"}, "over_en": "The category core, but a modest one. Recurring (not heavy) search (Trends avg 27); on-topic Japanese TikTok is low (~214k) and Instagram is weak (top post 89 likes). Still the broadest marketplace footprint (Amazon 35.5k results, Rakuten 3.4k listings). Anchor it organically in the title and SEO, but do not bid the broad head in paid - see the playbook.", "over_ja": "カテゴリの核だが規模は控えめ。反復する（強くはない）検索（Trends平均27）、本題の日本語TikTokは低い（約21万）、Instagramも弱い（トップ89いいね）。それでも最広のマーケット露出（Amazon3.5万・楽天3,391）。タイトルとSEOにオーガニックで据え、広い頭は有料入札しない（プレイブック参照）。", "kw_en": "bathtub tray", "adjacent": false, "voice": {"ja": "ニトリで買ったバスタブ用トレー、腹立つ", "en": "The bathtub tray I bought at Nitori, so infuriating.", "src": "X"}}, {"q": "バスタブトレー カビない", "label": "mold-free", "trends": {"series": [], "avg": 0, "latest": 0, "peak": 0, "n": 0}, "amazon": {"count": 2708}, "youtube": {"count": 628, "n": 2}, "x": {"sample": 8, "more": true, "top": "𝓘𝓷𝓼𝓽𝓪𝓰𝓻𝓪𝓶𝓶𝓮𝓻...\nタンブラーはいいぞ、という写真。バスタブトレーはカビて捨てたのでお風"}, "rakuten": {"count": 282}, "ig": {"posts": 1, "top_likes": 0, "top_caption": ""}, "tiktok": {"videos": 6, "jp_videos": 1, "top_views": 0}, "mercari": {"sold_recent": 48, "capped": false}, "media": {"ig": {"url": "https://www.instagram.com/explore/tags/バスタブトレーカビない", "likes": null, "user": null, "img": null}, "x_search": "https://x.com/search?q=%E3%83%90%E3%82%B9%E3%82%BF%E3%83%96%E3%83%88%E3%83%AC%E3%83%BC%20%E3%82%AB%E3%83%93%E3%81%AA%E3%81%84%20lang%3Aja&f=live"}, "over_en": "The wedge. Near-zero Google Trends means few people type this exact phrase - it is NOT an empty market (Amazon still returns ~2,700 competing listings). But it is the #1 Amazon autocomplete, tweets say the tray molded and got thrown out, and there is no on-topic Japanese TikTok (the videos that surface are bath-cleaning ads, not trays). The edge is high purchase intent on a specific claim, won on the title, the mold-proof claim and SEO, not broad search ads.", "over_ja": "楔。Google検索ほぼゼロ＝この語句を打つ人が少ないだけで、空白市場ではない（Amazonは依然約2,700件が競合）。だがAmazon自動補完1位、「カビて捨てた」ツイート。本題の日本語TikTokは無し（検索に出るのは浴室クリーニング広告でトレーではない）。強みは具体的訴求での高い購買意図。タイトル・防カビ訴求・SEOで獲る、広い広告ではなく。", "kw_en": "bathtub tray, mold-free", "adjacent": false, "voice": {"ja": "バスタブトレーはカビて捨てたので、お風呂…", "en": "My bathtub tray got moldy so I threw it out…", "src": "X"}}, {"q": "バスタブトレー 竹", "label": "bamboo", "trends": {"series": [], "avg": 0, "latest": 0, "peak": 0, "n": 0}, "amazon": {"count": 15012}, "youtube": {"count": 428, "n": 6}, "x": {"sample": 20, "more": true, "top": "竹製バスタブトレー。ワイングラスホルダー付きでお風呂読書…平和すぎて毎日使いたくなる。  ブックスタ"}, "rakuten": {"count": 924}, "ig": {"posts": 1, "top_likes": 0, "top_caption": ""}, "tiktok": {"videos": 6, "jp_videos": 0, "top_views": 0}, "mercari": {"sold_recent": 101, "capped": false}, "media": {"ig": {"url": "https://www.instagram.com/explore/tags/バスタブトレー竹", "likes": null, "user": null, "img": null}, "x_search": "https://x.com/search?q=%E3%83%90%E3%82%B9%E3%82%BF%E3%83%96%E3%83%88%E3%83%AC%E3%83%BC%20%E7%AB%B9%20lang%3Aja&f=live"}, "over_en": "Our material, read honestly. Bamboo-tray videos go viral abroad (a non-Japanese clip reportedly ~3M), but the JP-specific signal is thin: no on-topic Japanese TikTok, 1 Instagram post at 0 likes. The only JP demand evidence is one supportive tweet plus 15k Amazon results (supply, not demand). Genuine white space, but on a weak organic signal - we would have to create the Japanese bamboo content ourselves.", "over_ja": "我々の素材、正直な読み。竹トレー動画は海外でバズる（非日本の動画が約300万との由）が、日本固有のシグナルは薄い：本題の日本語TikTokは無し、Instagramは1件・0いいね。JPの需要証拠は支持ツイート1件＋Amazon1.5万件（供給であって需要ではない）のみ。本物の白地だが弱いオーガニックの上 - 日本の竹コンテンツは自前で作る必要。", "kw_en": "bamboo bathtub tray", "adjacent": false, "voice": {"ja": "竹製バスタブトレー。ワイングラスホルダー付きでお風呂読書…平和すぎて毎日使いたくなる。", "en": "Bamboo bathtub tray with a wine-glass holder for reading in the bath. So peaceful I want to use it every day.", "src": "X"}}, {"q": "バスタブトレー 伸縮", "label": "expandable", "trends": {"series": [], "avg": 0, "latest": 0, "peak": 0, "n": 0}, "amazon": {"count": 15727}, "youtube": {"count": 462, "n": 15}, "x": {"sample": 20, "more": true, "top": "山崎実業(Yamazaki) 伸縮 バスタブ トレー ブラック 約W57.5~75XD15.5XH4"}, "rakuten": {"count": 2345}, "ig": {"posts": 1, "top_likes": 0, "top_caption": ""}, "tiktok": {"videos": 6, "jp_videos": 2, "top_views": 0}, "mercari": {"sold_recent": 109, "capped": false}, "media": {"ig": {"url": "https://www.instagram.com/explore/tags/バスタブトレー伸縮", "likes": null, "user": null, "img": null}, "x_search": "https://x.com/search?q=%E3%83%90%E3%82%B9%E3%82%BF%E3%83%96%E3%83%88%E3%83%AC%E3%83%BC%20%E4%BC%B8%E7%B8%AE%20lang%3Aja&f=live"}, "over_en": "The winning feature (fits any tub width). Strong on Amazon (15.7k) and Rakuten (2.3k); Yamazaki owns the mentions; there is no on-topic tray TikTok (the search returns kitchen and storage clips). Match the expandable spec, then beat it on warm bamboo and mold resistance.", "over_ja": "勝ち筋の機能（どの浴槽幅にも合う）。Amazon1.5万・楽天2,345と強く、言及は山崎実業が独占。本題のトレーTikTokは無し（検索結果はキッチン・収納の動画）。伸縮仕様を揃え、温かい竹＋防カビで上回る。", "kw_en": "expandable bathtub tray", "adjacent": false, "voice": {"ja": "山崎実業 伸縮 バスタブトレー ブラック 約W57.5〜75cm", "en": "Yamazaki expandable bathtub tray, black, approx. W57.5-75cm (the category's dominant brand).", "src": "X"}}, {"q": "バスタブトレー ステンレス", "label": "stainless", "trends": {"series": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "avg": 1.9, "latest": 0, "peak": 100, "n": 53}, "amazon": {"count": 4961}, "youtube": {"count": 577, "n": 5}, "x": {"sample": 5, "more": true, "top": "▷ルミロス シャワーオイル ボディーソープ https://t.co/Paiu6TFlzC  ▷キャ"}, "rakuten": {"count": 589}, "ig": {"posts": 1, "top_likes": 0, "top_caption": ""}, "tiktok": {"videos": 6, "jp_videos": 1, "top_views": 0}, "mercari": {"listings": 112, "sold": 41, "median_price": 4000, "sold_recent": 106, "capped": false}, "media": {"ig": {"url": "https://www.instagram.com/explore/tags/バスタブトレーステンレス", "likes": null, "user": null, "img": null}, "x_search": "https://x.com/search?q=%E3%83%90%E3%82%B9%E3%82%BF%E3%83%96%E3%83%88%E3%83%AC%E3%83%BC%20%E3%82%B9%E3%83%86%E3%83%B3%E3%83%AC%E3%82%B9%20lang%3Aja&f=live"}, "over_en": "The material rival, but only in resale. Search (Trends avg ~2) is negligible and there is no on-topic tray TikTok (the top result is an unrelated music video); the signal is 106 recent Mercari sales (a deeper paid pull showed 41 of 112 sold at a ~4,000 yen median). Stainless is weighed as the rust-free, mold-free alternative - we answer with bamboo warmth and the same mold-proof promise wood never offered.", "over_ja": "素材ライバル、ただし転売でのみ。語の検索（Trends平均約2）は無視でき、本題のトレーTikTokも無し（トップは無関係な音楽動画）。シグナルはメルカリ直近106件販売（深掘りの有料取得では112件中41件・中央値¥4,000）。ステンレスは錆びない・カビない代替として検討される - 竹の温かみ＋木にない防カビで対抗。", "kw_en": "stainless bathtub tray", "adjacent": false, "voice": null}, {"q": "バスタブトレー 木製", "label": "wood", "trends": {"series": [], "avg": 0, "latest": 0, "peak": 0, "n": 0}, "amazon": {"count": 5360}, "youtube": {"count": 727, "n": 11}, "x": {"sample": 7, "more": true, "top": "バスタブトレー買った 木製はオシャレだけどカビるのが怖くてプラ… 動画とか見やすくなったけど気をつけ"}, "rakuten": {"count": 365}, "ig": {"posts": 1, "top_likes": 0, "top_caption": ""}, "tiktok": {"videos": 6, "jp_videos": 0, "top_views": 0}, "mercari": {"sold_recent": 31, "capped": false}, "media": {"ig": {"url": "https://www.instagram.com/explore/tags/バスタブトレー木製", "likes": null, "user": null, "img": null}, "x_search": "https://x.com/search?q=%E3%83%90%E3%82%B9%E3%82%BF%E3%83%96%E3%83%88%E3%83%AC%E3%83%BC%20%E6%9C%A8%E8%A3%BD%20lang%3Aja&f=live"}, "over_en": "The aspiration and the fear. A tweet nails our pitch: wood is stylish but the buyer was scared of mold, so they went plastic. No on-topic JP short-form, so demand lives on Amazon (5.4k) and in that fear. That fear is exactly what MUKU removes: the wood look, none of the mold.", "over_ja": "憧れと不安。あるツイートが主張を言語化：「木製はオシャレだけどカビが怖くてプラにした」。本題のJPショートは無く、需要はAmazon（5,360）とその不安にある。その不安こそMUKUが消す＝木の見た目・カビなし。", "kw_en": "wooden bathtub tray", "adjacent": false, "voice": {"ja": "バスタブトレー買った。木製はオシャレだけどカビるのが怖くてプラ…", "en": "Bought a bathtub tray. Wood is stylish, but I was scared of mold, so I went with plastic…", "src": "X"}}, {"q": "バスタブトレー 100均", "label": "100-yen", "trends": {"series": [], "avg": 0, "latest": 0, "peak": 0, "n": 0}, "amazon": {"count": 349}, "youtube": {"count": 792, "n": 5}, "x": {"sample": 11, "more": true, "top": "このバスタブトレーみたいの100均あたりで出ないかな"}, "rakuten": {"count": 186}, "ig": {"posts": 1, "top_likes": 27, "top_caption": "バスタブトレーを100均グッズで作ってみました♪ 裏返した方が安心感があるかも。 猫たちも気になる様子（笑）  #バスタブトレー100均 #バスタブトレー手作り #バスタブトレーD"}, "tiktok": {"videos": 6, "jp_videos": 3, "top_views": 0}, "mercari": {"sold_recent": 13, "capped": false}, "media": {"ig": {"url": "https://www.instagram.com/p/CuwY2-OvAuM/", "likes": 27, "user": "yoriko_oota", "img": "assets/posts/ig_6.jpg"}, "x_search": "https://x.com/search?q=%E3%83%90%E3%82%B9%E3%82%BF%E3%83%96%E3%83%88%E3%83%AC%E3%83%BC%20100%E5%9D%87%20lang%3Aja&f=live"}, "over_en": "Price-floor intent. A 1.6M-view Japanese TikTok exists, but it is a generic Daiso DIY side-table, not a bathtub tray - read it as adjacent cheap-DIY interest, not demand for this product (Amazon only 349, Mercari 13). Strong price sensitivity; we sit above it on quality and the claim, not on price.", "over_ja": "価格下限の意図。日本語TikTok160万再生はあるが、それは汎用のダイソーDIYサイドテーブルでバスタブトレーではない - 隣接の安価DIY関心であって本商品の需要ではない（Amazon349・メルカリ13）。強い価格感応。価格でなく品質＋訴求で上に立つ。", "kw_en": "bathtub tray, 100-yen shop", "adjacent": false, "voice": {"ja": "このバスタブトレーみたいの、100均あたりで出ないかな", "en": "I wish the 100-yen shops would sell something like this bathtub tray.", "src": "X"}}, {"q": "スリーコインズ バスタブトレー", "label": "3COINS ¥300", "trends": {"series": [], "avg": 0, "latest": 0, "peak": 0, "n": 0}, "amazon": {"count": 18}, "youtube": {"count": 378, "n": 7}, "x": {"sample": 1, "more": true, "top": "バスタブトレーはどこで売ってる？100均やニトリ・無印でもバステーブルは買える？  https://"}, "rakuten": {"count": 186}, "ig": {"posts": 1, "top_likes": 0, "top_caption": ""}, "tiktok": {"videos": 6, "jp_videos": 0, "top_views": 0}, "mercari": {"sold_recent": 1, "capped": false}, "media": {"ig": {"url": "https://www.instagram.com/explore/tags/スリーコインズバスタブトレー", "likes": null, "user": null, "img": null}, "x_search": "https://x.com/search?q=%E3%82%B9%E3%83%AA%E3%83%BC%E3%82%B3%E3%82%A4%E3%83%B3%E3%82%BA%20%E3%83%90%E3%82%B9%E3%82%BF%E3%83%96%E3%83%88%E3%83%AC%E3%83%BC%20lang%3Aja&f=live"}, "over_en": "Store-plus-price intent (the 300-yen chain). Almost no Amazon presence (18), no on-topic Japanese TikTok and just 1 Mercari resale - the weakest of the ten. It maps the cheap-discovery path but is not our battleground.", "over_ja": "店舗＋価格の意図（¥300チェーン）。Amazonはほぼ無し（18）、本題の日本語TikTokも無く、メルカリ転売はわずか1件 - 10中最弱。安価ディスカバリの導線だが主戦場ではない。", "kw_en": "3COINS bathtub tray", "adjacent": false, "voice": {"ja": "バスタブトレーはどこで売ってる？100均やニトリ・無印でもバステーブルは買える？", "en": "Where do they sell bathtub trays? Can you get a bath table at 100-yen shops, Nitori or Muji?", "src": "X"}}, {"q": "お風呂 ラック", "label": "bath rack", "trends": {"series": [79, 48, 42, 37, 64, 65, 62, 74, 36, 66, 67, 64, 58, 65, 55, 46, 55, 66, 63, 44, 69, 73, 71, 94, 91, 100, 77, 68, 90, 93, 62, 68, 74, 74, 46, 90, 82, 60, 60, 85, 98, 100, 80, 81, 66, 87, 80, 52, 47, 60, 62, 67, 67], "avg": 68.5, "latest": 67, "peak": 100, "n": 53}, "amazon": {"count": 41667}, "youtube": {"count": 164228, "n": 15}, "x": {"sample": 19, "more": true, "top": "明日は休みを取っているので最後の仕上げをして9時に退勤。 まいばすけっとで酒を買う、頭がぼーっとする"}, "rakuten": {"count": 169595}, "ig": {"posts": 29, "top_likes": 391, "top_caption": "このアイデアが素敵だなと思ったら「🛁」(お風呂)とコメントしてください！  リフレッシュに欠かせないバスタイム！すっきり収納をして、清潔な空間を保てるとうれしいですよね。  ✍️R"}, "tiktok": {"videos": 6, "jp_videos": 3, "top_views": 0}, "mercari": {"sold_recent": 120, "capped": true}, "media": {"ig": {"url": "https://www.instagram.com/p/DDwiQ6tAd-1/", "likes": 391, "user": "roomclipjp", "img": "assets/posts/ig_8.jpg"}, "x_search": "https://x.com/search?q=%E3%81%8A%E9%A2%A8%E5%91%82%20%E3%83%A9%E3%83%83%E3%82%AF%20lang%3Aja&f=live"}, "over_en": "The huge adjacent pool: storage intent (Amazon 41.7k, Rakuten 169.6k, YouTube 164k and the most active Instagram of the ten; its TikTok results were storage clips we could not verify as on-topic). But this is a rack, a different product - a large adjacent audience to reach with backend keywords and a possible second SKU, not proof of demand for our tray.", "over_ja": "巨大な隣接母数＝収納の意図（Amazon4.2万・楽天17万・YouTube16万・Instagramは10中最活発。TikTok結果は本題と確認できない収納動画）。ただしこれはラックで別商材 - 裏側キーワードと将来の第2SKUで取り込む大きな隣接層であって、我々のトレーの需要証拠ではない。", "kw_en": "bath rack", "adjacent": true, "voice": {"ja": "お風呂ラックとダイソーアイテムでつくるスキマ収納", "en": "Gap storage made with a bath rack and Daiso items.", "src": "TikTok"}}, {"q": "お風呂 トレー", "label": "tray synonym", "trends": {"series": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 87, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0, 9, 27, 16], "avg": 4.5, "latest": 16, "peak": 100, "n": 53}, "amazon": {"count": 37480}, "youtube": {"count": 19414, "n": 12}, "x": {"sample": 20, "more": true, "top": "お夕飯食べ終えたトレーをお風呂場に持って行っちゃってもうだめ。脳が機能してない。"}, "rakuten": {"count": 31930}, "ig": {"posts": 9, "top_likes": 112, "top_caption": "#お風呂トレー 届いた#🛁 . 明るさはちょっとあげてて実際は2枚目3枚目くらいの感じ➡︎ . 私は実はお風呂大好きとかじゃなくむしろそんなにすきじゃなくてだからこれくら"}, "tiktok": {"videos": 6, "jp_videos": 1, "top_views": 0}, "mercari": {"sold_recent": 120, "capped": true}, "media": {"ig": {"url": "https://www.instagram.com/p/CJZxTObr6io/", "likes": 112, "user": "yuki710", "img": "assets/posts/ig_9.jpg"}, "x_search": "https://x.com/search?q=%E3%81%8A%E9%A2%A8%E5%91%82%20%E3%83%88%E3%83%AC%E3%83%BC%20lang%3Aja&f=live"}, "over_en": "The everyday synonym, not a second head term. Big marketplace presence (Amazon 37.5k, Rakuten 31.9k) but no on-topic tray TikTok (the top result is a tray-cleaning tutorial), thin erratic Google search and an off-topic top tweet. Casual phrasing to fold into the listing and backend keywords.", "over_ja": "日常的な言い換えで、第2の頭タームではない。マーケット露出は大（Amazon3.7万・楽天3.2万）だが、本題のトレーTikTokは無し（トップは清掃チュートリアル）、Google検索は薄く不規則、トップツイートも本題外。リスティングと裏側キーワードに織り込む口語。", "kw_en": "bath tray", "adjacent": true, "voice": {"ja": "お風呂のトレイ、石鹸カス・水アカの掃除をしてみました", "en": "I cleaned the soap scum and water stains off my bath tray.", "src": "TikTok"}}]};
+var KW = DATA.keywords, MX = DATA.maxes;
+var NICHE = 15; // shared Trends threshold: below this = niche / "barely any search"
+function setLang(l){try{localStorage.setItem('muku-lang',l)}catch(e){}document.body.className='lang-'+l;document.documentElement.lang=l;}
+function fmt(n){return n==null?'-':n.toLocaleString('en-US');}
+function fmtM(n){if(n==null)return '-';if(n>=1e6)return (n/1e6).toFixed(1).replace(/\.0$/,'')+'M';if(n>=1e3)return Math.round(n/1e3)+'k';return ''+n;}
+function logw(v,max){if(!v||!max)return 0;return Math.max(4,Math.round(Math.log(v+1)/Math.log(max+1)*100));}
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function mc_n(mc){return (mc.sold_recent==null)?'-':(mc.capped?(mc.sold_recent+'+'):(''+mc.sold_recent));}
+var cur=0;
+(function(){var b=document.getElementById('chips');KW.forEach(function(k,i){var c=document.createElement('div');c.className='chip';c.dataset.i=i;var st=k.q.indexOf('カビ')>=0?'<span class="star">★</span> ':'';c.innerHTML=st+k.q+'<span class="g l-en"> · '+esc(k.kw_en)+'</span>';c.onclick=function(){sel(i)};b.appendChild(c)})})();
+(function(){
+ var h='<thead><tr><th><span class="l-en">Keyword</span><span class="l-ja">キーワード</span></th><th>Trends<br><span style="font-weight:400;text-transform:none">avg/peak</span></th><th class="tk">TikTok<br><span style="font-weight:400;text-transform:none">JP top views</span></th><th>Amazon</th><th>Rakuten</th><th>Mercari<br><span style="font-weight:400;text-transform:none">sold</span></th><th>YouTube</th><th>Insta<br><span style="font-weight:400;text-transform:none">top likes</span></th><th>X</th></tr></thead><tbody>';
+ KW.forEach(function(k,i){
+   var t=k.trends, tr=(t.n? (t.avg+'/'+t.peak):'~0');
+   var am=k.amazon.count, rk=(k.rakuten||{}).count, yt=k.youtube.count, x=(k.x||{}).sample;
+   var tv=(k.tiktok||{}).top_views, igl=(k.ig||{}).top_likes, mc=k.mercari||{};
+   function cell(v,max){return '<td class="cell'+(v?'':' zero')+'">'+fmt(v)+'<span class="bar" style="width:'+logw(v,max)+'%"></span></td>';}
+   var st=k.q.indexOf('カビ')>=0?' <span class="star">★</span>':'';
+   h+='<tr data-i="'+i+'" onclick="sel('+i+')"><td class="kwc">'+k.q+st+'<span class="gloss l-en">'+esc(k.kw_en)+'</span></td>'+
+      '<td class="cell'+(t.n&&t.avg>=NICHE?'':' zero')+'">'+tr+'</td>'+
+      '<td class="cell tk'+(tv?'':' zero')+'"><b>'+fmtM(tv)+'</b><span class="bar" style="width:'+logw(tv,MX.tiktok)+'%"></span></td>'+
+      cell(am,MX.amazon)+cell(rk,MX.rakuten)+
+      '<td class="cell'+((mc.sold_recent)?'':' zero')+'">'+mc_n(mc)+'<span class="bar" style="width:'+logw(mc.sold_recent,MX.mercari)+'%"></span></td>'+
+      cell(yt,MX.youtube)+cell(igl,MX.ig)+
+      '<td class="cell'+(x?'':' zero')+'">'+(x?('~'+x+((k.x||{}).more?'+':'')):'-')+'</td></tr>';
+ });
+ h+='</tbody>';document.getElementById('mtx').innerHTML=h;
+})();
+function rank(getter){var arr=KW.map(function(k,i){return [i,getter(k)||0]}).sort(function(a,b){return b[1]-a[1]});var r={};arr.forEach(function(p,idx){r[p[0]]=idx+1});return r;}
+var rAm=rank(function(k){return k.amazon.count});
+function spark(t){
+ if(!t.series||!t.series.length||t.avg<NICHE){
+   var msg = (!t.series||!t.series.length)? ['no search signal','検索シグナルなし'] : ['~0 with a single blip','~0、単発の上振れのみ'];
+   return '<div class="sparkph"><span class="l-en">'+msg[0]+'</span><span class="l-ja">'+msg[1]+'</span></div>';
+ }
+ var s=t.series,w=300,h=46,n=s.length,mx=Math.max.apply(null,s)||1;
+ var pts=s.map(function(v,i){return (i/(n-1)*w).toFixed(1)+','+(h-2-v/mx*(h-6)).toFixed(1)}).join(' ');
+ var area='M0,'+h+' L'+pts.replace(/ /g,' L')+' L'+w+','+h+' Z';
+ return '<svg class="spark" viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none"><path d="'+area+'" fill="rgba(53,81,62,.10)"/><polyline points="'+pts+'" fill="none" stroke="#35513E" stroke-width="2" stroke-linejoin="round"/></svg>';
+}
+function card(cls, head, big, def_en, def_ja, read_en, read_ja, extra, link){
+ var lk = link? '<a class="vw" href="'+link+'" target="_blank" rel="noopener">view ↗</a>' : '';
+ return '<div class="card '+cls+'"><div class="ch">'+head+lk+'</div>'+(extra||'')+'<div class="big">'+big+'</div>'+
+  '<div class="def"><span class="l-en">'+def_en+'</span><span class="l-ja">'+def_ja+'</span></div>'+
+  '<div class="cc"><span class="l-en"><b>For us:</b> '+read_en+'</span><span class="l-ja"><b>我々への意味：</b> '+read_ja+'</span></div></div>';
+}
+function sel(i){
+ cur=i;var k=KW[i];
+ [].forEach.call(document.querySelectorAll('.chip[data-i]'),function(c){c.classList.toggle('on',+c.dataset.i===i)});
+ [].forEach.call(document.querySelectorAll('#mtx tr[data-i]'),function(r){r.classList.toggle('on',+r.dataset.i===i)});
+ var t=k.trends, am=k.amazon.count, rk=(k.rakuten||{}).count, yt=k.youtube.count, x=k.x||{}, tk=k.tiktok||{}, ig=k.ig||{}, mc=k.mercari||{}, md=k.media||{}, mtt=md.tiktok||{}, mig=md.ig||{};
+ var h='';
+ h+='<div class="dhead"><span class="q">'+k.q+'</span><span class="gloss l-en">'+esc(k.kw_en)+'</span><span class="tag">'+esc(k.label)+'</span></div>';
+ h+='<div class="grid">';
+ // Trends
+ var av=t.avg||0;
+ var trR = (t.n&&av>=50) ? ['real, recurring search - worth a search-ad term.','実需のある反復検索 - 検索広告に値する。']
+        : (t.n&&av>=NICHE) ? ['modest, niche-level search (the index is relative to itself, so absolute volume is small).','控えめなニッチ検索（指数は自身基準の相対値で、絶対量は小さい）。']
+        : (t.n&&av>0) ? ['barely any search at all.','検索はほぼ皆無。']
+        : ['almost nobody types this exact phrase, so we win it <b>inside the listing</b> (title + back-end keywords), not with search ads.','この語句をそのまま打つ人はほぼいない。広告ではなく<b>リスティング内</b>（タイトル・裏側キーワード）で獲る。'];
+ h+=card('', 'Google Trends · JP · 12m', (t.n?t.avg:'~0')+'<span class="def" style="display:inline;margin:0"> '+(t.n?'/100':'')+'</span>',
+   'Google search interest, 0-100 index over 12 months.','Google検索の関心、12ヶ月の0-100指数。', trR[0], trR[1], spark(t));
+ // TikTok
+ var tv=tk.top_views||0;
+ var tkR = tv>=1e6 ? ['genuinely viral here - a real discovery channel, worth our own videos and creator partners.','本当にバイラル - 自前動画とクリエイター連携に値する発見チャネル。']
+       : (tv>=3e5 ? ['moderate reach - some short-form pull.','中程度の到達 - 一定のショートの引き。']
+       : (tv>=5e4 ? ['low (50-300k band) - one mid-size clip; the topic barely moves on JP TikTok.','低い（5-30万帯）- 中規模が1本のみ。JP TikTokではほぼ動かない。']
+       : (tv>0 ? ['negligible - a tiny clip, no real short-form interest.','ごく僅か - 小さな動画のみで実質的な関心なし。']
+       : ['<b>no relevant Japanese video at all</b> - untapped white space, but also weak organic demand here.','<b>本題の日本語動画は皆無</b> - 未開拓の白地だが、ここのオーガニック需要も弱い。'])));
+ h+=card('star', 'TikTok · JP <span class="flag tk">Apify</span>', fmtM(tv),
+   'Views of the top relevant Japanese TikTok video.','本題に沿った日本語トップTikTokの再生数。', tkR[0], tkR[1], '', mtt.url);
+ // Amazon
+ var ar=rAm[i];
+ var amR = ar<=3 ? ['a broad, crowded category (#'+ar+' of 10) - heavy competition; presence alone is not enough, we need a sharp claim to cut through.','広く混雑したカテゴリ（10中#'+ar+'）- 競合が重い。露出だけでは不十分、鋭い訴求で突破。']
+       : (ar<=7 ? ['moderate competition (#'+ar+' of 10).','中程度の競合（10中#'+ar+'）。']
+       : (am>=1000 ? ['a still-crowded sub-segment (#'+ar+' of 10, but ~'+fmt(am)+' competing listings) - lower competition than the head term, not low in absolute terms.','依然混雑したサブ領域（10中#'+ar+'、ただし約'+fmt(am)+'件が競合）- 頭タームより低競合だが絶対的には低くない。']
+       : ['few matching products (#'+ar+' of 10) - a narrow, specific term with limited reach on its own.','該当商品は僅か（10中#'+ar+'）- 狭く具体的で、単体での到達は限定的。']));
+ h+=card('', 'Amazon JP <span class="flag real">SerpApi</span>', fmt(am),
+   'Products shown for this search on Amazon Japan.','Amazon JPでこの検索に出る商品数。', amR[0], amR[1]);
+ // Rakuten
+ h+=card('', 'Rakuten <span class="flag real">browser</span>', fmt(rk),
+   'Live listings for this term on Rakuten.','楽天のこの語の掲載数。',
+   (rk>=10000?'a large':(rk>=1000?'a modest':'a thin'))+" supply on Japan's #2 marketplace ("+fmt(rk)+' listings).',(rk>=10000?'大きな':(rk>=1000?'中程度の':'薄い'))+'供給（楽天'+fmt(rk)+'件）。');
+ // Mercari
+ var adj=k.adjacent;
+ var mcR;
+ if(mc.capped){ mcR = adj
+     ? ['at least '+mc.sold_recent+' recent resales (we stopped at the scrape cap) - but for an adjacent/generic item, a category signal, not proof of demand for our exact tray.','直近少なくとも'+mc.sold_recent+'件販売（取得上限で打ち切り）- ただし隣接/汎用品で、我々のトレーの需要証拠ではなくカテゴリ信号。']
+     : ['at least '+mc.sold_recent+' recent resales (we stopped at the scrape cap, so the true number is higher) - real, unmeasured demand.','直近少なくとも'+mc.sold_recent+'件販売（取得上限で打ち切り、実数はより多い）- 実在するが未計測の需要。']; }
+ else if((mc.sold_recent||0)>=30){ mcR = ['only '+mc.sold_recent+' recent resales - moderate proven buying.',(mc.sold_recent)+'件のみ販売 - 中程度の購入実績。']; }
+ else { mcR = ['only '+(mc.sold_recent||0)+' resale(s) - little resale; a low-volume term.',(mc.sold_recent||0)+'件のみ - 転売は少なく低ボリュームの語。']; }
+ h+=card('', 'Mercari · sold <span class="flag real">browser</span>', mc_n(mc),
+   'Already-sold listings on Mercari (resale).','メルカリの販売済（転売）件数。', mcR[0], mcR[1]);
+ // YouTube
+ h+=card('', 'YouTube · JP <span class="flag real">SerpApi</span>', fmt(yt),
+   'Video results for this term in Japan.','日本でのこの語の動画結果数。',
+   (yt>=50000?'tens of thousands of loosely-matched videos - YouTube search is broad, so read this as tangential content, not precise demand.':(yt>=5000?'a few thousand videos, mostly loosely matched - a weak, noisy signal.':'only a few hundred videos - little dedicated content.')),(yt>=50000?'数万本の緩い一致 - YouTube検索は広く、接線的コンテンツであって精密な需要ではない。':(yt>=5000?'数千本・緩い一致中心 - 弱くノイズの多いシグナル。':'数百本のみ - 専用コンテンツは僅少。')));
+ // Instagram
+ var igp=ig.posts||0, igl=ig.top_likes||0;
+ var igR = (igp<=1) ? ['essentially no Instagram presence (1 post).','Instagram露出は実質なし（1件）。']
+       : (igl>=1000) ? ['an engaged hashtag (top post '+fmt(igl)+' likes) - lifestyle creators to partner with.','活発なハッシュタグ（トップ'+fmt(igl)+'いいね）- 連携候補のライフスタイル層。']
+       : (igl>=300) ? ['below the 1,000-like active threshold (top post '+fmt(igl)+' likes) - low engagement.','活発基準1,000には届かない（トップ'+fmt(igl)+'いいね）- 低エンゲージ。']
+       : ['<b>weak</b> - the top post is just '+fmt(igl)+' likes; this niche barely registers on Instagram (an active hashtag is 1,000+ likes).','<b>弱い</b> - トップ投稿が'+fmt(igl)+'いいねのみ。このニッチはIGでほぼ無風（活発＝1,000+）。'];
+ h+=card('', 'Instagram · #tag <span class="flag real">Apify</span>', fmt(igl)+'<span class="def" style="display:inline;margin:0"> top likes ('+igp+' posts sampled)</span>',
+   'Likes on the top hashtag post (we sampled up to 30 posts).','ハッシュタグのトップ投稿いいね（最大30件を標本）。', igR[0], igR[1], '', mig.url);
+ // X
+ h+=card('', 'X (Twitter) · lang:ja <span class="flag real">twitterapi.io</span>', '~'+(x.sample||0)+(x.more?'+':''),
+   'Recent Japanese posts mentioning the term.','この語に言及する直近の日本語投稿。',
+   '~'+(x.sample||0)+(x.more?'+':'')+' posts in a one-page sample - low chatter; useful for the verbatim voice below, not as a volume number.','1ページ標本で~'+(x.sample||0)+(x.more?'+':'')+'件 - 低い口コミ量。下の実引用には有用だが数量指標ではない。', '', md.x_search);
+ // Pinterest / Lemon8 (rendered only if data present)
+ if(k.pinterest && k.pinterest.pins!=null){
+   var pn=k.pinterest.pins||0;
+   h+=card('', 'Pinterest <span class="flag real">Apify</span>', pn,
+     'Pins found for this term (capped at 20).','この語で見つかったピン数（上限20）。',
+     (pn>=15?'a full page of pins - some visual interest.':(pn>0?'only '+pn+' pins - thin visual presence.':'no Japanese pins - Pinterest is empty for this term.')),(pn>=15?'ピンが1ページ分 - 一定のビジュアル関心。':(pn>0?pn+'ピンのみ - 薄いビジュアル露出。':'日本語ピンなし - この語でPinterestは空。')));
+ }
+ if(k.lemon8 && k.lemon8.posts!=null){
+   var ln=k.lemon8.posts||0, lk=k.lemon8.top_likes||0;
+   h+=card('', 'Lemon8 <span class="flag real">Apify</span>', ln+'<span class="def" style="display:inline;margin:0"> posts</span>',
+     'Lemon8 posts for this term (top-post likes '+fmt(lk)+').','この語のLemon8投稿数（トップ'+fmt(lk)+'いいね）。',
+     (ln>=5?'an active lifestyle feed ('+ln+' posts, top '+fmt(lk)+' likes).':(ln>0?'thin Lemon8 presence ('+ln+' post(s)).':'no Lemon8 posts for this term.')),(ln>=5?'活発なライフスタイルフィード（'+ln+'件・トップ'+fmt(lk)+'いいね）。':(ln>0?'薄いLemon8露出（'+ln+'件）。':'この語のLemon8投稿なし。')));
+ }
+ h+='</div>';
+ var posts=[];
+ if(mtt.img) posts.push('<a class="post" href="'+esc(mtt.url)+'" target="_blank" rel="noopener"><img src="'+mtt.img+'" loading="lazy" alt=""><span class="pl tt">TikTok · '+fmtM(mtt.views)+' views ↗</span></a>');
+ if(mig.img) posts.push('<a class="post" href="'+esc(mig.url)+'" target="_blank" rel="noopener"><img src="'+mig.img+'" loading="lazy" alt=""><span class="pl">Instagram · '+fmt(mig.likes)+' likes ↗</span></a>');
+ if(posts.length){ h+='<div class="postswrap"><div class="postsh"><span class="l-en">Real posts (click the image to open)</span><span class="l-ja">実際の投稿（画像クリックで開く）</span></div><div class="posts">'+posts.join('')+'</div></div>'; }
+ if(k.voice){
+   h+='<div class="voice"><div class="vl"><span class="l-en">Voice · '+esc(k.voice.src)+'</span><span class="l-ja">生の声 · '+esc(k.voice.src)+'</span></div><div class="vt l-en">“'+esc(k.voice.en)+'”</div><div class="vt l-ja">“'+esc(k.voice.ja)+'”</div></div>';
+ }
+ h+='<div class="pending"><span class="l-en"><b>Other channels (tested, weak):</b> Pinterest <span class="flag pend">negligible</span> 0 Japanese pins on the terms we could run - no meaningful JP presence. &nbsp; Lemon8 <span class="flag pend">credit-capped</span> has some posts, but the free Apify tier ran out before a full pull. &nbsp; Yahoo! Shopping <span class="flag gate">region-gated</span>.</span><span class="l-ja"><b>他チャネル（検証済・弱い）：</b> Pinterest <span class="flag pend">ほぼ無</span> 実行できた語で日本語ピン0 - JPでの実質的な存在なし。 &nbsp; Lemon8 <span class="flag pend">枠上限</span> 投稿はあるが無料Apify枠が尽き全取得できず。 &nbsp; Yahoo! Shopping <span class="flag gate">地域ゲート</span>。</span></div>';
+ h+='<div class="over"><span class="ol"><span class="l-en">Verdict for this keyword</span><span class="l-ja">このキーワードの総評</span></span><span class="l-en">'+k.over_en+'</span><span class="l-ja">'+k.over_ja+'</span></div>';
+ document.getElementById('detail').innerHTML=h;
+}
+(function(){var m=(location.hash||'').match(/k(\d+)/);var i=m?+m[1]:0;sel((i>=0&&i<KW.length)?i:0);})();
+</script>
+</body></html>

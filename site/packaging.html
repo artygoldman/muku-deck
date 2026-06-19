@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MUKU Packaging Technical Specification / 梱包技術仕様書</title>
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+  background: #F7F5F0;
+  color: #2D2D2D;
+  line-height: 1.65;
+  font-size: 15px;
+}
+
+/* ===== STICKY NAV ===== */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #3E2B1C;
+  border-bottom: 3px solid #5C6B3C;
+  padding: 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+.top-nav .nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0 20px;
+}
+.top-nav .nav-brand {
+  color: #D4C5A9;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 10px 18px 10px 0;
+  border-right: 1px solid rgba(255,255,255,0.15);
+  margin-right: 10px;
+  white-space: nowrap;
+  letter-spacing: 1px;
+}
+.top-nav a {
+  color: #E8DFD0;
+  text-decoration: none;
+  padding: 10px 11px;
+  font-size: 12.5px;
+  transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+.top-nav a:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px 28px 60px;
+  background: #fff;
+  min-height: 100vh;
+  box-shadow: 0 0 40px rgba(0,0,0,0.06);
+}
+
+/* ===== TITLE BLOCK ===== */
+.title-block {
+  text-align: center;
+  padding: 50px 20px 40px;
+  border-bottom: 3px solid #5C6B3C;
+  margin-bottom: 40px;
+}
+.title-block h1 {
+  font-size: 28px;
+  color: #3E2B1C;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.title-block .subtitle {
+  font-size: 36px;
+  color: #5C6B3C;
+  font-weight: 800;
+  margin: 12px 0;
+  letter-spacing: 3px;
+}
+.title-block .meta {
+  color: #7A7060;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* ===== SECTION HEADERS ===== */
+.section {
+  margin-bottom: 48px;
+  scroll-margin-top: 60px;
+}
+.section h2 {
+  font-size: 22px;
+  color: #3E2B1C;
+  border-left: 5px solid #5C6B3C;
+  padding: 10px 18px;
+  background: linear-gradient(90deg, #F3EDE3, transparent);
+  margin-bottom: 22px;
+  letter-spacing: 0.5px;
+}
+.section h3 {
+  font-size: 17px;
+  color: #3E2B1C;
+  margin: 24px 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #E0D8CB;
+}
+
+/* ===== TABLES ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 24px;
+  font-size: 14px;
+}
+table thead th {
+  background: #3E2B1C;
+  color: #F3EDE3;
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+table tbody td {
+  padding: 9px 14px;
+  border-bottom: 1px solid #E8E0D4;
+}
+table tbody tr:nth-child(even) {
+  background: #FAF7F2;
+}
+table tbody tr:nth-child(odd) {
+  background: #fff;
+}
+table tbody tr:hover {
+  background: #F0EBE1;
+}
+td.label-cell {
+  font-weight: 600;
+  color: #3E2B1C;
+  width: 260px;
+  white-space: nowrap;
+}
+.highlight-row {
+  background: #EEF2E5 !important;
+  font-weight: 600;
+}
+.tier-target {
+  background: #D6E4C0 !important;
+  font-weight: 700;
+}
+
+/* ===== IMAGES ===== */
+.img-container {
+  margin: 20px 0;
+  text-align: center;
+}
+.img-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+  border: 1px solid #E0D8CB;
+}
+.img-container .caption {
+  font-size: 12.5px;
+  color: #7A7060;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+  list-style: none;
+  padding: 0;
+}
+.checklist li {
+  padding: 10px 14px;
+  border-bottom: 1px solid #E8E0D4;
+  font-size: 14.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.checklist li:nth-child(even) { background: #FAF7F2; }
+.check-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #5C6B3C;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ===== PROCESS STEPS ===== */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+.step-card {
+  background: #FAF7F2;
+  border: 1px solid #E0D8CB;
+  border-radius: 8px;
+  padding: 18px;
+  text-align: center;
+}
+.step-card .step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #5C6B3C;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+.step-card .step-title {
+  font-weight: 600;
+  color: #3E2B1C;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.step-card .step-desc {
+  font-size: 12.5px;
+  color: #6B6050;
+}
+
+/* ===== COLOR SWATCHES ===== */
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+.swatch {
+  text-align: center;
+}
+.swatch .swatch-box {
+  width: 100%;
+  height: 80px;
+  border-radius: 8px;
+  border: 1px solid #E0D8CB;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.swatch .swatch-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #3E2B1C;
+}
+.swatch .swatch-hex {
+  font-size: 11.5px;
+  color: #7A7060;
+  font-family: 'Courier New', monospace;
+}
+
+/* ===== STATUS BADGES ===== */
+.status-pending {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 12px;
+  background: #FFF3CD;
+  color: #856404;
+  font-size: 12px;
+  font-weight: 600;
+}
+.status-ok {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 12px;
+  background: #D4EDDA;
+  color: #155724;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ===== VIDEO ===== */
+.video-container {
+  margin: 20px 0;
+  text-align: center;
+}
+.video-container video {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+
+/* ===== SAVINGS BOX ===== */
+.savings-box {
+  background: linear-gradient(135deg, #EEF2E5, #D6E4C0);
+  border: 2px solid #5C6B3C;
+  border-radius: 10px;
+  padding: 24px;
+  margin: 20px 0;
+  text-align: center;
+}
+.savings-box .big-num {
+  font-size: 36px;
+  font-weight: 800;
+  color: #3E2B1C;
+}
+.savings-box .savings-label {
+  font-size: 14px;
+  color: #5C6B3C;
+  margin-top: 4px;
+}
+
+/* ===== INFO BOX ===== */
+.info-box {
+  background: #FFF9EE;
+  border-left: 4px solid #D4C5A9;
+  padding: 16px 20px;
+  margin: 16px 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+  color: #5A4E3C;
+}
+.warning-box {
+  background: #FFF3CD;
+  border-left: 4px solid #E0A800;
+  padding: 16px 20px;
+  margin: 16px 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+  color: #664D03;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 30px 20px;
+  border-top: 3px solid #5C6B3C;
+  margin-top: 50px;
+  color: #7A7060;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* ===== PRINT ===== */
+@media print {
+  .top-nav { display: none; }
+  body { background: #fff; font-size: 12px; }
+  .container { box-shadow: none; padding: 0 16px; max-width: 100%; }
+  .section { page-break-inside: avoid; }
+  .img-container img { box-shadow: none; border: 1px solid #ccc; }
+  .savings-box { border: 1px solid #999; background: #f9f9f9; }
+  table { font-size: 11px; }
+  .steps-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .palette-grid { grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .video-container { display: none; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .container { padding: 16px 12px 40px; }
+  .title-block h1 { font-size: 20px; }
+  .title-block .subtitle { font-size: 26px; }
+  .section h2 { font-size: 18px; padding: 8px 14px; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .palette-grid { grid-template-columns: repeat(3, 1fr); }
+  table { font-size: 12.5px; }
+  td.label-cell { width: auto; white-space: normal; }
+  .top-nav .nav-inner { justify-content: center; }
+  .top-nav .nav-brand { border-right: none; margin-right: 0; padding-right: 10px; }
+  .top-nav a { padding: 8px 8px; font-size: 11px; }
+  .savings-box .big-num { font-size: 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== STICKY NAV ==================== -->
+<nav class="top-nav">
+  <div class="nav-inner">
+    <a href="index.html#factory" style="color:#D4C5A9;font-weight:700;padding:10px 14px 10px 0;text-decoration:none">&larr; Deck</a><span class="nav-brand">MUKU TZ</span>
+    <a href="#sec1">1. Overview</a>
+    <a href="#sec2">2. FBA Tiers</a>
+    <a href="#sec3">3. Components</a>
+    <a href="#sec4">4. Colors</a>
+    <a href="#sec5">5. BOM</a>
+    <a href="#sec6">6. Quality</a>
+    <a href="#sec7">7. Labeling</a>
+    <a href="#sec8">8. Packing</a>
+    <a href="#sec9">9. Master Carton</a>
+    <a href="#sec10">10. Checklist</a>
+    <a href="#sec11">11. Video</a>
+    <a href="#sec12">12. Approval</a>
+    <a href="#appendix">Appendix</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ==================== TITLE BLOCK ==================== -->
+<div class="title-block">
+  <h1>PACKAGING TECHNICAL SPECIFICATION / 梱包技術仕様書</h1>
+  <div class="subtitle">MUKU 無垢</div>
+  <p style="font-size:18px; color:#5C6B3C; font-weight:600; margin-bottom:4px;">Bamboo Bath Tray / 竹製バストレー</p>
+  <p class="meta">Version 1.0 &nbsp;|&nbsp; June 2026 &nbsp;|&nbsp; Document ID: MUKU-PKG-TZ-2026-001</p>
+</div>
+
+<!-- ==================== SECTION 1: PRODUCT OVERVIEW ==================== -->
+<div class="section" id="sec1">
+  <h2>1. PRODUCT OVERVIEW / 製品概要</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter / 項目</th>
+        <th>Value / 値</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="label-cell">Product Name / 製品名</td>
+        <td>MUKU Bamboo Bath Tray / MUKU 無垢 竹製バストレー</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Product Type / 製品タイプ</td>
+        <td>Telescopic bamboo bathtub caddy / 伸縮式竹製バスタブキャディ</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Material / 素材</td>
+        <td>Heat-treated Moso bamboo with antimicrobial coating / 熱処理済み孟宗竹（抗菌コーティング加工）</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Extension Range / 伸縮範囲</td>
+        <td>700 - 1050 mm</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Board Thickness / 板厚</td>
+        <td>17 mm</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Net Weight / 製品重量</td>
+        <td>1.7 kg</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Retail Price / 販売価格</td>
+        <td>~5,000 JPY (~$34 USD)</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Target Market / 販売市場</td>
+        <td>Amazon.co.jp FBA</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>What's in the Box / 同梱物</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Item / 品目</th>
+        <th>Qty / 数量</th>
+        <th>Notes / 備考</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Main tray with telescopic mechanism / 伸縮機構付きメイントレー</td>
+        <td>1</td>
+        <td>Fully assembled / 完成品</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Removable mini-tray / 取り外し可能ミニトレー</td>
+        <td>1</td>
+        <td>For soap, candles, etc. / 石鹸・キャンドル等用</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Book page clip / ブックページクリップ</td>
+        <td>1</td>
+        <td>Bamboo material / 竹素材</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>QR care card / QRお手入れカード</td>
+        <td>1</td>
+        <td>Bilingual EN/JP / 日英バイリンガル</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Non-slip pads / 滑り止めパッド</td>
+        <td>4</td>
+        <td>Pre-installed / 装着済み</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ==================== SECTION 2: FBA SIZE TIER OPTIMIZATION ==================== -->
+<div class="section" id="sec2">
+  <h2>2. FBA SIZE TIER OPTIMIZATION / FBAサイズ区分の最適化</h2>
+
+  <div class="img-container">
+    <img src="packaging-assets/images/07_fba_tiers.png" alt="FBA Size Tiers Diagram / FBAサイズ区分図">
+    <div class="caption">Fig. 2-1: Amazon Japan FBA Size Tiers / Amazon Japan FBAサイズ区分一覧</div>
+  </div>
+
+  <h3>FBA Japan Size Tier Table / FBA Japanサイズ区分表</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Tier / 区分</th>
+        <th>Max Dimensions (3-side sum) / 最大寸法（3辺合計）</th>
+        <th>Max Weight / 最大重量</th>
+        <th>Approx. FBA Fee / FBA手数料概算</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Standard 5 / 標準5</td>
+        <td>60 cm, each side &le;25 cm</td>
+        <td>2 kg</td>
+        <td>~434 JPY</td>
+      </tr>
+      <tr>
+        <td>Standard 6 / 標準6</td>
+        <td>80 cm, each side &le;40 cm</td>
+        <td>5 kg</td>
+        <td>~514 JPY</td>
+      </tr>
+      <tr class="tier-target">
+        <td>Standard 7 / 標準7 &#9733;</td>
+        <td>100 cm, each side &le;50 cm</td>
+        <td>9 kg</td>
+        <td>~603 JPY</td>
+      </tr>
+      <tr>
+        <td>Oversize 1 / 大型1</td>
+        <td>120 cm</td>
+        <td>15 kg</td>
+        <td>~746 JPY</td>
+      </tr>
+      <tr>
+        <td>Oversize 2 / 大型2</td>
+        <td>140 cm</td>
+        <td>20 kg</td>
+        <td>~870 JPY</td>
+      </tr>
+      <tr>
+        <td>Oversize 3 / 大型3</td>
+        <td>160 cm</td>
+        <td>25 kg</td>
+        <td>~980 JPY</td>
+      </tr>
+      <tr>
+        <td>Oversize 4 / 大型4</td>
+        <td>200 cm</td>
+        <td>40 kg</td>
+        <td>~1,100 JPY</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="warning-box">
+    <strong>Problem / 課題:</strong> The product length of 700 mm exceeds the maximum single-side dimension of 60 cm for Standard 5 and Standard 6 tiers. Without optimization, the product falls into Oversize 1 (120 cm tier), incurring significantly higher fulfillment fees.<br>
+    製品長700mmが標準5・標準6の片辺最大60cmを超過。最適化なしでは大型1区分（120cm）に分類され、手数料が大幅に増加します。
+  </div>
+
+  <div class="info-box">
+    <strong>Target Tier / 目標区分:</strong> Standard 7 / 標準7 · max 100 cm (3-side sum), max 9 kg, max single side 50 cm.<br>
+    目標区分：標準7 · 3辺合計100cm以内、重量9kg以内、片辺50cm以内。
+  </div>
+
+  <h3>Optimized Package Dimensions / 最適化済み梱包寸法</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter / 項目</th>
+        <th>Value / 値</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="label-cell">Box Dimensions (L x W x H) / 外箱寸法</td>
+        <td>710 x 175 x 65 mm</td>
+      </tr>
+      <tr>
+        <td class="label-cell">3-Side Sum / 3辺合計</td>
+        <td>95.0 cm (within 100 cm limit)</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Total Package Weight / 総梱包重量</td>
+        <td>1.95 kg (within 9 kg limit)</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Longest Side / 最長辺</td>
+        <td>71.0 cm (does NOT exceed Standard 7 single-side limit)</td>
+      </tr>
+      <tr class="highlight-row">
+        <td class="label-cell">Assigned Tier / 適用区分</td>
+        <td>Standard 7 / 標準7 &#10003;</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="savings-box">
+    <div class="big-num">~225,000 JPY / month</div>
+    <div class="savings-label">Estimated Monthly Savings at 1,000 units vs. Oversize 1 / 大型1区分比較時の月間推定節約額（1,000個出荷時）</div>
+    <div style="margin-top:8px; font-size:14px; color:#3E2B1C;">~225 JPY per unit / 1個あたり約225円の節約</div>
+  </div>
+</div>
+
+<!-- ==================== SECTION 3: PACKAGING COMPONENTS ==================== -->
+<div class="section" id="sec3">
+  <h2>3. PACKAGING COMPONENTS / 梱包構成部品</h2>
+
+  <div class="img-container">
+    <img src="packaging-assets/images/01_box_3d.png" alt="3D Box Render / 外箱3Dレンダリング">
+    <div class="caption">Fig. 3-1: 3D Box Render / 外箱3Dレンダリング</div>
+  </div>
+
+  <div class="img-container">
+    <img src="packaging-assets/images/03_exploded.png" alt="Exploded View / 分解図">
+    <div class="caption">Fig. 3-2: Exploded View of All Components / 全部品分解図</div>
+  </div>
+
+  <!-- 3.1 External Box -->
+  <h3>3.1 External Box / 外箱</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter / 項目</th>
+        <th>Specification / 仕様</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="label-cell">Construction / 構造</td>
+        <td>Crash-lock bottom (auto-lock base) / クラッシュロックボトム（自動底）</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Internal Dimensions / 内寸</td>
+        <td>710 x 175 x 65 mm</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Flute / フルート</td>
+        <td>B-flute (3 mm) / Bフルート（3mm）</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Board Grade / 段ボール等級</td>
+        <td>T23</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Liner Material / ライナー素材</td>
+        <td>Kraft / クラフト</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Printing / 印刷</td>
+        <td>1+0 (outside only) black flexographic / 1+0（外面のみ）黒フレキソ印刷</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Weight / 重量</td>
+        <td>150 g</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Test Standard / 試験規格</td>
+        <td>ISTA 3A</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="img-container">
+    <img src="packaging-assets/images/02_dieline.png" alt="Box Die-Line / 外箱展開図">
+    <div class="caption">Fig. 3-3: Box Die-Line Layout / 外箱展開図レイアウト</div>
+  </div>
+
+  <h3>Print Zones / 印刷ゾーン</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Zone / ゾーン</th>
+        <th>Content / 内容</th>
+        <th>Dimensions / 寸法</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Top Panel / 天面</td>
+        <td>MUKU logo + product silhouette / MUKUロゴ＋製品シルエット</td>
+        <td>710 x 175 mm</td>
+      </tr>
+      <tr>
+        <td>Front Long Side / 正面長辺</td>
+        <td>Brand name + tagline (EN/JP) / ブランド名＋キャッチフレーズ（日英）</td>
+        <td>710 x 65 mm</td>
+      </tr>
+      <tr>
+        <td>Back Long Side / 背面長辺</td>
+        <td>Features list (icons) / 特徴一覧（アイコン）</td>
+        <td>710 x 65 mm</td>
+      </tr>
+      <tr>
+        <td>Left Short Side / 左短辺</td>
+        <td>"Made in China" + batch code zone / "Made in China"＋ロット番号欄</td>
+        <td>175 x 65 mm</td>
+      </tr>
+      <tr>
+        <td>Right Short Side / 右短辺</td>
+        <td>FNSKU label zone / FNSKUラベル貼付欄</td>
+        <td>175 x 65 mm</td>
+      </tr>
+      <tr>
+        <td>Bottom Panel / 底面</td>
+        <td>Blank (crash-lock structure) / 無地（クラッシュロック構造）</td>
+        <td>710 x 175 mm</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 3.2 End Inserts -->
+  <h3>3.2 End Inserts / 仕切り</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter / 項目</th>
+        <th>Specification / 仕様</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="label-cell">Quantity / 数量</td>
+        <td>2 pieces (left and right U-brackets) / 2個（左右Uブラケット）</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Material / 素材</td>
+        <td>E-flute corrugated, 1.5 mm / Eフルート段ボール、1.5mm</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Dimensions / 寸法</td>
+        <td>165 x 55 x 50 mm (each) / 各165 x 55 x 50mm</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Total Weight / 合計重量</td>
+        <td>30 g (both pieces) / 30g（2個合計）</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Function / 機能</td>
+        <td>Cushions both ends of tray, prevents lateral movement / トレー両端を緩衝し、横方向のズレを防止</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 3.3 Wrapping Paper -->
+  <h3>3.3 Wrapping Paper / 包装紙</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter / 項目</th>
+        <th>Specification / 仕様</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="label-cell">Material / 素材</td>
+        <td>Kraft MG (machine glazed) / クラフトMG（片艶）</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Weight / 坪量</td>
+        <td>50 g/m&sup2;</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Sheet Size / シートサイズ</td>
+        <td>750 x 450 mm</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Weight (per sheet) / 重量（1枚）</td>
+        <td>17 g</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Function / 機能</td>
+        <td>Wraps product to prevent surface scratches, adds premium feel / 製品を包み表面傷を防止、高級感を演出</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 3.4 Care Card -->
+  <h3>3.4 Care Card / お手入れカード</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter / 項目</th>
+        <th>Specification / 仕様</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="label-cell">Size / サイズ</td>
+        <td>A6 · 148 x 105 mm</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Paper / 用紙</td>
+        <td>Coated art paper, 300 g/m&sup2; / コート紙、300 g/m&sup2;</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Finish / 仕上げ</td>
+        <td>Matte lamination (both sides) / マットラミネート加工（両面）</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Printing / 印刷</td>
+        <td>4+4 CMYK (full color, both sides) / 4+4 CMYK（両面フルカラー）</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Content Front / 表面内容</td>
+        <td>Care instructions with icons (EN/JP bilingual) / お手入れ方法（アイコン付き・日英表記）</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Content Back / 裏面内容</td>
+        <td>QR code to video tutorial + review request / 動画チュートリアルQRコード＋レビュー依頼</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="img-container">
+    <img src="packaging-assets/images/04_care_card.png" alt="Care Card Layout / お手入れカードレイアウト">
+    <div class="caption">Fig. 3-4: Care Card Layout (Front & Back) / お手入れカードレイアウト（表裏）</div>
+  </div>
+
+  <!-- 3.5 FNSKU Label -->
+  <h3>3.5 FNSKU Label / FNSKUラベル</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter / 項目</th>
+        <th>Specification / 仕様</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="label-cell">Size / サイズ</td>
+        <td>50 x 25 mm</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Barcode Type / バーコード種類</td>
+        <td>Code 128</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Resolution / 解像度</td>
+        <td>300 dpi minimum / 最低300dpi</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Material / 素材</td>
+        <td>White semi-gloss adhesive label / 白色半光沢粘着ラベル</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Placement / 貼付位置</td>
+        <td>Right short side of box / 外箱右短辺</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 3.6 Sealing Tape -->
+  <h3>3.6 Sealing Tape / シーリングテープ</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter / 項目</th>
+        <th>Specification / 仕様</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="label-cell">Material / 素材</td>
+        <td>Kraft paper tape / クラフト紙テープ</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Width / 幅</td>
+        <td>48 mm</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Application / 使用箇所</td>
+        <td>Top flap closure, single strip / 天面フラップ封緘、1本テープ</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Weight (per unit) / 重量（1個分）</td>
+        <td>~2 g</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ==================== SECTION 4: COLOR PALETTE ==================== -->
+<div class="section" id="sec4">
+  <h2>4. COLOR PALETTE / カラーパレット</h2>
+
+  <div class="img-container">
+    <img src="packaging-assets/images/08_color_palette.png" alt="Color Palette Reference / カラーパレット参照">
+    <div class="caption">Fig. 4-1: Official Color Palette / 公式カラーパレット</div>
+  </div>
+
+  <div class="palette-grid">
+    <div class="swatch">
+      <div class="swatch-box" style="background: #C4A96A;"></div>
+      <div class="swatch-label">Natural Kraft / ナチュラルクラフト</div>
+      <div class="swatch-hex">Box / 外箱</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background: #000000;"></div>
+      <div class="swatch-label">Pantone Black C</div>
+      <div class="swatch-hex">#000000 · Logo / ロゴ</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background: #D4C5A9;"></div>
+      <div class="swatch-label">Pantone 7527 C</div>
+      <div class="swatch-hex">#D4C5A9 · Card BG / カード背景</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background: #3E2B1C;"></div>
+      <div class="swatch-label">Pantone 7533 C</div>
+      <div class="swatch-hex">#3E2B1C · Card Text / カード文字</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-box" style="background: #5C6B3C;"></div>
+      <div class="swatch-label">Pantone 5763 C</div>
+      <div class="swatch-hex">#5C6B3C · Accent / アクセント</div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Swatch / 色見本</th>
+        <th>Pantone / パントン</th>
+        <th>Hex Code</th>
+        <th>Usage / 用途</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="background:#C4A96A; width:40px;"></td>
+        <td>Natural Kraft (uncoated)</td>
+        <td>·</td>
+        <td>External box surface / 外箱表面</td>
+      </tr>
+      <tr>
+        <td style="background:#000000; width:40px;"></td>
+        <td>Pantone Black C</td>
+        <td>#000000</td>
+        <td>Logo and print on box / 外箱ロゴ・印刷</td>
+      </tr>
+      <tr>
+        <td style="background:#D4C5A9; width:40px;"></td>
+        <td>Pantone 7527 C</td>
+        <td>#D4C5A9</td>
+        <td>Care card background / お手入れカード背景</td>
+      </tr>
+      <tr>
+        <td style="background:#3E2B1C; width:40px;"></td>
+        <td>Pantone 7533 C</td>
+        <td>#3E2B1C</td>
+        <td>Care card text / お手入れカード文字</td>
+      </tr>
+      <tr>
+        <td style="background:#5C6B3C; width:40px;"></td>
+        <td>Pantone 5763 C</td>
+        <td>#5C6B3C</td>
+        <td>Care card accent elements / お手入れカードアクセント要素</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ==================== SECTION 5: BILL OF MATERIALS & COST ==================== -->
+<div class="section" id="sec5">
+  <h2>5. BILL OF MATERIALS &amp; COST / 材料一覧と原価</h2>
+
+  <div class="info-box">
+    Pricing is FOB China at minimum order quantity of 3,000+ units. Prices are indicative and subject to supplier quotation.<br>
+    価格は中国FOB、最小発注数量3,000個以上の場合の参考価格です。正式価格はサプライヤー見積もりにより確定します。
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Component / 部品</th>
+        <th>Weight / 重量</th>
+        <th>Unit Cost (USD) / 単価</th>
+        <th>Notes / 備考</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>External Box / 外箱</td>
+        <td>150 g</td>
+        <td>$0.35 - $0.45</td>
+        <td>B-flute T23, 1+0 flexo / Bフルート T23、1+0フレキソ</td>
+      </tr>
+      <tr>
+        <td>End Inserts (x2) / 仕切り（2個）</td>
+        <td>30 g</td>
+        <td>$0.05 - $0.08</td>
+        <td>E-flute, die-cut / Eフルート、型抜き</td>
+      </tr>
+      <tr>
+        <td>Wrapping Paper / 包装紙</td>
+        <td>17 g</td>
+        <td>$0.02 - $0.03</td>
+        <td>Kraft MG 50 g/m&sup2;</td>
+      </tr>
+      <tr>
+        <td>Care Card / お手入れカード</td>
+        <td>8 g</td>
+        <td>$0.08 - $0.12</td>
+        <td>300 g/m&sup2; coated, matte lam, 4+4 / コート紙、マットラミ、4+4</td>
+      </tr>
+      <tr>
+        <td>FNSKU Label / FNSKUラベル</td>
+        <td>~1 g</td>
+        <td>$0.01</td>
+        <td>50 x 25 mm, Code 128</td>
+      </tr>
+      <tr>
+        <td>Sealing Tape / テープ</td>
+        <td>~2 g</td>
+        <td>$0.01</td>
+        <td>Kraft paper 48 mm / クラフト紙48mm</td>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>TOTAL / 合計</strong></td>
+        <td><strong>~209 g</strong></td>
+        <td><strong>$0.52 - $0.70</strong></td>
+        <td><strong>FOB China, 3,000+ units / 中国FOB、3,000個以上</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="info-box">
+    <strong>Total package weight calculation / 総梱包重量計算:</strong><br>
+    Product 1,700 g + Packaging 209 g = <strong>1,909 g (~1.95 kg including tolerance)</strong><br>
+    製品1,700g ＋ 梱包材209g ＝ <strong>1,909g（公差含め約1.95kg）</strong>
+  </div>
+</div>
+
+<!-- ==================== SECTION 6: QUALITY REQUIREMENTS ==================== -->
+<div class="section" id="sec6">
+  <h2>6. QUALITY REQUIREMENTS / 品質要件</h2>
+
+  <h3>6.1 Transit Testing / 輸送試験</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Test / 試験</th>
+        <th>Standard / 規格</th>
+        <th>Requirement / 要件</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Drop Test / 落下試験</td>
+        <td>ISTA 3A</td>
+        <td>76 cm drop height, 10 drops on all faces, edges, and corners. No product damage, no box failure. / 76cm高さから10回落下（全面・辺・角）。製品損傷・箱破損なきこと。</td>
+      </tr>
+      <tr>
+        <td>Edge Crush Test (ECT) / エッジクラッシュ試験</td>
+        <td>ISO 3037</td>
+        <td>Minimum 5.5 kN/m / 最低5.5 kN/m</td>
+      </tr>
+      <tr>
+        <td>Cobb Test (Water Absorption) / コッブ吸水試験</td>
+        <td>ISO 535</td>
+        <td>Maximum 35 g/m&sup2; (30 min exposure) / 最大35 g/m&sup2;（30分暴露）</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>6.2 Inspection Levels (AQL) / 検査水準（AQL）</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Defect Level / 欠陥レベル</th>
+        <th>AQL Value / AQL値</th>
+        <th>Description / 説明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Critical / 致命的</strong></td>
+        <td>0 (zero tolerance)</td>
+        <td>Safety hazard, regulatory non-compliance, wrong product / 安全上の危険、法規制違反、誤製品</td>
+      </tr>
+      <tr>
+        <td><strong>Major / 重大</strong></td>
+        <td>2.5</td>
+        <td>Structural damage, print defects visible to customer, missing components / 構造的損傷、顧客可視の印刷不良、部品欠品</td>
+      </tr>
+      <tr>
+        <td><strong>Minor / 軽微</strong></td>
+        <td>4.0</td>
+        <td>Slight color variation, minor scuff on kraft, small alignment offset / 軽微な色差、クラフト面の小さな擦れ、わずかな位置ズレ</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="info-box">
+    All tests must be conducted by an accredited third-party lab and documented with photographic evidence. Test reports are required before mass production approval.<br>
+    全試験は認定第三者機関にて実施し、写真付きで記録すること。量産承認前に試験報告書の提出が必要です。
+  </div>
+</div>
+
+<!-- ==================== SECTION 7: LABELING FOR AMAZON JAPAN ==================== -->
+<div class="section" id="sec7">
+  <h2>7. LABELING FOR AMAZON JAPAN / Amazon Japan向けラベル表示</h2>
+
+  <h3>7.1 FNSKU Requirements / FNSKU要件</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Requirement / 要件</th>
+        <th>Details / 詳細</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="label-cell">Label Type / ラベル種類</td>
+        <td>Amazon FNSKU barcode (unique to seller's listing) / Amazon FNSKUバーコード（出品者リスティング固有）</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Placement / 貼付位置</td>
+        <td>Must cover or replace any existing manufacturer barcode. Applied on a flat surface, not on a seam or edge. / 既存メーカーバーコードを覆うか差し替え。平面に貼付、継ぎ目や角は不可。</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Scanability / スキャン性</td>
+        <td>Must scan correctly at first pass. Quiet zones of minimum 3.17 mm on each side of barcode. / 1回目のスキャンで正常読み取り可能であること。バーコード両側に最低3.17mmのクワイエットゾーン。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>7.2 Mandatory Markings / 必須表示</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Item / 項目</th>
+        <th>Requirement / 要件</th>
+        <th>Status / 状況</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="label-cell">Country of Origin / 原産国表示</td>
+        <td>"Made in China" must appear clearly on the product packaging. Required by Japanese customs regulations. / 「Made in China」の明記が必要。日本税関規則による義務。</td>
+        <td><span class="status-ok">Required / 必須</span></td>
+      </tr>
+      <tr>
+        <td class="label-cell">Premiums and Representations Act / 景品表示法（景表法）</td>
+        <td>No implied "Made in Japan" claims. Any mold-resistant or antibacterial claims must have substantiation documentation. Brand imagery must not mislead consumers about country of origin. / 「日本製」を暗示する表現の禁止。防カビ・抗菌の効能表示は根拠資料が必要。ブランドイメージで原産国を誤認させないこと。</td>
+        <td><span class="status-ok">Compliance Required / 遵守必須</span></td>
+      </tr>
+      <tr>
+        <td class="label-cell">Product-Specific Labeling / 製品固有の表示</td>
+        <td>Bamboo bath trays are not classified under Japan's Household Goods Quality Labeling Act (家庭用品品質表示法). No mandatory product labeling required. / 竹製バストレーは家庭用品品質表示法の対象外。製品固有の表示義務なし。</td>
+        <td><span class="status-ok">Not Required / 不要</span></td>
+      </tr>
+      <tr>
+        <td class="label-cell">Phytosanitary Certificate / 植物検疫証明書</td>
+        <td>Not required for finished processed bamboo products (heat-treated). Raw bamboo requires fumigation/certificate. / 加工済み（熱処理済み）竹製品には不要。未加工竹材には燻蒸・証明書が必要。</td>
+        <td><span class="status-ok">Not Required / 不要</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>7.3 Recommended Voluntary Labeling / 推奨任意表示</h3>
+  <div class="info-box">
+    While not legally mandatory, the following voluntary markings are recommended for customer trust and brand value:<br>
+    法的義務ではありませんが、顧客信頼とブランド価値向上のため以下の任意表示を推奨します：
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Label / 表示</th>
+        <th>Details / 詳細</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="label-cell">Recycling Symbol / リサイクルマーク</td>
+        <td>Paper recycling mark (紙マーク) on box and care card / 外箱・お手入れカードに紙マーク</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Material Info / 素材情報</td>
+        <td>"Material: Bamboo (Phyllostachys edulis)" in EN/JP / 「素材：竹（孟宗竹）」日英表記</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Care Symbols / お手入れ記号</td>
+        <td>Icons for: wipe dry after use, do not soak, oil monthly / アイコン表示：使用後乾拭き、浸水禁止、月1回オイルケア</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Brand Website / ブランドサイト</td>
+        <td>QR code linking to care video / tutorials / お手入れ動画・チュートリアルへのQRコード</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ==================== SECTION 8: PACKING PROCESS ==================== -->
+<div class="section" id="sec8">
+  <h2>8. PACKING PROCESS / 梱包プロセス</h2>
+
+  <div class="img-container">
+    <img src="packaging-assets/images/05_packing_process.png" alt="Packing Process Diagram / 梱包プロセス図">
+    <div class="caption">Fig. 8-1: 9-Step Packing Process / 9ステップ梱包プロセス</div>
+  </div>
+
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-title">Fold Box / 箱を折る</div>
+      <div class="step-desc">Erect crash-lock bottom box. Verify corners are square and lock engages fully. / クラッシュロックボトムを立ち上げ。角の直角とロック完全係合を確認。</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-title">Insert First Bracket / 第1ブラケット挿入</div>
+      <div class="step-desc">Place left U-bracket insert at the bottom-left end of the box. / 左側Uブラケットを箱の左端底部に設置。</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-title">Wrap Product / 製品を包む</div>
+      <div class="step-desc">Wrap the bamboo tray in kraft paper. Fold ends neatly, no tape on product. / 竹トレーをクラフト紙で包む。端部を丁寧に折り、製品にテープ不可。</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <div class="step-title">Place Product / 製品を配置</div>
+      <div class="step-desc">Slide wrapped tray into box. Telescopic arms must be fully retracted (700 mm). Mini-tray and clip placed on top. / 包装済みトレーを箱に挿入。伸縮アームは完全収縮（700mm）。ミニトレー・クリップは上に配置。</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">5</div>
+      <div class="step-title">Insert Second Bracket / 第2ブラケット挿入</div>
+      <div class="step-desc">Place right U-bracket insert at the right end, firmly against the product. / 右側Uブラケットを右端に設置、製品にしっかり当接。</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">6</div>
+      <div class="step-title">Place Card on Top / カードを載せる</div>
+      <div class="step-desc">Lay QR care card face-up on top of the wrapped product. Visible upon opening. / QRお手入れカードを表面上向きで包装済み製品上に配置。開封時に見えるように。</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">7</div>
+      <div class="step-title">Close Lid / 蓋を閉じる</div>
+      <div class="step-desc">Close top flaps. Seal with single strip of kraft tape along the long center seam. / 天面フラップを閉じる。長辺中央シームにクラフトテープ1本で封緘。</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">8</div>
+      <div class="step-title">Apply FNSKU / FNSKU貼付</div>
+      <div class="step-desc">Apply FNSKU label on right short side. Ensure no wrinkles, full adhesion, correct orientation. / FNSKUラベルを右短辺に貼付。シワなし、完全接着、向き正確。</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">9</div>
+      <div class="step-title">QC Check / 品質検査</div>
+      <div class="step-desc">Verify: box integrity, label scan, weight check (1.95 kg &plusmn;50g), visual inspection. Pass = place in master carton. / 箱の完全性、ラベルスキャン、重量確認（1.95kg &plusmn;50g）、目視検査。合格＝マスターカートンへ。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SECTION 9: MASTER CARTON ==================== -->
+<div class="section" id="sec9">
+  <h2>9. MASTER CARTON / マスターカートン</h2>
+
+  <div class="img-container">
+    <img src="packaging-assets/images/06_master_carton.png" alt="Master Carton Layout / マスターカートンレイアウト">
+    <div class="caption">Fig. 9-1: Master Carton Configuration / マスターカートン構成</div>
+  </div>
+
+  <h3>9.1 Master Carton Specifications / マスターカートン仕様</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter / 項目</th>
+        <th>Specification / 仕様</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="label-cell">Units per Carton / 入数</td>
+        <td>4 units / 4個</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Carton Dimensions (L x W x H) / カートン寸法</td>
+        <td>720 x 360 x 140 mm</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Wall Type / 壁構造</td>
+        <td>BC double-wall / BC二重壁</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Board Grade / 段ボール等級</td>
+        <td>T26</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Gross Weight / 総重量</td>
+        <td>8.4 kg</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Marking / マーキング</td>
+        <td>Shipping marks, FNSKU, "FRAGILE", "THIS SIDE UP" in EN/JP / 荷印、FNSKU、「取扱注意」「天地無用」日英表記</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>9.2 Palletization / パレタイズ</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter / 項目</th>
+        <th>Specification / 仕様</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="label-cell">Pallet Type / パレットタイプ</td>
+        <td>EUR pallet (1200 x 800 mm)</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Cartons per Pallet / パレット積載数</td>
+        <td>24 cartons / 24カートン</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Units per Pallet / パレット製品数</td>
+        <td>96 units / 96個</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Pallet Gross Weight / パレット総重量</td>
+        <td>~220 kg (including pallet) / 約220kg（パレット含む）</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Stacking / 積み重ね</td>
+        <td>Max 3 layers high / 最大3段積み</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ==================== SECTION 10: FBA OPTIMIZATION CHECKLIST ==================== -->
+<div class="section" id="sec10">
+  <h2>10. FBA OPTIMIZATION CHECKLIST / FBA最適化チェックリスト</h2>
+
+  <ul class="checklist">
+    <li>
+      <span class="check-icon">&#10003;</span>
+      <div><strong>1. Size Tier Confirmed / サイズ区分確定:</strong> Package dimensions 710 x 175 x 65 mm = 95.0 cm (3-side sum). Fits Standard 7 (max 100 cm). / 梱包寸法710 x 175 x 65mm = 3辺合計95.0cm。標準7（100cm上限）に適合。</div>
+    </li>
+    <li>
+      <span class="check-icon">&#10003;</span>
+      <div><strong>2. Weight Within Tier / 重量区分内:</strong> Total 1.95 kg well within Standard 7 limit of 9 kg. / 合計1.95kgは標準7の9kg上限内。</div>
+    </li>
+    <li>
+      <span class="check-icon">&#10003;</span>
+      <div><strong>3. FNSKU Applied / FNSKU貼付済み:</strong> Code 128 barcode, 50 x 25 mm, on right short side. Covers no other barcodes. / Code 128バーコード、50 x 25mm、右短辺に貼付。他のバーコードを覆わず。</div>
+    </li>
+    <li>
+      <span class="check-icon">&#10003;</span>
+      <div><strong>4. Suffocation Warning Not Required / 窒息警告不要:</strong> Box is not a poly bag. No suffocation warning needed per Amazon policy. / ポリ袋ではないため、Amazon規約上の窒息警告表示不要。</div>
+    </li>
+    <li>
+      <span class="check-icon">&#10003;</span>
+      <div><strong>5. Box Scannable / 箱スキャン可能:</strong> FNSKU label on flat surface, correct quiet zones, 300 dpi. Verified first-pass scan. / FNSKUラベル平面貼付、クワイエットゾーン適正、300dpi。初回スキャン確認済み。</div>
+    </li>
+    <li>
+      <span class="check-icon">&#10003;</span>
+      <div><strong>6. Drop Test Passed / 落下試験合格:</strong> ISTA 3A, 76 cm, 10 drops. No product damage or box failure. / ISTA 3A、76cm、10回落下。製品損傷・箱破損なし。</div>
+    </li>
+    <li>
+      <span class="check-icon">&#10003;</span>
+      <div><strong>7. Country of Origin Marked / 原産国表示済み:</strong> "Made in China" printed on left short side of box. / 「Made in China」を外箱左短辺に印刷。</div>
+    </li>
+    <li>
+      <span class="check-icon">&#10003;</span>
+      <div><strong>8. No Expiry Date Required / 有効期限不要:</strong> Bamboo bath trays are not perishable. No expiry labeling required. / 竹製バストレーは腐敗性なし。有効期限表示不要。</div>
+    </li>
+  </ul>
+
+  <h3>Storage Fee Estimation / 保管料試算</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter / 項目</th>
+        <th>Value / 値</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="label-cell">Unit Volume / 単位体積</td>
+        <td>71.0 x 17.5 x 6.5 cm = <strong>8,070 cm&sup3;</strong></td>
+      </tr>
+      <tr>
+        <td class="label-cell">January - September Fee / 1月〜9月 保管料</td>
+        <td>~46 JPY/month per unit / 月額約46円/個</td>
+      </tr>
+      <tr>
+        <td class="label-cell">October - December Fee / 10月〜12月 保管料</td>
+        <td>~81 JPY/month per unit / 月額約81円/個</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="info-box">
+    Peak-season (Oct-Dec) storage fee is approximately 76% higher. Plan inventory to minimize Q4 storage days.<br>
+    繁忙期（10月〜12月）の保管料は約76%増。Q4の在庫日数を最小化する在庫計画を推奨します。
+  </div>
+</div>
+
+<!-- ==================== SECTION 11: UNBOXING VIDEO ==================== -->
+<div class="section" id="sec11">
+  <h2>11. UNBOXING VIDEO / 開封動画</h2>
+
+  <div class="video-container">
+    <video autoplay muted loop controls width="100%">
+      <source src="packaging-assets/video/unboxing.mp4" type="video/mp4">
+      Your browser does not support the video tag. / お使いのブラウザは動画再生に対応していません。
+    </video>
+  </div>
+
+  <div class="info-box">
+    This video demonstrates the intended unboxing experience: tape removal, lid opening, care card visibility, kraft paper unwrapping, product reveal. Use as a reference for packing line training.<br>
+    この動画は意図された開封体験を示します：テープ除去、蓋開封、お手入れカードの視認性、クラフト紙開封、製品登場。梱包ラインのトレーニング資料としてご使用ください。
+  </div>
+</div>
+
+<!-- ==================== SECTION 12: APPROVAL STAGES ==================== -->
+<div class="section" id="sec12">
+  <h2>12. APPROVAL STAGES / 承認ステージ</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Stage / ステージ</th>
+        <th>#</th>
+        <th>Description / 説明</th>
+        <th>Deliverable / 成果物</th>
+        <th>Status / 状況</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Dimension Approval / 寸法承認</strong></td>
+        <td>1</td>
+        <td>Verify all packaging component dimensions against product samples. Confirm FBA tier eligibility. / 製品サンプルと全梱包部品寸法を照合。FBA区分適格性を確認。</td>
+        <td>Signed dimension sheet / 寸法確認書（署名済み）</td>
+        <td><span class="status-pending">Pending / 未承認</span></td>
+      </tr>
+      <tr>
+        <td><strong>2. Print Layout / 印刷レイアウト</strong></td>
+        <td>2</td>
+        <td>Approve box print artwork: logo placement, text, regulatory marks. / 外箱印刷アートワーク承認：ロゴ配置、文字、法規制マーク。</td>
+        <td>Approved PDF proof / 承認済みPDF校正</td>
+        <td><span class="status-pending">Pending / 未承認</span></td>
+      </tr>
+      <tr>
+        <td><strong>3. Care Card Layout / カードレイアウト</strong></td>
+        <td>3</td>
+        <td>Approve care card design: both sides, QR code functionality, bilingual text accuracy. / お手入れカードデザイン承認：両面、QRコード機能、バイリンガルテキスト正確性。</td>
+        <td>Approved card proof / 承認済みカード校正</td>
+        <td><span class="status-pending">Pending / 未承認</span></td>
+      </tr>
+      <tr>
+        <td><strong>4. Test Samples / テストサンプル</strong></td>
+        <td>4</td>
+        <td>Produce 5-10 complete packaging sets. Verify fit, finish, and print quality with actual product. / 完全梱包セットを5〜10個製作。実製品でフィット感、仕上がり、印刷品質を確認。</td>
+        <td>Sample approval form / サンプル承認書</td>
+        <td><span class="status-pending">Pending / 未承認</span></td>
+      </tr>
+      <tr>
+        <td><strong>5. Drop Test / 落下試験</strong></td>
+        <td>5</td>
+        <td>Conduct ISTA 3A drop test with packed sample. Document results with photos. / 梱包サンプルでISTA 3A落下試験実施。写真付き結果記録。</td>
+        <td>Test report / 試験報告書</td>
+        <td><span class="status-pending">Pending / 未承認</span></td>
+      </tr>
+      <tr>
+        <td><strong>6. Golden Sample / ゴールデンサンプル</strong></td>
+        <td>6</td>
+        <td>Final reference sample approved by brand owner. Serves as production benchmark. / ブランドオーナー承認の最終参照サンプル。量産基準として使用。</td>
+        <td>Sealed golden sample / 封印済みゴールデンサンプル</td>
+        <td><span class="status-pending">Pending / 未承認</span></td>
+      </tr>
+      <tr>
+        <td><strong>7. Mass Production / 量産</strong></td>
+        <td>7</td>
+        <td>Begin full production run. Inline QC per AQL levels defined in Section 6. / 量産開始。セクション6のAQLレベルに基づくインライン品質管理。</td>
+        <td>Production release / 量産リリース</td>
+        <td><span class="status-pending">Pending / 未承認</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ==================== APPENDIX ==================== -->
+<div class="section" id="appendix">
+  <h2>APPENDIX / 付録</h2>
+
+  <h3>Summary Table / サマリーテーブル</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter / 項目</th>
+        <th>Value / 値</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="label-cell">Product Name / 製品名</td>
+        <td>MUKU Bamboo Bath Tray / MUKU 無垢 竹製バストレー</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Product Net Weight / 製品正味重量</td>
+        <td>1,700 g</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Packaging Material Weight / 梱包材重量</td>
+        <td>209 g</td>
+      </tr>
+      <tr class="highlight-row">
+        <td class="label-cell">Total Ship Weight / 出荷総重量</td>
+        <td>1,909 g (~1.95 kg)</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Box Dimensions (L x W x H) / 外箱寸法</td>
+        <td>710 x 175 x 65 mm</td>
+      </tr>
+      <tr class="highlight-row">
+        <td class="label-cell">3-Side Sum / 3辺合計</td>
+        <td>95.0 cm</td>
+      </tr>
+      <tr class="highlight-row">
+        <td class="label-cell">FBA Size Tier / FBAサイズ区分</td>
+        <td>Standard 7 / 標準7</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Unit Volume / 単位体積</td>
+        <td>8,070 cm&sup3;</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Packaging Cost (FOB) / 梱包原価（FOB）</td>
+        <td>$0.52 - $0.70 per unit / 1個あたり</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Master Carton / マスターカートン</td>
+        <td>4 units &rarr; 720 x 360 x 140 mm, 8.4 kg</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Pallet / パレット</td>
+        <td>24 cartons = 96 units, ~220 kg</td>
+      </tr>
+      <tr>
+        <td class="label-cell">FBA Fee (Est.) / FBA手数料（概算）</td>
+        <td>~603 JPY (Standard 7)</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Storage Fee Jan-Sep / 保管料 1月〜9月</td>
+        <td>~46 JPY/month per unit</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Storage Fee Oct-Dec / 保管料 10月〜12月</td>
+        <td>~81 JPY/month per unit</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Document Version / 文書バージョン</td>
+        <td>1.0 · June 2026</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<div class="footer">
+  <p>All dimensions are subject to verification against actual product samples.<br>
+  全寸法は実製品サンプルにて検証の上確定してください。</p>
+  <p style="margin-top:12px; font-size:11.5px; color:#A09888;">&copy; 2026 MUKU Brand · Packaging Technical Specification v1.0 · Confidential / 社外秘</p>
+</div>
+
+</div><!-- /.container -->
+</body>
+</html>

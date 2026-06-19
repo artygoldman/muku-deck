@@ -1,0 +1,55 @@
+File Name,Folder,Type,Format,Duration,Platform,Ad Format,A/B Test Group,Description
+P01_Main-Image_1x1.jpeg,photo_gallery,PHOTO,1:1,-,Amazon,Sponsored Products / Listing,Main Image A (45° angle),Main product photo - 45-degree angle showing depth
+P01B_Main-Image-FrontOn_1x1.png,photo_ab_test,PHOTO,1:1,-,Amazon,Sponsored Products / Listing,Main Image B (front-on),Main product photo - front angle showing full width at 105cm
+P01C_Main-Image-TopDown_1x1.png,photo_ab_test,PHOTO,1:1,-,Amazon,Sponsored Products / Listing,Main Image C (top-down),Main product photo - bird's eye view showing all slots and bamboo grain
+P02_Infographic_1x1.png,photo_gallery,PHOTO,1:1,-,Amazon,Listing Gallery,Infographic A (cream bg),5 benefits infographic - warm cream background Japanese text
+P02B_Infographic-Dark_1x1.png,photo_ab_test,PHOTO,1:1,-,Amazon,Listing Gallery,Infographic B (dark split),Dark comparison infographic - moldy tray X vs MUKU checkmark
+P03_Multi-Angle_1x1.png,photo_gallery,PHOTO,1:1,-,Amazon,Listing Gallery,-,4 angles product showcase
+P04_Lifestyle_1x1.png,photo_gallery,PHOTO,1:1,-,Amazon / Instagram,Listing Gallery / Posts / IG Feed,Lifestyle A (solo woman),Woman in bath with tray - solo ritual scene
+P04B_Lifestyle-Couple_1x1.png,photo_ab_test,PHOTO,1:1,-,Amazon / Instagram,Listing Gallery / Posts / IG Feed,Lifestyle B (couple),Japanese couple enjoying bath ritual together - wine and cheese
+P05_Detail-Macro_1x1.png,photo_gallery,PHOTO,1:1,-,Amazon,Listing Gallery / Posts,-,Macro shot - water beading on sealed bamboo surface
+P06_Whats-In-Box_1x1.png,photo_gallery,PHOTO,1:1,-,Amazon,Listing Gallery,-,All included items flat lay with Japanese labels
+P07_Size-Fit-Guide_1x1.png,photo_gallery,PHOTO,1:1,-,Amazon,Listing Gallery,-,"Size fit diagram - 70-105cm range, 3 bathtub types with checkmarks"
+A1_Hero-Banner_21x9.png,photo_aplus,PHOTO,21:9,-,Amazon,A+ Module 1 / Brand Store Hero,A+ Hero A (dark zen),Dark charcoal bg with warm product glow - MUKU 無垢 素材の純度
+A1B_Hero-Banner-Light_21x9.png,photo_ab_test,PHOTO,21:9,-,Amazon,A+ Module 1 / Brand Store Hero,A+ Hero B (light zen),Bright cream bg with bamboo leaves - カビない竹 AIが運営するブランド
+A2_Pain-Points_3x2.png,photo_aplus,PHOTO,3:2,-,Amazon,A+ Module 2,-,4 competitor pain points in Japanese
+A3_Feature-Matrix_3x2.png,photo_aplus,PHOTO,3:2,-,Amazon,A+ Module 3,-,6 features grid incl AI運営＝素材に投資
+A4_Materials-Tech_3x2.png,photo_aplus,PHOTO,3:2,-,Amazon,A+ Module 4,-,3 macro technology photos - bamboo grain / sealed channel / food-safe
+A5_Comparison_3x2.png,photo_aplus,PHOTO,3:2,-,Amazon / Facebook,A+ Module 5 / FB Image Ad,Comparison A (table),MUKU vs competitors checkmark/X comparison table
+A5B_Comparison-Timeline_3x2.png,photo_ab_test,PHOTO,3:2,-,Amazon / Facebook,A+ Module 5 / FB Image Ad,Comparison B (timeline),1-3-6 month visual timeline - competitor decays MUKU stays new
+A6_How-To-Use_3x2.png,photo_aplus,PHOTO,3:2,-,Amazon,A+ Module 6,-,4-step photorealistic usage guide
+A7_AI-Brand-Endorsement_21x9.png,photo_aplus,PHOTO,21:9,-,Amazon,A+ Module 7 / Brand Store,A+ Closing A (dark),Dark bg - AIが運営するブランド 人件費ではなく素材に投資
+A7B_Brand-Endorsement-Light_21x9.png,photo_ab_test,PHOTO,21:9,-,Amazon,A+ Module 7 / Brand Store,A+ Closing B (bright),Bright bg - 人件費はゼロ。だから、この素材。wooden shelf with towels
+C1_Sumo-Smash_1x1.png,photo_crazy,PHOTO,1:1,-,Amazon / IG / FB / Twitter,Posts / Feed Ads / Tweets,-,Sumo wrestler vs unbreakable tray - 壊れない
+C2_Snow-Monkeys_1x1.png,photo_crazy,PHOTO,1:1,-,Amazon / IG / FB / TikTok,Posts / Feed Ads / Organic,-,Monkeys in onsen with manga and sake - サルも選ぶ
+C3_Samurai_1x1.png,photo_crazy,PHOTO,1:1,-,Amazon / IG / FB / Twitter,Posts / Feed Ads / Tweets,-,Samurai breaks katana on tray - 刃が負けた
+C4_TV-GameShow_1x1.png,photo_crazy,PHOTO,1:1,-,Amazon / IG / FB / TikTok,Posts / Feed Ads,-,TV show 365-day water test reveal - カビゼロ
+C5_Horror-vs-Dream_1x1.png,photo_crazy,PHOTO,1:1,-,Amazon / Facebook,Sponsored Display / FB Image,-,6-month mold comparison split - horror vs dream
+C6_Museum_1x1.png,photo_crazy,PHOTO,1:1,-,Amazon / Instagram,Posts / Feed,-,Tray as national treasure in museum - 風呂の芸術
+C7_Zen-Monk_1x1.png,photo_crazy,PHOTO,1:1,-,Amazon / Instagram,Posts / Feed,-,Monk enlightenment in zen garden bath - 悟りを開いた
+V01_AMZ-Listing_Bath-Ritual-AI-Voice_16x9_15s.mp4,video,VIDEO,16:9,15s,Amazon,Listing Video / SBV / STV / A+ Premium / Brand Store,-,Bath ritual with AI voiceover in Japanese
+V02_TikTok-Reels_Sumo-Smash_9x16_10s.mp4,video,VIDEO,9:16,10s,TikTok / Instagram / Twitch,In-Feed / Reels / Pre-roll,-,Sumo smash durability test comedy
+V03_TikTok-Reels_Snow-Monkeys_9x16_10s.mp4,video,VIDEO,9:16,10s,TikTok / Instagram,In-Feed / Reels,-,Snow monkeys reading manga in onsen
+V04_YouTube-FB_Samurai-Blade_16x9_10s.mp4,video,VIDEO,16:9,10s,YouTube / FB / Twitch / DSP,Pre-roll / Feed / Mid-roll / OLV,-,Samurai katana shatters on tray
+V05_YouTube-FB_Zen-Monk_16x9_15s.mp4,video,VIDEO,16:9,15s,YouTube / FB / Amazon,Pre-roll / Feed / Sponsored TV,-,Zen monk enlightenment comedy
+V06_YouTube_Horror-vs-Dream_21x9_10s.mp4,video,VIDEO,21:9,10s,YouTube / Amazon DSP,Pre-roll / OLV Cinema,-,J-horror vs dream 6-month comparison
+V07_AMZ-PrimeVideo_Apple-Reveal_16x9_15s.mp4,video,VIDEO,16:9,15s,Amazon / YouTube,Sponsored TV Prime Video / Brand Store,-,Dark premium product reveal Apple-style
+V08_TikTok_TV-GameShow_9x16_10s.mp4,video,VIDEO,9:16,10s,TikTok / Instagram,In-Feed / Reels,-,Japanese TV show 365-day reveal short
+V09_YouTube-FB_Museum_16x9_10s.mp4,video,VIDEO,16:9,10s,YouTube / FB / Amazon DSP,Pre-roll / Feed / OLV,-,Museum national treasure comedy
+V10_AMZ-SBV_Quick-Hook_16x9_6s.mp4,video,VIDEO,16:9,6s,Amazon,Sponsored Brands Video / Brand Store BG,-,3-beat rapid product hook
+V11_AMZ-SD_Retarget_1x1_6s.mp4,video,VIDEO,1:1,6s,Amazon / FB / IG,Sponsored Display / Feed Retarget,-,Square retargeting reminder
+V12_FB-AMZ_Problem-Solution_16x9_15s.mp4,video,VIDEO,16:9,15s,FB / Amazon / Twitch,Feed / SD / STV / Mid-roll,-,Mold horror to MUKU solution story
+V13_FB-IG_Sumo-Comedy_1x1_10s.mp4,video,VIDEO,1:1,10s,Facebook / Instagram,Feed Ad / Feed,-,Square sumo comedy for mobile feeds
+V14_IG-Reels_ASMR-Textures_9x16_10s.mp4,video,VIDEO,9:16,10s,IG / TikTok / Amazon,Reels / In-Feed / SBV Vertical,-,ASMR tactile product reveal
+V15_IG-Reels_Monkey-Extended_9x16_15s.mp4,video,VIDEO,9:16,15s,Instagram / TikTok,Reels / In-Feed Organic,-,Extended monkey onsen comedy
+V16_Twitter_Myth-Busting_9x16_10s.mp4,video,VIDEO,9:16,10s,Twitter/X,In-Feed / Promoted Video,-,3 facts rapid-fire myth busting
+V17_IG-Stories_POV-Ritual_9x16_10s.mp4,video,VIDEO,9:16,10s,IG / TikTok,Stories Ad / In-Feed,-,First-person POV bath ritual FOMO
+V18_Twitter_Samurai-Loop_9x16_6s.mp4,video,VIDEO,9:16,6s,Twitter/X / Instagram,In-Feed Loop / Stories,-,6-second loopable samurai strike
+V19_IG-Reels_Unboxing_9x16_10s.mp4,video,VIDEO,9:16,10s,IG / TikTok,Reels / In-Feed Organic,-,ASMR unboxing first impression
+V20_FB_Testimonial_16x9_10s.mp4,video,VIDEO,16:9,10s,Facebook / Amazon DSP,Feed Trust / OLV,-,Housewife testimonial mold story
+V21_Twitter_Beauty-Rotation_1x1_6s.mp4,video,VIDEO,1:1,6s,Twitter/X / Facebook,In-Feed Auto-play / Feed Retarget,-,Premium product rotation beauty shot
+V22_TikTok_TV-Show-Extended_9x16_15s.mp4,video,VIDEO,9:16,15s,TikTok / Instagram,In-Feed Ad / Reels,-,Extended TV game show 365-day reveal
+V23_IG-Reels_Before-After_9x16_10s.mp4,video,VIDEO,9:16,10s,IG / TikTok,Reels Trend / In-Feed,-,Before/after split trend format
+V24_FB_Triple-Proof_16x9_6s.mp4,video,VIDEO,16:9,6s,FB / Amazon,Retarget / SD / Brand Store BG,-,Quick 3-proof water-strength-beauty
+V25_IG-TikTok_AI-Manifesto_9x16_10s.mp4,video,VIDEO,9:16,10s,IG / TikTok / Twitter,Reels / Stories / Promoted,-,AI brand manifesto - provocative
+MUKU_BathTray_3D.glb,3d,3D MODEL,GLB,-,Website / Amazon Live / AR,Interactive 3D / Brand Store,-,3D model with bamboo texture for AR/web
