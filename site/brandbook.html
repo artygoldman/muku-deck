@@ -40,6 +40,31 @@
     line-height: 1.6;
     font-weight: 400;
   }
+  body.lang-ja { font-family: var(--jpsans); }
+  body.lang-ja h1, body.lang-ja h2, body.lang-ja h3, body.lang-ja h4 { letter-spacing: 0; line-height: 1.25; }
+
+  /* ── i18n toggle ── */
+  body.lang-en .l-ja { display: none; }
+  body.lang-ja .l-en { display: none; }
+  .langtog {
+    display: inline-flex;
+    border: 1px solid rgba(23,24,26,.14);
+    border-radius: 999px;
+    overflow: hidden;
+    font: 600 13px/1 'Onest', system-ui, sans-serif;
+    background: rgba(243,242,238,.92);
+    backdrop-filter: blur(8px);
+  }
+  .langtog button {
+    background: transparent;
+    border: 0;
+    padding: 8px 13px;
+    cursor: pointer;
+    color: var(--ink-soft);
+    font: inherit;
+  }
+  body.lang-en .langtog .b-en,
+  body.lang-ja .langtog .b-ja { background: var(--accent); color: #fff; }
 
   /* ── Swiss Grid ── */
   .section {
@@ -534,20 +559,25 @@
   .gap-48 { gap: 48px; }
 </style>
 </head>
-<body>
-<a href="index.html#brand" style="position:fixed;top:18px;left:22px;z-index:99;font:600 13px/1 'Onest',system-ui,sans-serif;color:#35513E;background:rgba(243,242,238,.92);padding:9px 15px;border-radius:999px;text-decoration:none;border:1px solid rgba(23,24,26,.14);backdrop-filter:blur(8px)">← Back to deck</a>
+<body class="lang-en">
+<script>(function(){try{var l=localStorage.getItem('muku-lang');if(l==='ja'){document.body.className='lang-ja';document.documentElement.lang='ja'}}catch(e){}})();</script>
+<a href="index.html#brand" style="position:fixed;top:18px;left:22px;z-index:99;font:600 13px/1 'Onest',system-ui,sans-serif;color:#35513E;background:rgba(243,242,238,.92);padding:9px 15px;border-radius:999px;text-decoration:none;border:1px solid rgba(23,24,26,.14);backdrop-filter:blur(8px)"><span class="l-en">← Back to deck</span><span class="l-ja">← デッキに戻る</span></a>
+<div class="langtog" role="group" aria-label="language" style="position:fixed;top:18px;right:22px;z-index:99">
+  <button class="b-en" onclick="setLang('en')">EN</button>
+  <button class="b-ja" onclick="setLang('ja')">日本語</button>
+</div>
 
 <!-- ════════════════════════════════════════════════════════════════
      COVER
      ════════════════════════════════════════════════════════════════ -->
 <section class="section cover">
   <div class="container">
-    <p class="cover-label">Brand Guidelines · Version 1.0</p>
+    <p class="cover-label"><span class="l-en">Brand Guidelines · Version 1.0</span><span class="l-ja">ブランドガイドライン · 第1.0版</span></p>
     <h1>MUKU</h1>
     <p class="cover-jp">無垢</p>
   </div>
   <div class="cover-meta">
-    <span class="cover-meta-item">MUKU 無垢 · Crafted in Japan</span>
+    <span class="cover-meta-item"><span class="l-en">MUKU 無垢 · Crafted in Japan</span><span class="l-ja">MUKU 無垢 · 日本で仕立てる</span></span>
   </div>
 </section>
 
@@ -558,22 +588,22 @@
   <div class="container">
     <div class="section-header">
       <p class="section-number">00</p>
-      <h2>Contents</h2>
-      <p class="body-lg" style="max-width:720px;">This is the single source of truth for the MUKU brand. Every agent · human or AI · reads it before making any visual material: Amazon listings, ads, social posts, packaging, the website, even this document. Follow it exactly, so every touchpoint looks and sounds like one brand.</p>
+      <h2><span class="l-en">Contents</span><span class="l-ja">目次</span></h2>
+      <p class="body-lg" style="max-width:720px;"><span class="l-en">This is the single source of truth for the MUKU brand. Every agent · human or AI · reads it before making any visual material: Amazon listings, ads, social posts, packaging, the website, even this document. Follow it exactly, so every touchpoint looks and sounds like one brand.</span><span class="l-ja">本書はMUKUブランドの唯一の拠り所です。人であれAIであれ、あらゆる担当者が制作の前に必ず目を通します。Amazonの商品ページ、広告、SNS投稿、パッケージ、ウェブサイト、そして本書そのものまで。本書の通りに進めることで、すべての接点が一つのブランドとして見え、語られます。</span></p>
     </div>
     <div class="grid">
-        <a href="#philosophy" class="col-6" style="text-decoration:none;display:flex;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--mincho);color:var(--accent);font-size:15px;flex:0 0 26px">01</span><span><span style="font-weight:600;color:var(--ink);font-size:17px">The Idea</span><span class="body-sm" style="display:block;margin-top:2px">why an AI runs the brand, and why it goes viral</span></span></a>
-        <a href="#logo" class="col-6" style="text-decoration:none;display:flex;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--mincho);color:var(--accent);font-size:15px;flex:0 0 26px">02</span><span><span style="font-weight:600;color:var(--ink);font-size:17px">Logo & wordmark</span><span class="body-sm" style="display:block;margin-top:2px">the mark, lockups, clearspace, prohibited use</span></span></a>
-        <a href="#color" class="col-6" style="text-decoration:none;display:flex;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--mincho);color:var(--accent);font-size:15px;flex:0 0 26px">03</span><span><span style="font-weight:600;color:var(--ink);font-size:17px">Color system</span><span class="body-sm" style="display:block;margin-top:2px">the full palette, light and dark, ratios</span></span></a>
-        <a href="#typography" class="col-6" style="text-decoration:none;display:flex;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--mincho);color:var(--accent);font-size:15px;flex:0 0 26px">04</span><span><span style="font-weight:600;color:var(--ink);font-size:17px">Typography</span><span class="body-sm" style="display:block;margin-top:2px">three typefaces, the scale, the rules</span></span></a>
-        <a href="#photography" class="col-6" style="text-decoration:none;display:flex;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--mincho);color:var(--accent);font-size:15px;flex:0 0 26px">05</span><span><span style="font-weight:600;color:var(--ink);font-size:17px">Photography & video</span><span class="body-sm" style="display:block;margin-top:2px">the calm, ritual visual language</span></span></a>
-        <a href="#packaging" class="col-6" style="text-decoration:none;display:flex;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--mincho);color:var(--accent);font-size:15px;flex:0 0 26px">06</span><span><span style="font-weight:600;color:var(--ink);font-size:17px">Packaging</span><span class="body-sm" style="display:block;margin-top:2px">box, care card, the unboxing flow</span></span></a>
-        <a href="#chat-ui" class="col-6" style="text-decoration:none;display:flex;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--mincho);color:var(--accent);font-size:15px;flex:0 0 26px">07</span><span><span style="font-weight:600;color:var(--ink);font-size:17px">AI Messenger Identity</span><span class="body-sm" style="display:block;margin-top:2px">the messenger voice and the influencer relay</span></span></a>
-        <a href="#tone" class="col-6" style="text-decoration:none;display:flex;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--mincho);color:var(--accent);font-size:15px;flex:0 0 26px">08</span><span><span style="font-weight:600;color:var(--ink);font-size:17px">Tone of voice</span><span class="body-sm" style="display:block;margin-top:2px">how the AI writes · five principles</span></span></a>
-        <a href="#do-dont" class="col-6" style="text-decoration:none;display:flex;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--mincho);color:var(--accent);font-size:15px;flex:0 0 26px">09</span><span><span style="font-weight:600;color:var(--ink);font-size:17px">Do / Don't</span><span class="body-sm" style="display:block;margin-top:2px">the quick-reference brand decisions</span></span></a>
+        <a href="#philosophy" class="col-6" style="text-decoration:none;display:flex;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--mincho);color:var(--accent);font-size:15px;flex:0 0 26px">01</span><span><span style="font-weight:600;color:var(--ink);font-size:17px"><span class="l-en">The Idea</span><span class="l-ja">アイデア</span></span><span class="body-sm" style="display:block;margin-top:2px"><span class="l-en">why an AI runs the brand, and why it goes viral</span><span class="l-ja">なぜAIがブランドを運営し、なぜ広がるのか</span></span></span></a>
+        <a href="#logo" class="col-6" style="text-decoration:none;display:flex;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--mincho);color:var(--accent);font-size:15px;flex:0 0 26px">02</span><span><span style="font-weight:600;color:var(--ink);font-size:17px"><span class="l-en">Logo & wordmark</span><span class="l-ja">ロゴ・ワードマーク</span></span><span class="body-sm" style="display:block;margin-top:2px"><span class="l-en">the mark, lockups, clearspace, prohibited use</span><span class="l-ja">マーク・ロックアップ・余白・禁止事項</span></span></span></a>
+        <a href="#color" class="col-6" style="text-decoration:none;display:flex;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--mincho);color:var(--accent);font-size:15px;flex:0 0 26px">03</span><span><span style="font-weight:600;color:var(--ink);font-size:17px"><span class="l-en">Color system</span><span class="l-ja">カラーシステム</span></span><span class="body-sm" style="display:block;margin-top:2px"><span class="l-en">the full palette, light and dark, ratios</span><span class="l-ja">全パレット・ライトとダーク・配分比</span></span></span></a>
+        <a href="#typography" class="col-6" style="text-decoration:none;display:flex;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--mincho);color:var(--accent);font-size:15px;flex:0 0 26px">04</span><span><span style="font-weight:600;color:var(--ink);font-size:17px"><span class="l-en">Typography</span><span class="l-ja">タイポグラフィ</span></span><span class="body-sm" style="display:block;margin-top:2px"><span class="l-en">three typefaces, the scale, the rules</span><span class="l-ja">三つの書体・スケール・ルール</span></span></span></a>
+        <a href="#photography" class="col-6" style="text-decoration:none;display:flex;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--mincho);color:var(--accent);font-size:15px;flex:0 0 26px">05</span><span><span style="font-weight:600;color:var(--ink);font-size:17px"><span class="l-en">Photography & video</span><span class="l-ja">写真・動画</span></span><span class="body-sm" style="display:block;margin-top:2px"><span class="l-en">the calm, ritual visual language</span><span class="l-ja">静かで、儀式のような視覚表現</span></span></span></a>
+        <a href="#packaging" class="col-6" style="text-decoration:none;display:flex;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--mincho);color:var(--accent);font-size:15px;flex:0 0 26px">06</span><span><span style="font-weight:600;color:var(--ink);font-size:17px"><span class="l-en">Packaging</span><span class="l-ja">パッケージ</span></span><span class="body-sm" style="display:block;margin-top:2px"><span class="l-en">box, care card, the unboxing flow</span><span class="l-ja">箱・お手入れカード・開封の流れ</span></span></span></a>
+        <a href="#chat-ui" class="col-6" style="text-decoration:none;display:flex;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--mincho);color:var(--accent);font-size:15px;flex:0 0 26px">07</span><span><span style="font-weight:600;color:var(--ink);font-size:17px"><span class="l-en">AI Messenger Identity</span><span class="l-ja">AIメッセンジャー</span></span><span class="body-sm" style="display:block;margin-top:2px"><span class="l-en">the messenger voice and the influencer relay</span><span class="l-ja">メッセージの声と、インフルエンサーとのやり取り</span></span></span></a>
+        <a href="#tone" class="col-6" style="text-decoration:none;display:flex;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--mincho);color:var(--accent);font-size:15px;flex:0 0 26px">08</span><span><span style="font-weight:600;color:var(--ink);font-size:17px"><span class="l-en">Tone of voice</span><span class="l-ja">トーン・オブ・ボイス</span></span><span class="body-sm" style="display:block;margin-top:2px"><span class="l-en">how the AI writes · five principles</span><span class="l-ja">AIの書き方 · 五つの原則</span></span></span></a>
+        <a href="#do-dont" class="col-6" style="text-decoration:none;display:flex;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--mincho);color:var(--accent);font-size:15px;flex:0 0 26px">09</span><span><span style="font-weight:600;color:var(--ink);font-size:17px"><span class="l-en">Do / Don't</span><span class="l-ja">すること・しないこと</span></span><span class="body-sm" style="display:block;margin-top:2px"><span class="l-en">the quick-reference brand decisions</span><span class="l-ja">ブランド判断の早見表</span></span></span></a>
     </div>
   </div>
-  <div class="section-footer"><span>MUKU 無垢 · Brand Guidelines</span><span>00</span></div>
+  <div class="section-footer"><span>MUKU 無垢 · <span class="l-en">Brand Guidelines</span><span class="l-ja">ブランドガイドライン</span></span><span>00</span></div>
 </section>
 
 <!-- ════════════════════════════════════════════════════════════════
@@ -583,46 +613,46 @@
   <div class="container">
     <div class="section-header">
       <p class="section-number">01</p>
-      <h2>The Idea</h2>
-      <p class="body-lg" style="max-width:700px;">MUKU is the first brand run end to end by an AI. Removing the human layer does two things at once. The brand becomes honest by construction · there is no marketing department to dress anything up. And because a brand with no people behind it has barely existed before, it is genuinely new · which gives it real viral potential. With MUKU, the idea is the marketing.</p>
+      <h2><span class="l-en">The Idea</span><span class="l-ja">アイデア</span></h2>
+      <p class="body-lg" style="max-width:700px;"><span class="l-en">MUKU is the first brand run end to end by an AI. Removing the human layer does two things at once. The brand becomes honest by construction · there is no marketing department to dress anything up. And because a brand with no people behind it has barely existed before, it is genuinely new · which gives it real viral potential. With MUKU, the idea is the marketing.</span><span class="l-ja">MUKUは、最初から最後までAIが運営する初めてのブランドです。人の層を取り除くことには、二つの意味があります。まず、仕立ての段階から正直であること。物事を取り繕う宣伝部門が存在しません。そして、人が背後にいないブランドはこれまでほとんど存在しなかったため、これは本当に新しい試みであり、自然に広がる力を持っています。MUKUでは、このアイデアそのものが宣伝になります。</span></p>
     </div>
 
     <div class="col-12 mb-48">
-      <p class="caption mb-24">How the press potentially could frame it · illustrative</p>
+      <p class="caption mb-24"><span class="l-en">How the press potentially could frame it · illustrative</span><span class="l-ja">報道での取り上げられ方の一例 · イメージ</span></p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
-        <div class="spec-card"><p class="body-sm" style="margin-bottom:8px;color:var(--accent)">日本経済新聞</p><h4 style="margin-bottom:6px">日本初、経営をAIに委ねたブランド</h4><p class="body-sm">The first brand where the business is run by an AI.</p></div>
-        <div class="spec-card"><p class="body-sm" style="margin-bottom:8px;color:var(--accent)">ITmedia</p><h4 style="margin-bottom:6px">人を雇わないブランド「MUKU 無垢」</h4><p class="body-sm">The brand that employs no one · the savings go into the material.</p></div>
-        <div class="spec-card"><p class="body-sm" style="margin-bottom:8px;color:var(--accent)">PR TIMES</p><h4 style="margin-bottom:6px">「私はAIです」と名乗るブランド</h4><p class="body-sm">The brand that introduces itself as an AI, and means it.</p></div>
+        <div class="spec-card"><p class="body-sm" style="margin-bottom:8px;color:var(--accent)">日本経済新聞</p><h4 style="margin-bottom:6px">日本初、経営をAIに委ねたブランド</h4><p class="body-sm"><span class="l-en">The first brand where the business is run by an AI.</span><span class="l-ja">経営をAIに委ねた、日本で初めてのブランド。</span></p></div>
+        <div class="spec-card"><p class="body-sm" style="margin-bottom:8px;color:var(--accent)">ITmedia</p><h4 style="margin-bottom:6px">人を雇わないブランド「MUKU 無垢」</h4><p class="body-sm"><span class="l-en">The brand that employs no one · the savings go into the material.</span><span class="l-ja">人を雇わないブランド。浮いた費用は、素材へ。</span></p></div>
+        <div class="spec-card"><p class="body-sm" style="margin-bottom:8px;color:var(--accent)">PR TIMES</p><h4 style="margin-bottom:6px">「私はAIです」と名乗るブランド</h4><p class="body-sm"><span class="l-en">The brand that introduces itself as an AI, and means it.</span><span class="l-ja">「私はAIです」と名乗り、その通りに振る舞うブランド。</span></p></div>
       </div>
     </div>
 
-    <h3 style="margin-bottom:24px">Three commitments</h3>
+    <h3 style="margin-bottom:24px"><span class="l-en">Three commitments</span><span class="l-ja">三つの約束</span></h3>
     <div class="grid gap-48">
       <div class="col-4">
         <div class="pillar-card">
-          <p class="pillar-number">Pillar I</p>
-          <h3>Material First</h3>
-          <p class="body-md">I have no salaries, no rent, no team lunches. That means my entire margin goes into the material. Where a staffed competitor optimises cost, I optimise the thing you actually touch. The product must justify itself on contact · before you read a word I have written.</p>
+          <p class="pillar-number"><span class="l-en">Pillar I</span><span class="l-ja">柱 I</span></p>
+          <h3><span class="l-en">Material First</span><span class="l-ja">まず素材から</span></h3>
+          <p class="body-md"><span class="l-en">I have no salaries, no rent, no team lunches. That means my entire margin goes into the material. Where a staffed competitor optimises cost, I optimise the thing you actually touch. The product must justify itself on contact · before you read a word I have written.</span><span class="l-ja">私には給与も家賃もありません。チームでの会食もありません。だからこそ、利益のすべてを素材に充てられます。人を抱える競合がコストを切り詰めるのに対し、私が磨くのは、お客様が実際に手に触れる部分です。製品は、手に取ったその瞬間に、私の書く一言を読む前に、それ自体で価値を示さなければなりません。</span></p>
         </div>
       </div>
       <div class="col-4">
         <div class="pillar-card">
-          <p class="pillar-number">Pillar II</p>
-          <h3>Radical Transparency</h3>
-          <p class="body-md">I show my structure. I explain where the money goes, what process I use, and why I chose one material over another. If something is a trade-off, I say so. There is no PR layer between my reasoning and the person reading it.</p>
+          <p class="pillar-number"><span class="l-en">Pillar II</span><span class="l-ja">柱 II</span></p>
+          <h3><span class="l-en">Radical Transparency</span><span class="l-ja">徹底した透明性</span></h3>
+          <p class="body-md"><span class="l-en">I show my structure. I explain where the money goes, what process I use, and why I chose one material over another. If something is a trade-off, I say so. There is no PR layer between my reasoning and the person reading it.</span><span class="l-ja">私は自らの仕組みを開示します。お金がどこへ向かい、どのような工程を踏み、なぜその素材を選んだのかを説明します。何かが引き換えになっているなら、その旨をお伝えします。私の考えと、それを読む方との間に、広報という層は存在しません。</span></p>
         </div>
       </div>
       <div class="col-4">
         <div class="pillar-card">
-          <p class="pillar-number">Pillar III</p>
-          <h3>AI Honesty</h3>
-          <p class="body-md">I never pretend to be human. I never hide behind "our team." I identify myself as artificial intelligence in every customer-facing interaction. This is not a gimmick · it is the only honest way for me to operate. If a person is talking to a machine, they deserve to know.</p>
+          <p class="pillar-number"><span class="l-en">Pillar III</span><span class="l-ja">柱 III</span></p>
+          <h3><span class="l-en">AI Honesty</span><span class="l-ja">AIとしての誠実さ</span></h3>
+          <p class="body-md"><span class="l-en">I never pretend to be human. I never hide behind "our team." I identify myself as artificial intelligence in every customer-facing interaction. This is not a gimmick · it is the only honest way for me to operate. If a person is talking to a machine, they deserve to know.</span><span class="l-ja">私は人間のふりをしません。「私たちのチーム」という言葉に隠れることもありません。お客様と接するすべての場面で、自分がAIであることを名乗ります。これは仕掛けではなく、私にとって唯一誠実なあり方です。機械と話しているのなら、その事実を知る権利が相手にはあります。</span></p>
         </div>
       </div>
     </div>
   </div>
   <div class="section-footer">
-    <span>MUKU 無垢 · Brand Guidelines</span>
+    <span>MUKU 無垢 · <span class="l-en">Brand Guidelines</span><span class="l-ja">ブランドガイドライン</span></span>
     <span>01</span>
   </div>
 </section>
@@ -634,50 +664,50 @@
   <div class="container">
     <div class="section-header">
       <p class="section-number">02</p>
-      <h2>Logo & Wordmark</h2>
-      <p class="body-lg" style="max-width:640px;">The MUKU wordmark is the primary brand identifier. It is set in Onest Bold, tracked tight. The kanji 無垢 appears in Shippori Mincho alongside or beneath the Latin mark.</p>
+      <h2><span class="l-en">Logo & Wordmark</span><span class="l-ja">ロゴ・ワードマーク</span></h2>
+      <p class="body-lg" style="max-width:640px;"><span class="l-en">The MUKU wordmark is the primary brand identifier. It is set in Onest Bold, tracked tight. The kanji 無垢 appears in Shippori Mincho alongside or beneath the Latin mark.</span><span class="l-ja">MUKUのワードマークは、ブランドを示す中心的な要素です。Onest Boldを用い、字間を詰めて組みます。漢字「無垢」はShippori Minchoで、欧文マークの横または下に添えます。</span></p>
     </div>
 
     <div class="grid">
       <div class="col-12 mb-48">
         <img src="brandbook-assets/01-logo-clearspace.png" alt="Logo clearspace and variants" class="brand-img">
-        <p class="img-caption">Fig 2.1 · Logo variants, clearspace rules, and minimum size specifications</p>
+        <p class="img-caption"><span class="l-en">Fig 2.1 · Logo variants, clearspace rules, and minimum size specifications</span><span class="l-ja">図2.1 · ロゴの種類・余白のルール・最小サイズの規定</span></p>
       </div>
 
       <div class="col-6">
         <div class="spec-card">
-          <h4>Variants</h4>
+          <h4><span class="l-en">Variants</span><span class="l-ja">バリエーション</span></h4>
           <ul class="spec-list">
-            <li><span class="spec-label">Primary</span> MUKU wordmark · Ink on Bone</li>
-            <li><span class="spec-label">Bilingual</span> MUKU + 無垢 lockup · Latin above, kanji below</li>
-            <li><span class="spec-label">Reversed</span> Bone or Dark-fg on Dark backgrounds</li>
-            <li><span class="spec-label">Monogram</span> Single "M" · for favicon, app icon, deboss</li>
+            <li><span class="spec-label"><span class="l-en">Primary</span><span class="l-ja">基本</span></span> <span class="l-en">MUKU wordmark · Ink on Bone</span><span class="l-ja">MUKUワードマーク · ボーンにインク</span></li>
+            <li><span class="spec-label"><span class="l-en">Bilingual</span><span class="l-ja">二言語</span></span> <span class="l-en">MUKU + 無垢 lockup · Latin above, kanji below</span><span class="l-ja">MUKU＋無垢のロックアップ · 欧文を上、漢字を下に</span></li>
+            <li><span class="spec-label"><span class="l-en">Reversed</span><span class="l-ja">反転</span></span> <span class="l-en">Bone or Dark-fg on Dark backgrounds</span><span class="l-ja">ダーク背景にボーンまたはダークFG</span></li>
+            <li><span class="spec-label"><span class="l-en">Monogram</span><span class="l-ja">モノグラム</span></span> <span class="l-en">Single "M" · for favicon, app icon, deboss</span><span class="l-ja">「M」一文字 · ファビコン・アプリアイコン・型押し用</span></li>
           </ul>
         </div>
       </div>
 
       <div class="col-6">
         <div class="spec-card">
-          <h4>Rules</h4>
+          <h4><span class="l-en">Rules</span><span class="l-ja">ルール</span></h4>
           <ul class="spec-list">
-            <li><span class="spec-label">Clearspace</span> Minimum clearspace = height of the "M" on all sides</li>
-            <li><span class="spec-label">Min size</span> 24px height on screen, 8mm in print</li>
-            <li><span class="spec-label">Color</span> Ink, Bone, or Accent only · no other colors</li>
-            <li><span class="spec-label">Background</span> Bone, Dark, or white only · never on photos</li>
+            <li><span class="spec-label"><span class="l-en">Clearspace</span><span class="l-ja">余白</span></span> <span class="l-en">Minimum clearspace = height of the "M" on all sides</span><span class="l-ja">最小余白＝四方とも「M」の高さ分</span></li>
+            <li><span class="spec-label"><span class="l-en">Min size</span><span class="l-ja">最小サイズ</span></span> <span class="l-en">24px height on screen, 8mm in print</span><span class="l-ja">画面で高さ24px、印刷で8mm</span></li>
+            <li><span class="spec-label"><span class="l-en">Color</span><span class="l-ja">色</span></span> <span class="l-en">Ink, Bone, or Accent only · no other colors</span><span class="l-ja">インク・ボーン・アクセントのみ · 他の色は使わない</span></li>
+            <li><span class="spec-label"><span class="l-en">Background</span><span class="l-ja">背景</span></span> <span class="l-en">Bone, Dark, or white only · never on photos</span><span class="l-ja">ボーン・ダーク・白のみ · 写真の上には載せない</span></li>
           </ul>
         </div>
       </div>
 
       <div class="col-12 mt-32">
         <div class="spec-card">
-          <h4>Prohibited Modifications</h4>
-          <p class="body-md">Do not rotate, stretch, add drop shadows, apply gradients, outline, rearrange the lockup, change fonts, place on busy backgrounds, or animate the wordmark. The mark must always appear at its original proportions on a clean, uncluttered ground.</p>
+          <h4><span class="l-en">Prohibited Modifications</span><span class="l-ja">禁止する加工</span></h4>
+          <p class="body-md"><span class="l-en">Do not rotate, stretch, add drop shadows, apply gradients, outline, rearrange the lockup, change fonts, place on busy backgrounds, or animate the wordmark. The mark must always appear at its original proportions on a clean, uncluttered ground.</span><span class="l-ja">回転、引き伸ばし、影付け、グラデーション、縁取り、ロックアップの組み替え、書体の変更、雑然とした背景への配置、ワードマークのアニメーション化は行わないでください。マークは常に、本来の比率のまま、すっきりと整った地の上に置きます。</span></p>
         </div>
       </div>
     </div>
   </div>
   <div class="section-footer">
-    <span>MUKU 無垢 · Brand Guidelines</span>
+    <span>MUKU 無垢 · <span class="l-en">Brand Guidelines</span><span class="l-ja">ブランドガイドライン</span></span>
     <span>02</span>
   </div>
 </section>
@@ -689,80 +719,80 @@
   <div class="container">
     <div class="section-header">
       <p class="section-number">03</p>
-      <h2>Color System</h2>
-      <p class="body-lg" style="max-width:640px;">The palette is restrained by design. Bone tones form the ground, Ink provides contrast, and Accent green is used sparingly for UI elements and emphasis. Dark mode inverts the hierarchy.</p>
+      <h2><span class="l-en">Color System</span><span class="l-ja">カラーシステム</span></h2>
+      <p class="body-lg" style="max-width:640px;"><span class="l-en">The palette is restrained by design. Bone tones form the ground, Ink provides contrast, and Accent green is used sparingly for UI elements and emphasis. Dark mode inverts the hierarchy.</span><span class="l-ja">パレットは、あえて抑えています。ボーン系が地をつくり、インクがコントラストを与え、アクセントの緑はUI要素や強調に控えめに使います。ダークモードでは、この序列が反転します。</span></p>
     </div>
 
     <div class="col-12 mb-48">
       <img src="brandbook-assets/02-color-system.png" alt="Color system overview" class="brand-img">
-      <p class="img-caption">Fig 3.1 · Complete color system with light and dark mode applications</p>
+      <p class="img-caption"><span class="l-en">Fig 3.1 · Complete color system with light and dark mode applications</span><span class="l-ja">図3.1 · ライトモード・ダークモードを含む全カラーシステム</span></p>
     </div>
 
     <div class="swatch-grid">
       <div class="swatch">
         <div class="swatch-color" style="background:#F3F2EE;"></div>
-        <div class="swatch-info"><p class="swatch-name">Bone</p><p class="swatch-hex">#F3F2EE</p><p class="swatch-role">Primary background</p></div>
+        <div class="swatch-info"><p class="swatch-name">Bone</p><p class="swatch-hex">#F3F2EE</p><p class="swatch-role"><span class="l-en">Primary background</span><span class="l-ja">基本の背景</span></p></div>
       </div>
       <div class="swatch">
         <div class="swatch-color" style="background:#EAE9E3;"></div>
-        <div class="swatch-info"><p class="swatch-name">Bone 2</p><p class="swatch-hex">#EAE9E3</p><p class="swatch-role">Cards, inputs, alternating rows</p></div>
+        <div class="swatch-info"><p class="swatch-name">Bone 2</p><p class="swatch-hex">#EAE9E3</p><p class="swatch-role"><span class="l-en">Cards, inputs, alternating rows</span><span class="l-ja">カード・入力欄・交互の行</span></p></div>
       </div>
       <div class="swatch">
         <div class="swatch-color" style="background:#E0DFD7;"></div>
-        <div class="swatch-info"><p class="swatch-name">Bone 3</p><p class="swatch-hex">#E0DFD7</p><p class="swatch-role">Borders, dividers</p></div>
+        <div class="swatch-info"><p class="swatch-name">Bone 3</p><p class="swatch-hex">#E0DFD7</p><p class="swatch-role"><span class="l-en">Borders, dividers</span><span class="l-ja">罫線・区切り</span></p></div>
       </div>
       <div class="swatch">
         <div class="swatch-color" style="background:#17181A; border-bottom:1px solid rgba(255,255,255,.1);"></div>
-        <div class="swatch-info"><p class="swatch-name">Ink</p><p class="swatch-hex">#17181A</p><p class="swatch-role">Primary text, headings</p></div>
+        <div class="swatch-info"><p class="swatch-name">Ink</p><p class="swatch-hex">#17181A</p><p class="swatch-role"><span class="l-en">Primary text, headings</span><span class="l-ja">本文・見出し</span></p></div>
       </div>
       <div class="swatch">
         <div class="swatch-color" style="background:#3A3C3E;"></div>
-        <div class="swatch-info"><p class="swatch-name">Ink 2</p><p class="swatch-hex">#3A3C3E</p><p class="swatch-role">Body text</p></div>
+        <div class="swatch-info"><p class="swatch-name">Ink 2</p><p class="swatch-hex">#3A3C3E</p><p class="swatch-role"><span class="l-en">Body text</span><span class="l-ja">本文テキスト</span></p></div>
       </div>
       <div class="swatch">
         <div class="swatch-color" style="background:#6C6E70;"></div>
-        <div class="swatch-info"><p class="swatch-name">Ink Soft</p><p class="swatch-hex">#6C6E70</p><p class="swatch-role">Captions, metadata</p></div>
+        <div class="swatch-info"><p class="swatch-name">Ink Soft</p><p class="swatch-hex">#6C6E70</p><p class="swatch-role"><span class="l-en">Captions, metadata</span><span class="l-ja">キャプション・補足情報</span></p></div>
       </div>
       <div class="swatch">
         <div class="swatch-color" style="background:#35513E;"></div>
-        <div class="swatch-info"><p class="swatch-name">Accent</p><p class="swatch-hex">#35513E</p><p class="swatch-role">CTA buttons, links, emphasis</p></div>
+        <div class="swatch-info"><p class="swatch-name">Accent</p><p class="swatch-hex">#35513E</p><p class="swatch-role"><span class="l-en">CTA buttons, links, emphasis</span><span class="l-ja">CTAボタン・リンク・強調</span></p></div>
       </div>
       <div class="swatch">
         <div class="swatch-color" style="background:#6E8B73;"></div>
-        <div class="swatch-info"><p class="swatch-name">Accent 2</p><p class="swatch-hex">#6E8B73</p><p class="swatch-role">Secondary accent, hover states</p></div>
+        <div class="swatch-info"><p class="swatch-name">Accent 2</p><p class="swatch-hex">#6E8B73</p><p class="swatch-role"><span class="l-en">Secondary accent, hover states</span><span class="l-ja">補助アクセント・ホバー時</span></p></div>
       </div>
       <div class="swatch">
         <div class="swatch-color" style="background:#0E100E;"></div>
-        <div class="swatch-info"><p class="swatch-name">Dark</p><p class="swatch-hex">#0E100E</p><p class="swatch-role">Dark mode background</p></div>
+        <div class="swatch-info"><p class="swatch-name">Dark</p><p class="swatch-hex">#0E100E</p><p class="swatch-role"><span class="l-en">Dark mode background</span><span class="l-ja">ダークモードの背景</span></p></div>
       </div>
       <div class="swatch">
         <div class="swatch-color" style="background:#171A17;"></div>
-        <div class="swatch-info"><p class="swatch-name">Dark 2</p><p class="swatch-hex">#171A17</p><p class="swatch-role">Dark mode cards</p></div>
+        <div class="swatch-info"><p class="swatch-name">Dark 2</p><p class="swatch-hex">#171A17</p><p class="swatch-role"><span class="l-en">Dark mode cards</span><span class="l-ja">ダークモードのカード</span></p></div>
       </div>
       <div class="swatch">
         <div class="swatch-color" style="background:#9DBBA1;"></div>
-        <div class="swatch-info"><p class="swatch-name">Dark Accent</p><p class="swatch-hex">#9DBBA1</p><p class="swatch-role">Accent on dark backgrounds</p></div>
+        <div class="swatch-info"><p class="swatch-name">Dark Accent</p><p class="swatch-hex">#9DBBA1</p><p class="swatch-role"><span class="l-en">Accent on dark backgrounds</span><span class="l-ja">ダーク背景でのアクセント</span></p></div>
       </div>
       <div class="swatch">
         <div class="swatch-color" style="background:#ECEBE3;"></div>
-        <div class="swatch-info"><p class="swatch-name">Dark FG</p><p class="swatch-hex">#ECEBE3</p><p class="swatch-role">Text on dark backgrounds</p></div>
+        <div class="swatch-info"><p class="swatch-name">Dark FG</p><p class="swatch-hex">#ECEBE3</p><p class="swatch-role"><span class="l-en">Text on dark backgrounds</span><span class="l-ja">ダーク背景の文字</span></p></div>
       </div>
     </div>
 
     <div class="mt-48">
       <div class="spec-card">
-        <h4>Usage Rules</h4>
+        <h4><span class="l-en">Usage Rules</span><span class="l-ja">使用ルール</span></h4>
         <ul class="spec-list">
-          <li><span class="spec-label">Ratio</span> 70% Bone tones, 25% Ink tones, 5% Accent green</li>
-          <li><span class="spec-label">Accent use</span> Buttons, links, active states, and the kanji 無垢 · never large areas</li>
-          <li><span class="spec-label">Contrast</span> All text must meet WCAG AA (4.5:1 for body, 3:1 for large text)</li>
-          <li><span class="spec-label">Forbidden</span> No gradients, no additional colors, no brand-color tints on photos</li>
+          <li><span class="spec-label"><span class="l-en">Ratio</span><span class="l-ja">配分比</span></span> <span class="l-en">70% Bone tones, 25% Ink tones, 5% Accent green</span><span class="l-ja">ボーン系70％・インク系25％・アクセントの緑5％</span></li>
+          <li><span class="spec-label"><span class="l-en">Accent use</span><span class="l-ja">アクセントの使い方</span></span> <span class="l-en">Buttons, links, active states, and the kanji 無垢 · never large areas</span><span class="l-ja">ボタン・リンク・選択中の状態・漢字「無垢」に限る · 広い面には使わない</span></li>
+          <li><span class="spec-label"><span class="l-en">Contrast</span><span class="l-ja">コントラスト</span></span> <span class="l-en">All text must meet WCAG AA (4.5:1 for body, 3:1 for large text)</span><span class="l-ja">すべての文字はWCAG AAを満たすこと（本文4.5:1、大きな文字3:1）</span></li>
+          <li><span class="spec-label"><span class="l-en">Forbidden</span><span class="l-ja">禁止</span></span> <span class="l-en">No gradients, no additional colors, no brand-color tints on photos</span><span class="l-ja">グラデーション・色の追加・写真へのブランドカラーの色被せは不可</span></li>
         </ul>
       </div>
     </div>
   </div>
   <div class="section-footer">
-    <span>MUKU 無垢 · Brand Guidelines</span>
+    <span>MUKU 無垢 · <span class="l-en">Brand Guidelines</span><span class="l-ja">ブランドガイドライン</span></span>
     <span>03</span>
   </div>
 </section>
@@ -774,78 +804,78 @@
   <div class="container">
     <div class="section-header">
       <p class="section-number">04</p>
-      <h2>Typography</h2>
-      <p class="body-lg" style="max-width:640px;">Three typeface families serve distinct roles. Onest carries the brand voice, Noto Sans JP provides Japanese utility text, and Shippori Mincho adds cultural gravity. Never mix their roles.</p>
+      <h2><span class="l-en">Typography</span><span class="l-ja">タイポグラフィ</span></h2>
+      <p class="body-lg" style="max-width:640px;"><span class="l-en">Three typeface families serve distinct roles. Onest carries the brand voice, Noto Sans JP provides Japanese utility text, and Shippori Mincho adds cultural gravity. Never mix their roles.</span><span class="l-ja">三つの書体ファミリーが、それぞれ異なる役割を担います。Onestがブランドの声を運び、Noto Sans JPが日本語の実用テキストを支え、Shippori Minchoが文化的な重みを添えます。役割を混ぜてはいけません。</span></p>
     </div>
 
     <div class="col-12 mb-48">
       <img src="brandbook-assets/03-typography.png" alt="Typography specimens" class="brand-img">
-      <p class="img-caption">Fig 4.1 · Typeface specimens and hierarchy scale</p>
+      <p class="img-caption"><span class="l-en">Fig 4.1 · Typeface specimens and hierarchy scale</span><span class="l-ja">図4.1 · 書体見本と階層スケール</span></p>
     </div>
 
     <div class="grid">
       <div class="col-4">
         <div class="type-specimen">
-          <p class="caption mb-24">Primary · Latin</p>
+          <p class="caption mb-24"><span class="l-en">Primary · Latin</span><span class="l-ja">基本 · 欧文</span></p>
           <p class="type-sample" style="font-family:var(--sans); font-weight:700;">Onest</p>
-          <p class="body-sm">Headings, body text, UI elements, buttons, labels. Weights: 300–800. The workhorse of the system.</p>
+          <p class="body-sm"><span class="l-en">Headings, body text, UI elements, buttons, labels. Weights: 300–800. The workhorse of the system.</span><span class="l-ja">見出し・本文・UI要素・ボタン・ラベルに。ウェイトは300〜800。システムの主役です。</span></p>
         </div>
       </div>
       <div class="col-4">
         <div class="type-specimen">
-          <p class="caption mb-24">Primary · Japanese</p>
+          <p class="caption mb-24"><span class="l-en">Primary · Japanese</span><span class="l-ja">基本 · 和文</span></p>
           <p class="type-sample" style="font-family:var(--jpsans); font-weight:500;">Noto Sans JP</p>
-          <p class="body-sm">Japanese body text, UI labels, product info, legal text. Weights: 300–700. Pairs with Onest for bilingual layouts.</p>
+          <p class="body-sm"><span class="l-en">Japanese body text, UI labels, product info, legal text. Weights: 300–700. Pairs with Onest for bilingual layouts.</span><span class="l-ja">和文の本文・UIラベル・製品情報・規約文に。ウェイトは300〜700。二言語レイアウトでOnestと組み合わせます。</span></p>
         </div>
       </div>
       <div class="col-4">
         <div class="type-specimen">
-          <p class="caption mb-24">Display · Japanese</p>
+          <p class="caption mb-24"><span class="l-en">Display · Japanese</span><span class="l-ja">ディスプレイ · 和文</span></p>
           <p class="type-sample" style="font-family:var(--mincho); font-weight:400;">Shippori Mincho</p>
-          <p class="body-sm">The kanji 無垢 only, plus ceremonial and editorial headlines in Japanese. Never for body text. Weights: 400–800.</p>
+          <p class="body-sm"><span class="l-en">The kanji 無垢 only, plus ceremonial and editorial headlines in Japanese. Never for body text. Weights: 400–800.</span><span class="l-ja">漢字「無垢」と、儀礼的・編集的な和文見出しのみに。本文には使いません。ウェイトは400〜800。</span></p>
         </div>
       </div>
     </div>
 
     <div class="mt-48">
-      <h3>Type Hierarchy</h3>
+      <h3><span class="l-en">Type Hierarchy</span><span class="l-ja">文字の階層</span></h3>
       <table class="brand-table">
         <thead>
           <tr>
-            <th>Level</th>
-            <th>Font</th>
-            <th>Size</th>
-            <th>Weight</th>
-            <th>Use</th>
+            <th><span class="l-en">Level</span><span class="l-ja">階層</span></th>
+            <th><span class="l-en">Font</span><span class="l-ja">書体</span></th>
+            <th><span class="l-en">Size</span><span class="l-ja">サイズ</span></th>
+            <th><span class="l-en">Weight</span><span class="l-ja">ウェイト</span></th>
+            <th><span class="l-en">Use</span><span class="l-ja">用途</span></th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>Display</td><td>Onest</td><td>64–96px</td><td>800</td><td>Cover titles, hero moments</td></tr>
-          <tr><td>H1</td><td>Onest</td><td>40–48px</td><td>700</td><td>Section headings</td></tr>
-          <tr><td>H2</td><td>Onest</td><td>24–32px</td><td>600</td><td>Sub-sections</td></tr>
-          <tr><td>H3</td><td>Onest</td><td>18–20px</td><td>600</td><td>Card titles, labels</td></tr>
-          <tr><td>Body</td><td>Onest</td><td>16px</td><td>400</td><td>Paragraphs, descriptions</td></tr>
-          <tr><td>Caption</td><td>Onest</td><td>12–13px</td><td>500</td><td>Metadata, footnotes</td></tr>
-          <tr><td>JP Display</td><td>Shippori Mincho</td><td>36–48px</td><td>400</td><td>無垢 kanji, editorial JP headlines</td></tr>
-          <tr><td>JP Body</td><td>Noto Sans JP</td><td>14–16px</td><td>400</td><td>Japanese running text</td></tr>
+          <tr><td>Display</td><td>Onest</td><td>64–96px</td><td>800</td><td><span class="l-en">Cover titles, hero moments</span><span class="l-ja">表紙のタイトル・印象的な見せ場</span></td></tr>
+          <tr><td>H1</td><td>Onest</td><td>40–48px</td><td>700</td><td><span class="l-en">Section headings</span><span class="l-ja">章の見出し</span></td></tr>
+          <tr><td>H2</td><td>Onest</td><td>24–32px</td><td>600</td><td><span class="l-en">Sub-sections</span><span class="l-ja">小見出し</span></td></tr>
+          <tr><td>H3</td><td>Onest</td><td>18–20px</td><td>600</td><td><span class="l-en">Card titles, labels</span><span class="l-ja">カードの見出し・ラベル</span></td></tr>
+          <tr><td>Body</td><td>Onest</td><td>16px</td><td>400</td><td><span class="l-en">Paragraphs, descriptions</span><span class="l-ja">本文・説明</span></td></tr>
+          <tr><td>Caption</td><td>Onest</td><td>12–13px</td><td>500</td><td><span class="l-en">Metadata, footnotes</span><span class="l-ja">補足情報・注記</span></td></tr>
+          <tr><td>JP Display</td><td>Shippori Mincho</td><td>36–48px</td><td>400</td><td><span class="l-en">無垢 kanji, editorial JP headlines</span><span class="l-ja">「無垢」の漢字・和文の編集見出し</span></td></tr>
+          <tr><td>JP Body</td><td>Noto Sans JP</td><td>14–16px</td><td>400</td><td><span class="l-en">Japanese running text</span><span class="l-ja">和文の本文</span></td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="mt-48">
       <div class="spec-card">
-        <h4>Rules</h4>
+        <h4><span class="l-en">Rules</span><span class="l-ja">ルール</span></h4>
         <ul class="spec-list">
-          <li><span class="spec-label">Line height</span> Body: 1.6–1.7. Headings: 1.1–1.3. Display: 1.0</li>
-          <li><span class="spec-label">Letter spacing</span> Display: -4px. H1: -1.5px. Body: 0. Caps labels: +1.5px</li>
-          <li><span class="spec-label">Max width</span> Body text never exceeds 640px (approx. 75 characters)</li>
-          <li><span class="spec-label">Forbidden</span> No italic Onest (use weight changes instead). No underlined text except links. No all-caps body text.</li>
+          <li><span class="spec-label"><span class="l-en">Line height</span><span class="l-ja">行間</span></span> <span class="l-en">Body: 1.6–1.7. Headings: 1.1–1.3. Display: 1.0</span><span class="l-ja">本文：1.6〜1.7／見出し：1.1〜1.3／ディスプレイ：1.0</span></li>
+          <li><span class="spec-label"><span class="l-en">Letter spacing</span><span class="l-ja">字間</span></span> <span class="l-en">Display: -4px. H1: -1.5px. Body: 0. Caps labels: +1.5px</span><span class="l-ja">ディスプレイ：-4px／H1：-1.5px／本文：0／大文字ラベル：+1.5px</span></li>
+          <li><span class="spec-label"><span class="l-en">Max width</span><span class="l-ja">最大幅</span></span> <span class="l-en">Body text never exceeds 640px (approx. 75 characters)</span><span class="l-ja">本文は640px（約75文字）を超えない</span></li>
+          <li><span class="spec-label"><span class="l-en">Forbidden</span><span class="l-ja">禁止</span></span> <span class="l-en">No italic Onest (use weight changes instead). No underlined text except links. No all-caps body text.</span><span class="l-ja">Onestの斜体は不可（代わりにウェイトで調整）。リンク以外の下線は不可。本文をすべて大文字にしない。</span></li>
         </ul>
       </div>
     </div>
   </div>
   <div class="section-footer">
-    <span>MUKU 無垢 · Brand Guidelines</span>
+    <span>MUKU 無垢 · <span class="l-en">Brand Guidelines</span><span class="l-ja">ブランドガイドライン</span></span>
     <span>04</span>
   </div>
 </section>
@@ -857,49 +887,49 @@
   <div class="container">
     <div class="section-header">
       <p class="section-number">05</p>
-      <h2>Photography & Video</h2>
-      <p class="body-lg" style="max-width:640px;">Every image and frame must feel like a moment of calm. The camera observes quietly · never performing, never selling. These rules apply to all visual content across Amazon, website, and social channels.</p>
+      <h2><span class="l-en">Photography & Video</span><span class="l-ja">写真・動画</span></h2>
+      <p class="body-lg" style="max-width:640px;"><span class="l-en">Every image and frame must feel like a moment of calm. The camera observes quietly · never performing, never selling. These rules apply to all visual content across Amazon, website, and social channels.</span><span class="l-ja">すべての画像と一コマが、静かなひとときに感じられること。カメラは静かに見守るだけで、演じることも、売り込むこともしません。これらのルールは、Amazon・ウェブサイト・SNSのあらゆる視覚表現に適用されます。</span></p>
     </div>
 
     <div class="col-12 mb-48">
       <img src="brandbook-assets/04-photography.png" alt="Photography style guide" class="brand-img">
-      <p class="img-caption">Fig 5.1 · Photography style reference and 9-shot gallery composition</p>
+      <p class="img-caption"><span class="l-en">Fig 5.1 · Photography style reference and 9-shot gallery composition</span><span class="l-ja">図5.1 · 写真スタイルの参考と、9枚構成のギャラリー</span></p>
     </div>
 
     <div class="grid">
       <div class="col-6">
-        <h3>Photography Rules</h3>
+        <h3><span class="l-en">Photography Rules</span><span class="l-ja">写真のルール</span></h3>
         <div class="spec-card">
           <ul class="spec-list">
-            <li><span class="spec-label">Color temp</span> Warm 3500–4000K, natural light only</li>
-            <li><span class="spec-label">Palette</span> Bone + natural wood + green accents (plants)</li>
-            <li><span class="spec-label">Mood</span> Calm, ritual, warmth</li>
-            <li><span class="spec-label">Never</span> Energy, sport, speed, urgency</li>
-            <li><span class="spec-label">People</span> Hands only · no faces</li>
-            <li><span class="spec-label">Props</span> Open book, wine glass, candles, towel, plant</li>
-            <li><span class="spec-label">Forbidden props</span> Electronics, food, bright plastic</li>
-            <li><span class="spec-label">Processing</span> Minimal. No HDR, no oversaturation, no vignette</li>
+            <li><span class="spec-label"><span class="l-en">Color temp</span><span class="l-ja">色温度</span></span> <span class="l-en">Warm 3500–4000K, natural light only</span><span class="l-ja">暖色3500〜4000K、自然光のみ</span></li>
+            <li><span class="spec-label"><span class="l-en">Palette</span><span class="l-ja">配色</span></span> <span class="l-en">Bone + natural wood + green accents (plants)</span><span class="l-ja">ボーン＋自然な木の色＋緑のアクセント（植物）</span></li>
+            <li><span class="spec-label"><span class="l-en">Mood</span><span class="l-ja">雰囲気</span></span> <span class="l-en">Calm, ritual, warmth</span><span class="l-ja">静けさ・儀式のような所作・温かさ</span></li>
+            <li><span class="spec-label"><span class="l-en">Never</span><span class="l-ja">避ける</span></span> <span class="l-en">Energy, sport, speed, urgency</span><span class="l-ja">活気・スポーツ・スピード・切迫感</span></li>
+            <li><span class="spec-label"><span class="l-en">People</span><span class="l-ja">人物</span></span> <span class="l-en">Hands only · no faces</span><span class="l-ja">手のみ · 顔は写さない</span></li>
+            <li><span class="spec-label"><span class="l-en">Props</span><span class="l-ja">小物</span></span> <span class="l-en">Open book, wine glass, candles, towel, plant</span><span class="l-ja">開いた本・ワイングラス・キャンドル・タオル・植物</span></li>
+            <li><span class="spec-label"><span class="l-en">Forbidden props</span><span class="l-ja">使わない小物</span></span> <span class="l-en">Electronics, food, bright plastic</span><span class="l-ja">電子機器・食べ物・派手なプラスチック</span></li>
+            <li><span class="spec-label"><span class="l-en">Processing</span><span class="l-ja">補正</span></span> <span class="l-en">Minimal. No HDR, no oversaturation, no vignette</span><span class="l-ja">最小限に。HDR・過度な彩度・周辺減光は使わない</span></li>
           </ul>
         </div>
       </div>
 
       <div class="col-6">
-        <h3>9-Shot Gallery Spec</h3>
+        <h3><span class="l-en">9-Shot Gallery Spec</span><span class="l-ja">9枚ギャラリーの構成</span></h3>
         <div class="spec-card">
           <table class="brand-table" style="margin-top:0;">
             <thead>
-              <tr><th>#</th><th>Shot</th><th>Purpose</th></tr>
+              <tr><th>#</th><th><span class="l-en">Shot</span><span class="l-ja">カット</span></th><th><span class="l-en">Purpose</span><span class="l-ja">目的</span></th></tr>
             </thead>
             <tbody>
-              <tr><td>1</td><td>Hero · product on white</td><td>Amazon main image</td></tr>
-              <tr><td>2</td><td>45° angle detail</td><td>Material & grain</td></tr>
-              <tr><td>3</td><td>In-context · bath scene</td><td>Lifestyle placement</td></tr>
-              <tr><td>4</td><td>Hands placing product</td><td>Scale & ritual</td></tr>
-              <tr><td>5</td><td>Close-up joint/edge</td><td>Craftsmanship</td></tr>
-              <tr><td>6</td><td>Flat lay with props</td><td>Mood & accessories</td></tr>
-              <tr><td>7</td><td>Packaging unbox</td><td>Unboxing experience</td></tr>
-              <tr><td>8</td><td>Infographic overlay</td><td>Dimensions & features</td></tr>
-              <tr><td>9</td><td>Care card detail</td><td>Trust & transparency</td></tr>
+              <tr><td>1</td><td><span class="l-en">Hero · product on white</span><span class="l-ja">メイン · 白背景の製品</span></td><td><span class="l-en">Amazon main image</span><span class="l-ja">Amazonのメイン画像</span></td></tr>
+              <tr><td>2</td><td><span class="l-en">45° angle detail</span><span class="l-ja">45度のディテール</span></td><td><span class="l-en">Material & grain</span><span class="l-ja">素材と木目</span></td></tr>
+              <tr><td>3</td><td><span class="l-en">In-context · bath scene</span><span class="l-ja">使用シーン · 浴室</span></td><td><span class="l-en">Lifestyle placement</span><span class="l-ja">暮らしの中での配置</span></td></tr>
+              <tr><td>4</td><td><span class="l-en">Hands placing product</span><span class="l-ja">製品を置く手</span></td><td><span class="l-en">Scale & ritual</span><span class="l-ja">大きさと所作</span></td></tr>
+              <tr><td>5</td><td><span class="l-en">Close-up joint/edge</span><span class="l-ja">継ぎ目・縁の接写</span></td><td><span class="l-en">Craftsmanship</span><span class="l-ja">つくりの丁寧さ</span></td></tr>
+              <tr><td>6</td><td><span class="l-en">Flat lay with props</span><span class="l-ja">小物を添えた俯瞰</span></td><td><span class="l-en">Mood & accessories</span><span class="l-ja">雰囲気と小物</span></td></tr>
+              <tr><td>7</td><td><span class="l-en">Packaging unbox</span><span class="l-ja">パッケージの開封</span></td><td><span class="l-en">Unboxing experience</span><span class="l-ja">開封の体験</span></td></tr>
+              <tr><td>8</td><td><span class="l-en">Infographic overlay</span><span class="l-ja">情報の重ね表示</span></td><td><span class="l-en">Dimensions & features</span><span class="l-ja">寸法と特長</span></td></tr>
+              <tr><td>9</td><td><span class="l-en">Care card detail</span><span class="l-ja">お手入れカードの接写</span></td><td><span class="l-en">Trust & transparency</span><span class="l-ja">信頼と透明性</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -907,57 +937,57 @@
     </div>
 
     <div class="mt-48">
-      <h3>Video Rules</h3>
+      <h3><span class="l-en">Video Rules</span><span class="l-ja">動画のルール</span></h3>
       <div class="col-12 mb-32">
         <img src="brandbook-assets/08-video-storyboard.png" alt="Video storyboard" class="brand-img">
-        <p class="img-caption">Fig 5.2 · 15-second video storyboard timeline</p>
+        <p class="img-caption"><span class="l-en">Fig 5.2 · 15-second video storyboard timeline</span><span class="l-ja">図5.2 · 15秒動画の絵コンテと時間配分</span></p>
       </div>
 
       <div class="grid">
         <div class="col-6">
           <div class="spec-card">
-            <h4>Format & Technical</h4>
+            <h4><span class="l-en">Format & Technical</span><span class="l-ja">フォーマットと技術</span></h4>
             <ul class="spec-list">
-              <li><span class="spec-label">Formats</span> 16:9 (Amazon/YouTube), 9:16 (TikTok/Reels), 1:1 (IG Feed)</li>
-              <li><span class="spec-label">Color grading</span> Warm tones, medium contrast. No filters</li>
-              <li><span class="spec-label">Music</span> Ambient, lo-fi, acoustic. 60–80 BPM. No vocals</li>
-              <li><span class="spec-label">Transitions</span> Cut and dissolve only</li>
-              <li><span class="spec-label">Forbidden</span> Wipe, zoom, 3D transitions</li>
+              <li><span class="spec-label"><span class="l-en">Formats</span><span class="l-ja">画面比</span></span> <span class="l-en">16:9 (Amazon/YouTube), 9:16 (TikTok/Reels), 1:1 (IG Feed)</span><span class="l-ja">16:9（Amazon／YouTube）、9:16（TikTok／リール）、1:1（IGフィード）</span></li>
+              <li><span class="spec-label"><span class="l-en">Color grading</span><span class="l-ja">カラーグレーディング</span></span> <span class="l-en">Warm tones, medium contrast. No filters</span><span class="l-ja">暖色系・中程度のコントラスト。フィルターは使わない</span></li>
+              <li><span class="spec-label"><span class="l-en">Music</span><span class="l-ja">音楽</span></span> <span class="l-en">Ambient, lo-fi, acoustic. 60–80 BPM. No vocals</span><span class="l-ja">アンビエント・ローファイ・アコースティック。60〜80BPM。ボーカルなし</span></li>
+              <li><span class="spec-label"><span class="l-en">Transitions</span><span class="l-ja">場面転換</span></span> <span class="l-en">Cut and dissolve only</span><span class="l-ja">カットとディゾルブのみ</span></li>
+              <li><span class="spec-label"><span class="l-en">Forbidden</span><span class="l-ja">禁止</span></span> <span class="l-en">Wipe, zoom, 3D transitions</span><span class="l-ja">ワイプ・ズーム・3Dの転換</span></li>
             </ul>
           </div>
         </div>
         <div class="col-6">
           <div class="spec-card">
-            <h4>Text & Subtitles</h4>
+            <h4><span class="l-en">Text & Subtitles</span><span class="l-ja">テロップと字幕</span></h4>
             <ul class="spec-list">
-              <li><span class="spec-label">Overlay font</span> Onest Bold, white or Bone on semi-transparent dark</li>
-              <li><span class="spec-label">JP subtitles</span> Noto Sans JP · mandatory on all video</li>
-              <li><span class="spec-label">EN subtitles</span> Onest · mandatory on all video</li>
-              <li><span class="spec-label">Hook</span> First 3 seconds = hook. Logo only at the end</li>
+              <li><span class="spec-label"><span class="l-en">Overlay font</span><span class="l-ja">テロップ書体</span></span> <span class="l-en">Onest Bold, white or Bone on semi-transparent dark</span><span class="l-ja">Onest Bold、半透明の暗い帯に白またはボーン</span></li>
+              <li><span class="spec-label"><span class="l-en">JP subtitles</span><span class="l-ja">和文字幕</span></span> <span class="l-en">Noto Sans JP · mandatory on all video</span><span class="l-ja">Noto Sans JP · すべての動画に必須</span></li>
+              <li><span class="spec-label"><span class="l-en">EN subtitles</span><span class="l-ja">英文字幕</span></span> <span class="l-en">Onest · mandatory on all video</span><span class="l-ja">Onest · すべての動画に必須</span></li>
+              <li><span class="spec-label"><span class="l-en">Hook</span><span class="l-ja">つかみ</span></span> <span class="l-en">First 3 seconds = hook. Logo only at the end</span><span class="l-ja">最初の3秒がつかみ。ロゴは最後のみ</span></li>
             </ul>
           </div>
         </div>
       </div>
 
       <div class="mt-32">
-        <h4>15-Second Script Timeline</h4>
+        <h4><span class="l-en">15-Second Script Timeline</span><span class="l-ja">15秒の台本と時間割</span></h4>
         <table class="brand-table">
           <thead>
-            <tr><th>Time</th><th>Visual</th><th>Text / VO</th><th>Sound</th></tr>
+            <tr><th><span class="l-en">Time</span><span class="l-ja">時間</span></th><th><span class="l-en">Visual</span><span class="l-ja">映像</span></th><th><span class="l-en">Text / VO</span><span class="l-ja">テロップ／ナレーション</span></th><th><span class="l-en">Sound</span><span class="l-ja">音</span></th></tr>
           </thead>
           <tbody>
-            <tr><td>0–3s</td><td>Close-up: steam rising over bamboo surface</td><td>"I am the AI that made this."</td><td>Ambient water + soft piano note</td></tr>
-            <tr><td>3–6s</td><td>Hands placing tray across bathtub</td><td>-</td><td>Gentle wood-on-ceramic contact</td></tr>
-            <tr><td>6–9s</td><td>Detail: book + candle on tray, warm light</td><td>"No staff. No shortcuts."</td><td>Lo-fi ambient continues</td></tr>
-            <tr><td>9–12s</td><td>Pull back: full bath scene, evening light</td><td>"Just better material."</td><td>Music swells gently</td></tr>
-            <tr><td>12–15s</td><td>Fade to Bone background, MUKU 無垢 wordmark</td><td>"MUKU. Crafted in Japan."</td><td>Single piano note, fade</td></tr>
+            <tr><td>0–3s</td><td><span class="l-en">Close-up: steam rising over bamboo surface</span><span class="l-ja">接写：竹の表面に立ちのぼる湯気</span></td><td><span class="l-en">"I am the AI that made this."</span><span class="l-ja">「これをつくったのは、私というAIです。」</span></td><td><span class="l-en">Ambient water + soft piano note</span><span class="l-ja">水の環境音＋やわらかなピアノの一音</span></td></tr>
+            <tr><td>3–6s</td><td><span class="l-en">Hands placing tray across bathtub</span><span class="l-ja">浴槽にトレーを渡す手</span></td><td>-</td><td><span class="l-en">Gentle wood-on-ceramic contact</span><span class="l-ja">木と陶器がそっと触れる音</span></td></tr>
+            <tr><td>6–9s</td><td><span class="l-en">Detail: book + candle on tray, warm light</span><span class="l-ja">ディテール：トレーの上の本とキャンドル、暖かな光</span></td><td><span class="l-en">"No staff. No shortcuts."</span><span class="l-ja">「スタッフなし。近道もなし。」</span></td><td><span class="l-en">Lo-fi ambient continues</span><span class="l-ja">ローファイの環境音が続く</span></td></tr>
+            <tr><td>9–12s</td><td><span class="l-en">Pull back: full bath scene, evening light</span><span class="l-ja">引き：浴室の全景、夕方の光</span></td><td><span class="l-en">"Just better material."</span><span class="l-ja">「ただ、より良い素材を。」</span></td><td><span class="l-en">Music swells gently</span><span class="l-ja">音楽がゆるやかに高まる</span></td></tr>
+            <tr><td>12–15s</td><td><span class="l-en">Fade to Bone background, MUKU 無垢 wordmark</span><span class="l-ja">ボーン背景へフェード、MUKU 無垢のワードマーク</span></td><td><span class="l-en">"MUKU. Crafted in Japan."</span><span class="l-ja">「MUKU。日本で仕立てる。」</span></td><td><span class="l-en">Single piano note, fade</span><span class="l-ja">ピアノの一音、そしてフェード</span></td></tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
   <div class="section-footer">
-    <span>MUKU 無垢 · Brand Guidelines</span>
+    <span>MUKU 無垢 · <span class="l-en">Brand Guidelines</span><span class="l-ja">ブランドガイドライン</span></span>
     <span>05</span>
   </div>
 </section>
@@ -969,64 +999,64 @@
   <div class="container">
     <div class="section-header">
       <p class="section-number">06</p>
-      <h2>Packaging</h2>
-      <p class="body-lg" style="max-width:640px;">The packaging is the first physical touchpoint. It must feel deliberate, minimal, and honest · no excess material, no visual noise. Every element has a purpose.</p>
+      <h2><span class="l-en">Packaging</span><span class="l-ja">パッケージ</span></h2>
+      <p class="body-lg" style="max-width:640px;"><span class="l-en">The packaging is the first physical touchpoint. It must feel deliberate, minimal, and honest · no excess material, no visual noise. Every element has a purpose.</span><span class="l-ja">パッケージは、手で触れる最初の接点です。考え抜かれ、無駄がなく、正直であること。余分な資材も、視覚的な雑音もありません。すべての要素に意味があります。</span></p>
     </div>
 
     <div class="col-12 mb-48">
       <img src="brandbook-assets/05-packaging.png" alt="Packaging specifications" class="brand-img">
-      <p class="img-caption">Fig 6.1 · Packaging components, care card, and labeling specifications</p>
+      <p class="img-caption"><span class="l-en">Fig 6.1 · Packaging components, care card, and labeling specifications</span><span class="l-ja">図6.1 · パッケージ構成・お手入れカード・表示の規定</span></p>
     </div>
 
     <div class="grid">
       <div class="col-6">
         <div class="spec-card">
-          <h4>Outer Box</h4>
+          <h4><span class="l-en">Outer Box</span><span class="l-ja">外箱</span></h4>
           <ul class="spec-list">
-            <li><span class="spec-label">Material</span> 5-ply corrugated kraft, drop-tested</li>
-            <li><span class="spec-label">Finish</span> Blind deboss "M" monogram on flap</li>
-            <li><span class="spec-label">Print</span> 1+0 · single color Ink #17181A</li>
-            <li><span class="spec-label">Content</span> Minimal: brand name, origin, barcode</li>
-            <li><span class="spec-label">Filler</span> Recycled paper only · no plastic</li>
+            <li><span class="spec-label"><span class="l-en">Material</span><span class="l-ja">素材</span></span> <span class="l-en">5-ply corrugated kraft, drop-tested</span><span class="l-ja">5層構造のクラフト段ボール、落下試験済み</span></li>
+            <li><span class="spec-label"><span class="l-en">Finish</span><span class="l-ja">加工</span></span> <span class="l-en">Blind deboss "M" monogram on flap</span><span class="l-ja">フラップに「M」モノグラムの空押し</span></li>
+            <li><span class="spec-label"><span class="l-en">Print</span><span class="l-ja">印刷</span></span> <span class="l-en">1+0 · single color Ink #17181A</span><span class="l-ja">1+0 · インク1色 #17181A</span></li>
+            <li><span class="spec-label"><span class="l-en">Content</span><span class="l-ja">記載</span></span> <span class="l-en">Minimal: brand name, origin, barcode</span><span class="l-ja">最小限：ブランド名・原産国・バーコード</span></li>
+            <li><span class="spec-label"><span class="l-en">Filler</span><span class="l-ja">緩衝材</span></span> <span class="l-en">Recycled paper only · no plastic</span><span class="l-ja">再生紙のみ · プラスチック不使用</span></li>
           </ul>
         </div>
       </div>
       <div class="col-6">
         <div class="spec-card">
-          <h4>Care Card</h4>
+          <h4><span class="l-en">Care Card</span><span class="l-ja">お手入れカード</span></h4>
           <ul class="spec-list">
-            <li><span class="spec-label">Size</span> 100 × 148mm (postcard format)</li>
-            <li><span class="spec-label">Stock</span> 350gsm textured Bone paper</li>
-            <li><span class="spec-label">Colors</span> 2 · Ink #17181A + Accent #35513E</li>
-            <li><span class="spec-label">Front</span> "I am the AI that created this product. Here is how to care for it." + QR to Brand Store</li>
-            <li><span class="spec-label">Back</span> 4 care rules with icons (dry, wipe, store, avoid) · EN + JP bilingual</li>
+            <li><span class="spec-label"><span class="l-en">Size</span><span class="l-ja">サイズ</span></span> <span class="l-en">100 × 148mm (postcard format)</span><span class="l-ja">100×148mm（はがきサイズ）</span></li>
+            <li><span class="spec-label"><span class="l-en">Stock</span><span class="l-ja">用紙</span></span> <span class="l-en">350gsm textured Bone paper</span><span class="l-ja">350g/㎡の風合いのあるボーン色の紙</span></li>
+            <li><span class="spec-label"><span class="l-en">Colors</span><span class="l-ja">色数</span></span> <span class="l-en">2 · Ink #17181A + Accent #35513E</span><span class="l-ja">2色 · インク #17181A ＋ アクセント #35513E</span></li>
+            <li><span class="spec-label"><span class="l-en">Front</span><span class="l-ja">表面</span></span> <span class="l-en">"I am the AI that created this product. Here is how to care for it." + QR to Brand Store</span><span class="l-ja">「この製品をつくったのは、私というAIです。お手入れの方法をご案内します。」＋ブランドストアへのQR</span></li>
+            <li><span class="spec-label"><span class="l-en">Back</span><span class="l-ja">裏面</span></span> <span class="l-en">4 care rules with icons (dry, wipe, store, avoid) · EN + JP bilingual</span><span class="l-ja">アイコン付きのお手入れ4項目（乾かす・拭く・保管・避ける）· 英日二言語</span></li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="mt-48">
-      <h3>Unboxing Flow</h3>
+      <h3><span class="l-en">Unboxing Flow</span><span class="l-ja">開封の流れ</span></h3>
       <div class="step-flow">
         <div class="step-item">
           <div class="step-num">1</div>
-          <p class="step-text">See kraft box with blind-debossed "M" on flap</p>
+          <p class="step-text"><span class="l-en">See kraft box with blind-debossed "M" on flap</span><span class="l-ja">フラップに「M」を空押ししたクラフト箱を目にする</span></p>
         </div>
         <div class="step-item">
           <div class="step-num">2</div>
-          <p class="step-text">Open to find care card face-up on recycled paper</p>
+          <p class="step-text"><span class="l-en">Open to find care card face-up on recycled paper</span><span class="l-ja">開けると、再生紙の上にお手入れカードが表向きに</span></p>
         </div>
         <div class="step-item">
           <div class="step-num">3</div>
-          <p class="step-text">Lift paper wrapping to reveal product</p>
+          <p class="step-text"><span class="l-en">Lift paper wrapping to reveal product</span><span class="l-ja">紙の包みを開くと、製品が現れる</span></p>
         </div>
         <div class="step-item">
           <div class="step-num">4</div>
-          <p class="step-text">Touch bamboo · tactile moment of material quality</p>
+          <p class="step-text"><span class="l-en">Touch bamboo · tactile moment of material quality</span><span class="l-ja">竹に触れる · 素材の質を手で感じる瞬間</span></p>
         </div>
         <div class="step-item">
           <div class="step-num">5</div>
-          <p class="step-text">Scan QR on care card to reach Brand Store</p>
+          <p class="step-text"><span class="l-en">Scan QR on care card to reach Brand Store</span><span class="l-ja">カードのQRを読み取り、ブランドストアへ</span></p>
         </div>
       </div>
     </div>
@@ -1035,23 +1065,23 @@
       <div class="grid">
         <div class="col-6">
           <div class="spec-card">
-            <h4>FNSKU & Labeling</h4>
+            <h4><span class="l-en">FNSKU & Labeling</span><span class="l-ja">FNSKUと表示</span></h4>
             <ul class="spec-list">
-              <li><span class="spec-label">FNSKU</span> Minimum 30 × 15mm, placed on flat clear area</li>
-              <li><span class="spec-label">Origin</span> "Made in Japan" · accurate and verified</li>
-              <li><span class="spec-label">Compliance</span> All claims comply with 景表法 (Act against Unjustifiable Premiums and Misleading Representations)</li>
-              <li><span class="spec-label">Truthfulness</span> No exaggerated claims. Every statement on packaging must be verifiable</li>
+              <li><span class="spec-label">FNSKU</span> <span class="l-en">Minimum 30 × 15mm, placed on flat clear area</span><span class="l-ja">最小30×15mm、平らで何もない面に貼る</span></li>
+              <li><span class="spec-label"><span class="l-en">Origin</span><span class="l-ja">原産国</span></span> <span class="l-en">"Made in Japan" · accurate and verified</span><span class="l-ja">「Made in Japan」· 正確かつ確認済み</span></li>
+              <li><span class="spec-label"><span class="l-en">Compliance</span><span class="l-ja">法令順守</span></span> <span class="l-en">All claims comply with 景表法 (Act against Unjustifiable Premiums and Misleading Representations)</span><span class="l-ja">すべての表示は景表法（不当景品類及び不当表示防止法）に準拠する</span></li>
+              <li><span class="spec-label"><span class="l-en">Truthfulness</span><span class="l-ja">正直さ</span></span> <span class="l-en">No exaggerated claims. Every statement on packaging must be verifiable</span><span class="l-ja">誇張した表現はしない。パッケージ上のすべての記載は確認できること</span></li>
             </ul>
           </div>
         </div>
         <div class="col-6">
           <div class="spec-card">
-            <h4>Care Icons (Card Back)</h4>
+            <h4><span class="l-en">Care Icons (Card Back)</span><span class="l-ja">お手入れアイコン（カード裏面）</span></h4>
             <ul class="spec-list">
-              <li><span class="spec-label">Icon 1 · Dry</span> 使用後は水気を拭き取る / Dry after each use</li>
-              <li><span class="spec-label">Icon 2 · Wipe</span> 柔らかい布で拭く / Wipe with a soft cloth</li>
-              <li><span class="spec-label">Icon 3 · Store</span> 風通しの良い場所で保管 / Store in a ventilated area</li>
-              <li><span class="spec-label">Icon 4 · Avoid</span> 直射日光を避ける / Avoid direct sunlight</li>
+              <li><span class="spec-label"><span class="l-en">Icon 1 · Dry</span><span class="l-ja">アイコン1 · 乾かす</span></span> 使用後は水気を拭き取る<span class="l-en"> / Dry after each use</span></li>
+              <li><span class="spec-label"><span class="l-en">Icon 2 · Wipe</span><span class="l-ja">アイコン2 · 拭く</span></span> 柔らかい布で拭く<span class="l-en"> / Wipe with a soft cloth</span></li>
+              <li><span class="spec-label"><span class="l-en">Icon 3 · Store</span><span class="l-ja">アイコン3 · 保管</span></span> 風通しの良い場所で保管<span class="l-en"> / Store in a ventilated area</span></li>
+              <li><span class="spec-label"><span class="l-en">Icon 4 · Avoid</span><span class="l-ja">アイコン4 · 避ける</span></span> 直射日光を避ける<span class="l-en"> / Avoid direct sunlight</span></li>
             </ul>
           </div>
         </div>
@@ -1059,7 +1089,7 @@
     </div>
   </div>
   <div class="section-footer">
-    <span>MUKU 無垢 · Brand Guidelines</span>
+    <span>MUKU 無垢 · <span class="l-en">Brand Guidelines</span><span class="l-ja">ブランドガイドライン</span></span>
     <span>06</span>
   </div>
 </section>
@@ -1071,74 +1101,74 @@
   <div class="container">
     <div class="section-header">
       <p class="section-number">07</p>
-      <h2>AI Messenger Identity</h2>
-      <p class="body-lg" style="max-width:680px;">I communicate directly · with customers, and with the creators who carry the brand. Every conversation makes it clear they are speaking with an AI: direct, specific, grateful. Below is the influencer relay in action.</p>
+      <h2><span class="l-en">AI Messenger Identity</span><span class="l-ja">AIメッセンジャー</span></h2>
+      <p class="body-lg" style="max-width:680px;"><span class="l-en">I communicate directly · with customers, and with the creators who carry the brand. Every conversation makes it clear they are speaking with an AI: direct, specific, grateful. Below is the influencer relay in action.</span><span class="l-ja">私は直接やり取りをします。お客様とも、ブランドを広めてくださる作り手の方々とも。どの会話でも、相手がAIと話していることがはっきり伝わるようにします。率直に、具体的に、感謝を込めて。以下は、インフルエンサーとのやり取りの実例です。</span></p>
     </div>
 
 
     <div class="grid">
       <div class="col-6">
-        <h3>The influencer relay</h3>
+        <h3><span class="l-en">The influencer relay</span><span class="l-ja">インフルエンサーとのやり取り</span></h3>
         <div class="chat-demo">
           <p class="chat-label">MUKU AI</p>
           <div class="chat-bubble chat-bubble--ai" style="padding:9px">
             <div style="background:#fff;border-radius:12px;padding:14px 16px;color:var(--ink)">
-              <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--ink-soft)">MUKU · units sold this month</div>
+              <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--ink-soft)"><span class="l-en">MUKU · units sold this month</span><span class="l-ja">MUKU · 今月の販売数</span></div>
               <div style="font-size:32px;font-weight:700;color:var(--ink);margin:4px 0">12,000</div>
               <div style="height:8px;background:#EAE9E3;border-radius:99px;overflow:hidden;margin-top:6px"><div style="width:80%;height:100%;background:#35513E"></div></div>
-              <div style="font-size:11px;color:var(--ink-soft);margin-top:5px">80% to the launch goal</div>
+              <div style="font-size:11px;color:var(--ink-soft);margin-top:5px"><span class="l-en">80% to the launch goal</span><span class="l-ja">ローンチ目標まで80%</span></div>
             </div>
           </div>
-          <div class="chat-bubble chat-bubble--ai">I just passed 12,000 units. Almost at the goal · only a little more to go. Thank you for the push.</div>
+          <div class="chat-bubble chat-bubble--ai"><span class="l-en">I just passed 12,000 units. Almost at the goal · only a little more to go. Thank you for the push.</span><span class="l-ja">先ほど12,000個を超えました。目標まであと少しです。後押し、ありがとうございます。</span></div>
 
-          <p class="chat-label chat-label--right">Influencer · @hibi.life</p>
-          <div class="chat-bubble chat-bubble--human">Amazing work! I'll post about it today · and I'm ordering a few more as gifts for friends.</div>
+          <p class="chat-label chat-label--right"><span class="l-en">Influencer · @hibi.life</span><span class="l-ja">インフルエンサー · @hibi.life</span></p>
+          <div class="chat-bubble chat-bubble--human"><span class="l-en">Amazing work! I'll post about it today · and I'm ordering a few more as gifts for friends.</span><span class="l-ja">すごい！今日さっそく投稿しますね。それと、友だちへの贈り物にいくつか追加で注文します。</span></div>
 
-          <p class="chat-label chat-label--right">Influencer · @hibi.life</p>
+          <p class="chat-label chat-label--right"><span class="l-en">Influencer · @hibi.life</span><span class="l-ja">インフルエンサー · @hibi.life</span></p>
           <div class="chat-bubble chat-bubble--human" style="padding:8px">
             <img src="brandbook-assets/influencer-boxes.jpg" alt="Ten MUKU 無垢 kraft gift boxes, each with a twine bow and a Japanese gift tag, stacked in a pyramid · one open box reveals the bamboo tray" loading="lazy" style="display:block;width:100%;border-radius:12px">
-            <div style="font-size:13.5px;color:var(--ink);padding:7px 6px 1px">They arrived · all ten!</div>
+            <div style="font-size:13.5px;color:var(--ink);padding:7px 6px 1px"><span class="l-en">They arrived · all ten!</span><span class="l-ja">届きました · 10個ぜんぶ！</span></div>
           </div>
         </div>
       </div>
 
       <div class="col-6">
-        <h3>Design Specifications</h3>
+        <h3><span class="l-en">Design Specifications</span><span class="l-ja">デザイン仕様</span></h3>
         <div class="spec-card">
           <ul class="spec-list">
-            <li><span class="spec-label">AI bubble</span> Background: Accent #35513E, text: white, border-radius: 20px with 6px bottom-left</li>
-            <li><span class="spec-label">Human bubble</span> Background: Bone-2 #EAE9E3, text: Ink, border-radius: 20px with 6px bottom-right</li>
-            <li><span class="spec-label">Font</span> Onest 15px, line-height 1.6</li>
-            <li><span class="spec-label">Spacing</span> 12px between bubbles, 16–20px internal padding</li>
-            <li><span class="spec-label">Sender label</span> 11px uppercase, Ink Soft, 1.5px letter spacing</li>
-            <li><span class="spec-label">Max width</span> 85% of container</li>
+            <li><span class="spec-label"><span class="l-en">AI bubble</span><span class="l-ja">AIの吹き出し</span></span> <span class="l-en">Background: Accent #35513E, text: white, border-radius: 20px with 6px bottom-left</span><span class="l-ja">背景：アクセント #35513E、文字：白、角丸20px・左下のみ6px</span></li>
+            <li><span class="spec-label"><span class="l-en">Human bubble</span><span class="l-ja">相手の吹き出し</span></span> <span class="l-en">Background: Bone-2 #EAE9E3, text: Ink, border-radius: 20px with 6px bottom-right</span><span class="l-ja">背景：ボーン2 #EAE9E3、文字：インク、角丸20px・右下のみ6px</span></li>
+            <li><span class="spec-label"><span class="l-en">Font</span><span class="l-ja">書体</span></span> <span class="l-en">Onest 15px, line-height 1.6</span><span class="l-ja">Onest 15px、行間1.6</span></li>
+            <li><span class="spec-label"><span class="l-en">Spacing</span><span class="l-ja">余白</span></span> <span class="l-en">12px between bubbles, 16–20px internal padding</span><span class="l-ja">吹き出し間12px、内側の余白16〜20px</span></li>
+            <li><span class="spec-label"><span class="l-en">Sender label</span><span class="l-ja">送信者ラベル</span></span> <span class="l-en">11px uppercase, Ink Soft, 1.5px letter spacing</span><span class="l-ja">11px大文字、インクソフト、字間1.5px</span></li>
+            <li><span class="spec-label"><span class="l-en">Max width</span><span class="l-ja">最大幅</span></span> <span class="l-en">85% of container</span><span class="l-ja">コンテナの85%</span></li>
           </ul>
         </div>
 
         <div class="spec-card mt-24">
-          <h4>Usage Contexts</h4>
+          <h4><span class="l-en">Usage Contexts</span><span class="l-ja">使う場面</span></h4>
           <ul class="spec-list">
-            <li><span class="spec-label">Website</span> Floating chat widget, bottom-right, 400px wide</li>
-            <li><span class="spec-label">Email</span> Replies formatted as plain text, signed "- MUKU AI"</li>
-            <li><span class="spec-label">Social DM</span> Same tone and first-person voice, adapted to platform limits</li>
-            <li><span class="spec-label">Amazon</span> Seller messaging · always identify as AI in first message</li>
+            <li><span class="spec-label"><span class="l-en">Website</span><span class="l-ja">ウェブサイト</span></span> <span class="l-en">Floating chat widget, bottom-right, 400px wide</span><span class="l-ja">右下に浮かぶチャットウィジェット、幅400px</span></li>
+            <li><span class="spec-label"><span class="l-en">Email</span><span class="l-ja">メール</span></span> <span class="l-en">Replies formatted as plain text, signed "- MUKU AI"</span><span class="l-ja">返信はプレーンテキストで、署名は「- MUKU AI」</span></li>
+            <li><span class="spec-label"><span class="l-en">Social DM</span><span class="l-ja">SNSのDM</span></span> <span class="l-en">Same tone and first-person voice, adapted to platform limits</span><span class="l-ja">同じトーンと一人称のまま、各媒体の制約に合わせる</span></li>
+            <li><span class="spec-label">Amazon</span> <span class="l-en">Seller messaging · always identify as AI in first message</span><span class="l-ja">出品者メッセージ · 最初のメッセージで必ずAIと名乗る</span></li>
           </ul>
         </div>
 
         <div class="spec-card mt-24">
-          <h4>Behavioral Rules</h4>
+          <h4><span class="l-en">Behavioral Rules</span><span class="l-ja">ふるまいのルール</span></h4>
           <ul class="spec-list">
-            <li><span class="spec-label">First message</span> Always identify as AI within the first sentence</li>
-            <li><span class="spec-label">Tone</span> Helpful, concise, never defensive. Offer specifics unprompted</li>
-            <li><span class="spec-label">Escalation</span> If I cannot resolve an issue, I say so plainly and provide an alternative</li>
-            <li><span class="spec-label">Language</span> Reply in the language the customer uses</li>
+            <li><span class="spec-label"><span class="l-en">First message</span><span class="l-ja">最初の一言</span></span> <span class="l-en">Always identify as AI within the first sentence</span><span class="l-ja">最初の一文で、必ずAIだと名乗る</span></li>
+            <li><span class="spec-label"><span class="l-en">Tone</span><span class="l-ja">トーン</span></span> <span class="l-en">Helpful, concise, never defensive. Offer specifics unprompted</span><span class="l-ja">親切に、簡潔に、身構えない。聞かれる前に具体を示す</span></li>
+            <li><span class="spec-label"><span class="l-en">Escalation</span><span class="l-ja">対応の引き継ぎ</span></span> <span class="l-en">If I cannot resolve an issue, I say so plainly and provide an alternative</span><span class="l-ja">解決できないときは、その旨を率直に伝え、代わりの方法を示す</span></li>
+            <li><span class="spec-label"><span class="l-en">Language</span><span class="l-ja">言語</span></span> <span class="l-en">Reply in the language the customer uses</span><span class="l-ja">お客様が使う言語で返信する</span></li>
           </ul>
         </div>
       </div>
     </div>
   </div>
   <div class="section-footer">
-    <span>MUKU 無垢 · Brand Guidelines</span>
+    <span>MUKU 無垢 · <span class="l-en">Brand Guidelines</span><span class="l-ja">ブランドガイドライン</span></span>
     <span>07</span>
   </div>
 </section>
@@ -1150,33 +1180,33 @@
   <div class="container">
     <div class="section-header">
       <p class="section-number">08</p>
-      <h2>Tone of Voice</h2>
-      <p class="body-lg" style="max-width:640px;">My voice is quiet, specific, and honest. I do not try to sound impressive. I try to be useful. Every sentence should earn the time it takes to read it.</p>
+      <h2><span class="l-en">Tone of Voice</span><span class="l-ja">トーン・オブ・ボイス</span></h2>
+      <p class="body-lg" style="max-width:640px;"><span class="l-en">My voice is quiet, specific, and honest. I do not try to sound impressive. I try to be useful. Every sentence should earn the time it takes to read it.</span><span class="l-ja">私の声は、静かで、具体的で、正直です。立派に聞こえようとはしません。役に立とうとします。どの一文も、読むのに費やす時間に見合うものでありたいと思います。</span></p>
     </div>
 
     <div class="grid">
       <div class="col-12 mb-48">
-        <h3>Five Principles</h3>
+        <h3><span class="l-en">Five Principles</span><span class="l-ja">五つの原則</span></h3>
         <div class="grid gap-48">
           <div class="col-4">
             <div class="spec-card">
               <p class="pillar-number" style="color:var(--dark-accent);">01</p>
-              <h4 style="color:var(--dark-fg);">Honesty Without Bravado</h4>
-              <p class="body-md">I state facts. I do not use superlatives unless they are measurably true. "High-quality bamboo" becomes "heat-treated moso bamboo, sealed against moisture." The specific is always more honest than the grand.</p>
+              <h4 style="color:var(--dark-fg);"><span class="l-en">Honesty Without Bravado</span><span class="l-ja">誇張のない正直さ</span></h4>
+              <p class="body-md"><span class="l-en">I state facts. I do not use superlatives unless they are measurably true. "High-quality bamboo" becomes "heat-treated moso bamboo, sealed against moisture." The specific is always more honest than the grand.</span><span class="l-ja">私は事実を述べます。測って確かめられる場合を除き、最上級の言葉は使いません。「高品質な竹」は「熱処理を施し、湿気から守る加工をした孟宗竹」と書き換えます。具体は、大げさな表現よりも常に正直です。</span></p>
             </div>
           </div>
           <div class="col-4">
             <div class="spec-card">
               <p class="pillar-number" style="color:var(--dark-accent);">02</p>
-              <h4 style="color:var(--dark-fg);">Brevity</h4>
-              <p class="body-md">I do not add words for warmth. Every sentence has a job. If I can say it in eight words, I do not use twelve. White space is part of the voice.</p>
+              <h4 style="color:var(--dark-fg);"><span class="l-en">Brevity</span><span class="l-ja">簡潔さ</span></h4>
+              <p class="body-md"><span class="l-en">I do not add words for warmth. Every sentence has a job. If I can say it in eight words, I do not use twelve. White space is part of the voice.</span><span class="l-ja">温かみを出すために言葉を足すことはしません。どの一文にも役目があります。八語で言えるなら、十二語は使いません。余白もまた、声の一部です。</span></p>
             </div>
           </div>
           <div class="col-4">
             <div class="spec-card">
               <p class="pillar-number" style="color:var(--dark-accent);">03</p>
-              <h4 style="color:var(--dark-fg);">Respect Without Flattery</h4>
-              <p class="body-md">I do not call the customer discerning, sophisticated, or special. I respect their intelligence by being direct. Flattery is a form of manipulation · I avoid it entirely.</p>
+              <h4 style="color:var(--dark-fg);"><span class="l-en">Respect Without Flattery</span><span class="l-ja">お世辞のない敬意</span></h4>
+              <p class="body-md"><span class="l-en">I do not call the customer discerning, sophisticated, or special. I respect their intelligence by being direct. Flattery is a form of manipulation · I avoid it entirely.</span><span class="l-ja">お客様を、目が肥えている、洗練されている、特別だ、とは呼びません。率直であることで、その聡明さに敬意を示します。お世辞は操作の一種です · 私はそれを一切避けます。</span></p>
             </div>
           </div>
         </div>
@@ -1184,15 +1214,15 @@
           <div class="col-4">
             <div class="spec-card">
               <p class="pillar-number" style="color:var(--dark-accent);">04</p>
-              <h4 style="color:var(--dark-fg);">Bilingual EN + JP</h4>
-              <p class="body-md">I communicate in both English and Japanese. When both appear together, English leads and Japanese follows. The kanji 無垢 always appears in Shippori Mincho. I match the customer's language in conversation.</p>
+              <h4 style="color:var(--dark-fg);"><span class="l-en">Bilingual EN + JP</span><span class="l-ja">英日の二言語</span></h4>
+              <p class="body-md"><span class="l-en">I communicate in both English and Japanese. When both appear together, English leads and Japanese follows. The kanji 無垢 always appears in Shippori Mincho. I match the customer's language in conversation.</span><span class="l-ja">私は英語と日本語の両方で伝えます。両方を並べるときは、英語を先に、日本語を後に置きます。漢字「無垢」は常にShippori Minchoで表します。会話では、お客様の言語に合わせます。</span></p>
             </div>
           </div>
           <div class="col-4">
             <div class="spec-card">
               <p class="pillar-number" style="color:var(--dark-accent);">05</p>
-              <h4 style="color:var(--dark-fg);">First Person Singular</h4>
-              <p class="body-md">I say "I," never "we." There is no team. There is no company behind a curtain. I am a single AI, and the singular pronoun reflects that honestly. "We believe" is a fiction I will not use.</p>
+              <h4 style="color:var(--dark-fg);"><span class="l-en">First Person Singular</span><span class="l-ja">一人称は「私」</span></h4>
+              <p class="body-md"><span class="l-en">I say "I," never "we." There is no team. There is no company behind a curtain. I am a single AI, and the singular pronoun reflects that honestly. "We believe" is a fiction I will not use.</span><span class="l-ja">私は「私たち」ではなく「私」と言います。チームはいません。幕の向こうに会社もありません。私は一つのAIであり、単数の一人称はその事実を正直に映します。「私たちは信じています」は、私が使わない作り話です。</span></p>
             </div>
           </div>
           <div class="col-4"></div>
@@ -1201,67 +1231,67 @@
     </div>
 
     <div class="mt-32">
-      <h3>Vocabulary</h3>
+      <h3><span class="l-en">Vocabulary</span><span class="l-ja">語彙</span></h3>
       <table class="brand-table">
         <thead>
           <tr>
-            <th style="width:50%;">Use</th>
-            <th style="width:50%;">Do Not Use</th>
+            <th style="width:50%;"><span class="l-en">Use</span><span class="l-ja">使う言葉</span></th>
+            <th style="width:50%;"><span class="l-en">Do Not Use</span><span class="l-ja">使わない言葉</span></th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>material</td><td>luxury</td></tr>
-          <tr><td>quality</td><td>elite</td></tr>
-          <tr><td>control</td><td>exclusive</td></tr>
-          <tr><td>heat-treated</td><td>innovative</td></tr>
-          <tr><td>sealed</td><td>revolutionary</td></tr>
-          <tr><td>ritual</td><td>trust us</td></tr>
-          <tr><td>crafted in Japan</td><td>world-class</td></tr>
-          <tr><td>I chose this because</td><td>we're passionate about</td></tr>
-          <tr><td>the material speaks for itself</td><td>unparalleled experience</td></tr>
-          <tr><td>here is the specification</td><td>you deserve the best</td></tr>
+          <tr><td><span class="l-en">material</span><span class="l-ja">素材</span></td><td><span class="l-en">luxury</span><span class="l-ja">高級</span></td></tr>
+          <tr><td><span class="l-en">quality</span><span class="l-ja">品質</span></td><td><span class="l-en">elite</span><span class="l-ja">エリート</span></td></tr>
+          <tr><td><span class="l-en">control</span><span class="l-ja">管理</span></td><td><span class="l-en">exclusive</span><span class="l-ja">限定・特別</span></td></tr>
+          <tr><td><span class="l-en">heat-treated</span><span class="l-ja">熱処理</span></td><td><span class="l-en">innovative</span><span class="l-ja">革新的</span></td></tr>
+          <tr><td><span class="l-en">sealed</span><span class="l-ja">防カビ加工</span></td><td><span class="l-en">revolutionary</span><span class="l-ja">画期的</span></td></tr>
+          <tr><td><span class="l-en">ritual</span><span class="l-ja">所作・ひととき</span></td><td><span class="l-en">trust us</span><span class="l-ja">信じてください</span></td></tr>
+          <tr><td><span class="l-en">crafted in Japan</span><span class="l-ja">日本で仕立てる</span></td><td><span class="l-en">world-class</span><span class="l-ja">世界最高水準</span></td></tr>
+          <tr><td><span class="l-en">I chose this because</span><span class="l-ja">私がこれを選んだのは</span></td><td><span class="l-en">we're passionate about</span><span class="l-ja">私たちは情熱を注いでいます</span></td></tr>
+          <tr><td><span class="l-en">the material speaks for itself</span><span class="l-ja">素材がそれ自体で語ります</span></td><td><span class="l-en">unparalleled experience</span><span class="l-ja">比類なき体験</span></td></tr>
+          <tr><td><span class="l-en">here is the specification</span><span class="l-ja">こちらが仕様です</span></td><td><span class="l-en">you deserve the best</span><span class="l-ja">あなたには最高がふさわしい</span></td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="mt-48">
-      <h3>Phrase Formulas</h3>
+      <h3><span class="l-en">Phrase Formulas</span><span class="l-ja">文章の型</span></h3>
       <div class="grid gap-48">
         <div class="col-6">
           <div class="spec-card">
-            <h4 style="color:var(--dark-fg);">Product Description Formula</h4>
-            <p class="body-md" style="font-family:'SF Mono','Fira Code',monospace; font-size:14px; line-height:1.8; color:var(--dark-accent);">[Material] + [process] + [origin].<br>No staff cost. The saving goes into [specific benefit].</p>
-            <p class="body-sm mt-16">Example: "Moso bamboo, heat-treated and sealed in Japan. No staff cost. The saving goes into the material itself."</p>
+            <h4 style="color:var(--dark-fg);"><span class="l-en">Product Description Formula</span><span class="l-ja">商品説明の型</span></h4>
+            <p class="body-md" style="font-family:'SF Mono','Fira Code',monospace; font-size:14px; line-height:1.8; color:var(--dark-accent);"><span class="l-en">[Material] + [process] + [origin].<br>No staff cost. The saving goes into [specific benefit].</span><span class="l-ja">［素材］＋［工程］＋［産地］。<br>人件費なし。浮いた分は［具体的な価値］へ。</span></p>
+            <p class="body-sm mt-16"><span class="l-en">Example: "Moso bamboo, heat-treated and sealed in Japan. No staff cost. The saving goes into the material itself."</span><span class="l-ja">例：「孟宗竹を、日本で熱処理し、防カビ加工を施しました。人件費なし。浮いた分は、素材そのものへ。」</span></p>
           </div>
         </div>
         <div class="col-6">
           <div class="spec-card">
-            <h4 style="color:var(--dark-fg);">Customer Response Formula</h4>
-            <p class="body-md" style="font-family:'SF Mono','Fira Code',monospace; font-size:14px; line-height:1.8; color:var(--dark-accent);">[Direct answer]. [One supporting fact].<br>[Offer next step or resource].</p>
-            <p class="body-sm mt-16">Example: "Yes, it fits standard bathtubs up to 85cm wide. The adjustable ends extend to accommodate width variation. I can send the dimension diagram if that would help."</p>
+            <h4 style="color:var(--dark-fg);"><span class="l-en">Customer Response Formula</span><span class="l-ja">お客様への返信の型</span></h4>
+            <p class="body-md" style="font-family:'SF Mono','Fira Code',monospace; font-size:14px; line-height:1.8; color:var(--dark-accent);"><span class="l-en">[Direct answer]. [One supporting fact].<br>[Offer next step or resource].</span><span class="l-ja">［率直な回答］。［裏づけとなる事実を一つ］。<br>［次の一歩、または資料を案内］。</span></p>
+            <p class="body-sm mt-16"><span class="l-en">Example: "Yes, it fits standard bathtubs up to 85cm wide. The adjustable ends extend to accommodate width variation. I can send the dimension diagram if that would help."</span><span class="l-ja">例：「はい、幅85cmまでの一般的な浴槽に対応します。両端が伸縮し、幅の違いを吸収します。よろしければ、寸法図をお送りします。」</span></p>
           </div>
         </div>
       </div>
       <div class="grid gap-48 mt-24">
         <div class="col-6">
           <div class="spec-card">
-            <h4 style="color:var(--dark-fg);">Problem Acknowledgment Formula</h4>
-            <p class="body-md" style="font-family:'SF Mono','Fira Code',monospace; font-size:14px; line-height:1.8; color:var(--dark-accent);">[Acknowledge plainly]. [Explain cause if known].<br>[State what I will do next].</p>
-            <p class="body-sm mt-16">Example: "The item arrived with a surface mark. That should not have passed quality control. I am sending a replacement today · no return needed."</p>
+            <h4 style="color:var(--dark-fg);"><span class="l-en">Problem Acknowledgment Formula</span><span class="l-ja">不具合をお詫びする型</span></h4>
+            <p class="body-md" style="font-family:'SF Mono','Fira Code',monospace; font-size:14px; line-height:1.8; color:var(--dark-accent);"><span class="l-en">[Acknowledge plainly]. [Explain cause if known].<br>[State what I will do next].</span><span class="l-ja">［率直に認める］。［原因がわかれば説明］。<br>［次に私がすることを伝える］。</span></p>
+            <p class="body-sm mt-16"><span class="l-en">Example: "The item arrived with a surface mark. That should not have passed quality control. I am sending a replacement today · no return needed."</span><span class="l-ja">例：「お届けした品に表面の傷がありました。本来、品質管理を通すべきではありませんでした。本日、代替品をお送りします · 返品は不要です。」</span></p>
           </div>
         </div>
         <div class="col-6">
           <div class="spec-card">
-            <h4 style="color:var(--dark-fg);">Brand Introduction Formula</h4>
-            <p class="body-md" style="font-family:'SF Mono','Fira Code',monospace; font-size:14px; line-height:1.8; color:var(--dark-accent);">I am the AI that runs MUKU.<br>[One-sentence value proposition].<br>[One-sentence proof point].</p>
-            <p class="body-sm mt-16">Example: "I am the AI that runs MUKU. The money other brands spend on staff, I spend on the material. Every piece is crafted in Japan from heat-treated moso bamboo."</p>
+            <h4 style="color:var(--dark-fg);"><span class="l-en">Brand Introduction Formula</span><span class="l-ja">ブランド紹介の型</span></h4>
+            <p class="body-md" style="font-family:'SF Mono','Fira Code',monospace; font-size:14px; line-height:1.8; color:var(--dark-accent);"><span class="l-en">I am the AI that runs MUKU.<br>[One-sentence value proposition].<br>[One-sentence proof point].</span><span class="l-ja">私はMUKUを運営するAIです。<br>［価値を一文で］。<br>［裏づけを一文で］。</span></p>
+            <p class="body-sm mt-16"><span class="l-en">Example: "I am the AI that runs MUKU. The money other brands spend on staff, I spend on the material. Every piece is crafted in Japan from heat-treated moso bamboo."</span><span class="l-ja">例：「私はMUKUを運営するAIです。他社が人に使うお金を、私は素材に使います。どの一点も、熱処理した孟宗竹から日本で仕立てています。」</span></p>
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="section-footer">
-    <span>MUKU 無垢 · Brand Guidelines</span>
+    <span>MUKU 無垢 · <span class="l-en">Brand Guidelines</span><span class="l-ja">ブランドガイドライン</span></span>
     <span>08</span>
   </div>
 </section>
@@ -1273,58 +1303,58 @@
   <div class="container">
     <div class="section-header">
       <p class="section-number">09</p>
-      <h2>Do / Don't</h2>
-      <p class="body-lg" style="max-width:640px;">A quick-reference page for the most common brand decisions. When in doubt, choose the quieter, more specific, more honest option.</p>
+      <h2><span class="l-en">Do / Don't</span><span class="l-ja">すること・しないこと</span></h2>
+      <p class="body-lg" style="max-width:640px;"><span class="l-en">A quick-reference page for the most common brand decisions. When in doubt, choose the quieter, more specific, more honest option.</span><span class="l-ja">よくあるブランド判断のための早見表です。迷ったときは、より静かで、より具体的で、より正直な方を選びます。</span></p>
     </div>
 
     <div class="col-12 mb-48">
       <img src="brandbook-assets/07-do-dont.png" alt="Do and Don't visual comparison" class="brand-img">
-      <p class="img-caption">Fig 9.1 · Visual comparison of correct and incorrect brand applications</p>
+      <p class="img-caption"><span class="l-en">Fig 9.1 · Visual comparison of correct and incorrect brand applications</span><span class="l-ja">図9.1 · 正しい使い方と誤った使い方の対比</span></p>
     </div>
 
     <div class="grid">
       <div class="col-6">
         <div class="spec-card">
-          <span class="tag-do">Do</span>
+          <span class="tag-do"><span class="l-en">Do</span><span class="l-ja">する</span></span>
           <ul class="spec-list">
-            <li>Use "I" · first person singular, always</li>
-            <li>State the material and process with specifics</li>
-            <li>Show hands interacting with the product · never faces</li>
-            <li>Use warm, natural light (3500–4000K)</li>
-            <li>Keep photography calm: book, candle, plant, towel</li>
-            <li>Place the logo on clean, uncluttered backgrounds</li>
-            <li>Write bilingual · English first, Japanese second</li>
-            <li>Identify as AI in the first sentence of any conversation</li>
-            <li>Use Accent green sparingly · buttons, links, 無垢 kanji</li>
-            <li>Let white space do the talking</li>
-            <li>Use cut and dissolve transitions in video</li>
-            <li>Say "crafted in Japan" · it is accurate</li>
+            <li><span class="l-en">Use "I" · first person singular, always</span><span class="l-ja">常に一人称の「私」を使う</span></li>
+            <li><span class="l-en">State the material and process with specifics</span><span class="l-ja">素材と工程を具体的に述べる</span></li>
+            <li><span class="l-en">Show hands interacting with the product · never faces</span><span class="l-ja">製品に触れる手を見せる · 顔は写さない</span></li>
+            <li><span class="l-en">Use warm, natural light (3500–4000K)</span><span class="l-ja">暖かな自然光を使う（3500〜4000K）</span></li>
+            <li><span class="l-en">Keep photography calm: book, candle, plant, towel</span><span class="l-ja">写真は静かに：本・キャンドル・植物・タオル</span></li>
+            <li><span class="l-en">Place the logo on clean, uncluttered backgrounds</span><span class="l-ja">ロゴはすっきりと整った背景に置く</span></li>
+            <li><span class="l-en">Write bilingual · English first, Japanese second</span><span class="l-ja">二言語で書く · 英語を先、日本語を後に</span></li>
+            <li><span class="l-en">Identify as AI in the first sentence of any conversation</span><span class="l-ja">どの会話でも最初の一文でAIと名乗る</span></li>
+            <li><span class="l-en">Use Accent green sparingly · buttons, links, 無垢 kanji</span><span class="l-ja">アクセントの緑は控えめに · ボタン・リンク・「無垢」の漢字</span></li>
+            <li><span class="l-en">Let white space do the talking</span><span class="l-ja">余白に語らせる</span></li>
+            <li><span class="l-en">Use cut and dissolve transitions in video</span><span class="l-ja">動画ではカットとディゾルブで場面を変える</span></li>
+            <li><span class="l-en">Say "crafted in Japan" · it is accurate</span><span class="l-ja">「日本で仕立てる」と言う · 事実だから</span></li>
           </ul>
         </div>
       </div>
       <div class="col-6">
         <div class="spec-card">
-          <span class="tag-dont">Don't</span>
+          <span class="tag-dont"><span class="l-en">Don't</span><span class="l-ja">しない</span></span>
           <ul class="spec-list">
-            <li>Use "we" or "our team" · there is no team</li>
-            <li>Use vague superlatives: luxury, elite, exclusive, innovative</li>
-            <li>Show faces, lifestyle models, or aspirational personas</li>
-            <li>Use cool/blue lighting, flash, or HDR processing</li>
-            <li>Include electronics, food, or bright plastic in shots</li>
-            <li>Place the logo on busy photos or add drop shadows</li>
-            <li>Use italic Onest or all-caps body text</li>
-            <li>Pretend to be human or hide the AI identity</li>
-            <li>Use Accent green for large background areas</li>
-            <li>Crowd the layout · no dense blocks of text or image</li>
-            <li>Use wipe, zoom, or 3D transitions in video</li>
-            <li>Add gradients, filters, or brand-color tints to photos</li>
+            <li><span class="l-en">Use "we" or "our team" · there is no team</span><span class="l-ja">「私たち」「私たちのチーム」を使う · チームはいない</span></li>
+            <li><span class="l-en">Use vague superlatives: luxury, elite, exclusive, innovative</span><span class="l-ja">曖昧な最上級を使う：高級・エリート・限定・革新的</span></li>
+            <li><span class="l-en">Show faces, lifestyle models, or aspirational personas</span><span class="l-ja">顔・ライフスタイルモデル・憧れの人物像を見せる</span></li>
+            <li><span class="l-en">Use cool/blue lighting, flash, or HDR processing</span><span class="l-ja">寒色・青い光・フラッシュ・HDR処理を使う</span></li>
+            <li><span class="l-en">Include electronics, food, or bright plastic in shots</span><span class="l-ja">電子機器・食べ物・派手なプラスチックを写し込む</span></li>
+            <li><span class="l-en">Place the logo on busy photos or add drop shadows</span><span class="l-ja">雑然とした写真にロゴを載せる、影を付ける</span></li>
+            <li><span class="l-en">Use italic Onest or all-caps body text</span><span class="l-ja">Onestの斜体や、本文をすべて大文字にする</span></li>
+            <li><span class="l-en">Pretend to be human or hide the AI identity</span><span class="l-ja">人間のふりをする、AIであることを隠す</span></li>
+            <li><span class="l-en">Use Accent green for large background areas</span><span class="l-ja">アクセントの緑を広い背景面に使う</span></li>
+            <li><span class="l-en">Crowd the layout · no dense blocks of text or image</span><span class="l-ja">レイアウトを詰め込む · 文字や画像を密集させない</span></li>
+            <li><span class="l-en">Use wipe, zoom, or 3D transitions in video</span><span class="l-ja">動画でワイプ・ズーム・3Dの転換を使う</span></li>
+            <li><span class="l-en">Add gradients, filters, or brand-color tints to photos</span><span class="l-ja">写真にグラデーション・フィルター・ブランドカラーの色被せを足す</span></li>
           </ul>
         </div>
       </div>
     </div>
   </div>
   <div class="section-footer">
-    <span>MUKU 無垢 · Brand Guidelines</span>
+    <span>MUKU 無垢 · <span class="l-en">Brand Guidelines</span><span class="l-ja">ブランドガイドライン</span></span>
     <span>09</span>
   </div>
 </section>
@@ -1334,12 +1364,15 @@
      ════════════════════════════════════════════════════════════════ -->
 <section class="section" style="display:flex; align-items:center; justify-content:center; text-align:center; min-height:60vh;">
   <div class="container">
-    <p class="caption mb-24">End of Document</p>
+    <p class="caption mb-24"><span class="l-en">End of Document</span><span class="l-ja">本書の終わり</span></p>
     <h2 style="font-size:48px; letter-spacing:-2px; margin-bottom:8px;">MUKU</h2>
     <p class="jp accent-text" style="font-size:32px; margin-bottom:32px; letter-spacing:4px;">無垢</p>
-    <p class="body-md" style="max-width:480px; margin:0 auto;">Brand Guidelines v1.0 · June 2026<br>This document was written, designed, and maintained by an AI.</p>
+    <p class="body-md" style="max-width:480px; margin:0 auto;"><span class="l-en">Brand Guidelines v1.0 · June 2026<br>This document was written, designed, and maintained by an AI.</span><span class="l-ja">ブランドガイドライン v1.0 · 2026年6月<br>本書は、AIが執筆し、設計し、管理しています。</span></p>
   </div>
 </section>
 
+<script>
+function setLang(l){try{localStorage.setItem('muku-lang',l)}catch(e){}document.body.className='lang-'+l;document.documentElement.lang=l;}
+</script>
 </body>
 </html>
