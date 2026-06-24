@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MUKU · How we got here · Methodology</title>
+<style>
+  :root{--bone:#F3F2EE;--bone-2:#EAE9E3;--ink:#17181A;--ink-soft:#6C6E70;--accent:#35513E;--line:rgba(23,24,26,.14);--r:14px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bone);color:var(--ink);font:15px/1.55 'Onest',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:44px 22px 90px}
+  .wrap{max-width:1120px;margin:0 auto}
+  .top{margin-bottom:8px}
+  h1{font-size:clamp(26px,3.4vw,38px);font-weight:700;letter-spacing:-.02em}
+  .lede{color:var(--ink-soft);margin:12px 0 6px;max-width:80ch;font-size:16px}
+  .small{color:var(--ink-soft);font-size:13px}
+  /* upstream funnel */
+  .funnel{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:22px 0 6px}
+  .fstep{flex:1;min-width:150px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;position:relative}
+  .fstep b{display:block;font-size:22px;letter-spacing:-.01em}
+  .fstep span{font-size:13px;color:var(--ink-soft)}
+  .fstep.acc{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .fstep.acc span{color:#d8e4dc}
+  .farrow{display:flex;align-items:center;color:var(--ink-soft);font-size:20px}
+  .note{background:#FFF9EE;border-left:4px solid #D4C5A9;padding:12px 16px;border-radius:0 8px 8px 0;color:#5A4E3C;margin:14px 0;font-size:13.5px;max-width:88ch}
+  /* section cards */
+  .sec{border-top:1px solid var(--line);padding:30px 0 8px}
+  .sec h2{font-size:21px;font-weight:700;letter-spacing:-.01em}
+  .sec .q{color:var(--accent);font-weight:600;font-size:14px;margin:6px 0 16px}
+  .flow{display:grid;grid-template-columns:1fr 24px 1fr 24px 1fr;gap:0;align-items:stretch}
+  .step{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .step .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin-bottom:8px}
+  .step h3{font-size:14.5px;font-weight:700;margin-bottom:8px}
+  .step ul{margin:0;padding-left:16px}
+  .step li{font-size:13.5px;margin-bottom:4px}
+  .step.out{background:#eef3ef;border-color:#bcd9c4}
+  .arrow{display:flex;align-items:center;justify-content:center;color:#9aa39c;font-size:22px}
+  .prem{margin-top:12px;font-size:13px;color:var(--ink-soft)}
+  .prem b{color:var(--ink)}
+  .src{display:inline-block;background:var(--bone-2);border:1px solid var(--line);border-radius:6px;padding:1px 7px;margin:2px 4px 2px 0;font-size:12px}
+  @media(max-width:820px){.flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg);padding:6px 0}}
+  footer{border-top:1px solid var(--line);margin-top:36px;padding-top:18px;color:var(--ink-soft);font-size:13px}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <h1>How we got here — methodology</h1>
+    <p class="lede">Every section of this brand was built the same way: <b>real data in → analysis with stated assumptions → a concrete output</b>. Below, per section, is what we investigated, the sources we used, and how each conclusion was derived.</p>
+  </div>
+
+  <h2 style="font-size:16px;margin-top:14px">Upstream — how this niche was selected</h2>
+  <div class="funnel">
+    <div class="fstep"><b>175</b><span>niche candidates (canonical base)</span></div>
+    <div class="farrow">→</div>
+    <div class="fstep"><b>10</b><span>shortlist · demand × competition × unit-economics × risk</span></div>
+    <div class="farrow">→</div>
+    <div class="fstep"><b>2</b><span>final SKUs · verified COGS + margin + feasibility</span></div>
+    <div class="farrow">→</div>
+    <div class="fstep acc"><b>MUKU 無垢</b><span>this brand — bamboo bathtub tray</span></div>
+  </div>
+  <div class="note">The five sections below are the <b>deep-dive that builds the chosen SKU into a launch-ready brand</b>. The upstream scoring rubric, confidence-score formula and CFO/CMO/CEO selection logic (175→10→2) are documented separately in the research engine and shared on request.</div>
+
+  <!-- 1 TRENDS -->
+  <div class="sec">
+    <h2>1 · Market &amp; Trends</h2>
+    <p class="q">Question: is there real demand for a premium bamboo bathtub tray in Japan — and how big / how stable?</p>
+    <div class="flow">
+      <div class="step"><div class="k">Investigated</div><h3>Cross-channel demand signals</h3><ul><li>Search-result volume per channel</li><li>Head terms &amp; related keywords</li><li>Seasonality / spikes vs. steady</li></ul>
+        <div style="margin-top:8px"><span class="src">Amazon.co.jp</span><span class="src">Rakuten</span><span class="src">YouTube</span><span class="src">Twitter/X</span><span class="src">SerpApi · Apify · scrape</span></div></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="k">Method</div><h3>Trends matrix</h3><ul><li>Pull live counts per channel</li><li>Normalize &amp; compare signals</li><li>Classify market size &amp; stability</li><li>Flag head terms / content gaps</li></ul></div>
+      <div class="arrow">→</div>
+      <div class="step out"><div class="k">Result</div><h3>Real but niche demand</h3><ul><li>Small, steady market — not a viral spike</li><li>Clear head terms to own</li><li>Unverified/sparse signals labelled as hypotheses</li></ul></div>
+    </div>
+    <p class="prem"><b>Premises:</b> search-result counts used as a demand proxy; channels weighted by buyer relevance; where data is thin it is marked “hypothesis / unverified”, not stated as fact.</p>
+  </div>
+
+  <!-- 2 COMPETITORS -->
+  <div class="sec">
+    <h2>2 · Competitors</h2>
+    <p class="q">Question: who already sells this on Amazon JP, at what price, and what do buyers actually complain about?</p>
+    <div class="flow">
+      <div class="step"><div class="k">Investigated</div><h3>10 real listings</h3><ul><li>Live price &amp; review count/rating</li><li>Listing quality (images, A+, title)</li><li>Pains mined from real reviews</li></ul>
+        <div style="margin-top:8px"><span class="src">Amazon.co.jp (live)</span><span class="src">Keepa PRO</span><span class="src">re-scraped 2026-06</span></div></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="k">Method</div><h3>Compare &amp; find gaps</h3><ul><li>Build a like-for-like comparison table</li><li>Cluster review complaints</li><li>Identify weaknesses to beat</li></ul></div>
+      <div class="arrow">→</div>
+      <div class="step out"><div class="k">Result</div><h3>“What to beat”</h3><ul><li>Realistic price band</li><li>Target weaknesses: mold, warping, flimsy stand</li><li>Positioning for MUKU</li></ul></div>
+    </div>
+    <p class="prem"><b>Premises:</b> reviews ≈ genuine pains; prices were <b>re-verified live</b> (not estimated) on the stated date, with source links per competitor.</p>
+  </div>
+
+  <!-- 3 BRAND -->
+  <div class="sec">
+    <h2>3 · Brand (AI-run brandbook)</h2>
+    <p class="q">Question: how should an AI-run brand present itself credibly and consistently across every touchpoint?</p>
+    <div class="flow">
+      <div class="step"><div class="k">Inputs</div><h3>Positioning</h3><ul><li>AI-run: budget into materials, not labor</li><li>Competitor gaps (§2)</li><li>Premium-natural angle</li></ul></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="k">Method</div><h3>Build an 8-chapter system</h3><ul><li>Purpose · logo · color · type</li><li>Photography · tone of voice &amp; messenger</li><li>Do / Don’t rules</li></ul></div>
+      <div class="arrow">→</div>
+      <div class="step out"><div class="k">Result</div><h3>One consistent brand</h3><ul><li>Applied to listing, ads, social, packaging</li><li>Honest framing (a human is involved)</li></ul></div>
+    </div>
+    <p class="prem"><b>Premises:</b> brand honesty — we do <b>not</b> claim “no humans involved”; every visual rule is reusable across channels &amp; languages.</p>
+  </div>
+
+  <!-- 4 LISTING -->
+  <div class="sec">
+    <h2>4 · Listing &amp; Marketing</h2>
+    <p class="q">Question: what listing &amp; creative set actually converts on Amazon JP for this product?</p>
+    <div class="flow">
+      <div class="step"><div class="k">Inputs</div><h3>Evidence</h3><ul><li>Competitor gaps (§2)</li><li>Trend keywords (§1)</li><li>Verified product features</li></ul></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="k">Method</div><h3>Produce the asset set</h3><ul><li>Title · bullets · description</li><li>A+ modules · hero/gallery images</li><li>Video creatives — all EN + JP</li></ul></div>
+      <div class="arrow">→</div>
+      <div class="step out"><div class="k">Result</div><h3>Launch-ready listing</h3><ul><li>Full listing + marketing kit</li><li>Bilingual, terminology-canon</li></ul></div>
+    </div>
+    <p class="prem"><b>Premises:</b> claims kept truthful &amp; substantiated (景表法); fixed terminology (バストレー / 熱処理竹); ranges written 70〜105cm.</p>
+  </div>
+
+  <!-- 5 PACKAGING -->
+  <div class="sec">
+    <h2>5 · Packaging &amp; Compliance</h2>
+    <p class="q">Question: how do we package &amp; label for Amazon FBA Japan — compliantly and production-ready?</p>
+    <div class="flow">
+      <div class="step"><div class="k">Inputs</div><h3>Spec + rules</h3><ul><li>Product: solid bamboo, Made in Japan, 70〜105cm</li><li>Amazon FBA label requirements</li><li>JP regulations</li></ul></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="k">Method</div><h3>Write the packaging TZ</h3><ul><li>FNSKU placement &amp; print zones</li><li>Country-of-origin · QC by AQL</li><li>Compliance screen (景表法; 薬機法 if health-adjacent)</li></ul></div>
+      <div class="arrow">→</div>
+      <div class="step out"><div class="k">Result</div><h3>Production-ready spec</h3><ul><li>Manufacturable packaging brief</li><li>Defined acceptance criteria</li></ul></div>
+    </div>
+    <p class="prem"><b>Premises:</b> “Made in Japan” verified; AQL acceptance levels defined; no medical-efficacy claims. <span class="small">(For a health/food category this layer expands to 食品衛生法 import notification + 薬機法 claim rules — see compliance note.)</span></p>
+  </div>
+
+  <footer>Draft for review. Every source above is traceable to the data in each section. JP version and the upstream scoring rubric (175→10→2, confidence score) available on request.</footer>
+</div>
+</body>
+</html>
